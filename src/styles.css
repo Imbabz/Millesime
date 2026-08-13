@@ -1,0 +1,616 @@
+/*
+ * Millésime — one stylesheet.
+ *
+ * Designed for a phone held at arm's length across a table, in a dim room, by
+ * someone who has had a drink. That means: dark by default, very large type for
+ * anything that matters, touch targets no smaller than 56px, and never more than
+ * one primary action on screen. The app is furniture — the music and the people
+ * are the game.
+ */
+
+:root {
+  --ink: #0b0b0f;
+  --ink-raised: #16161d;
+  --ink-sunken: #08080b;
+  --line: #2a2a35;
+  --text: #f4f2ee;
+  --text-dim: #9a97a5;
+  --amber: #f5a524;
+  --amber-ink: #2a1c05;
+  --mint: #4ec9a0;
+  --coral: #e84c3d;
+  --azure: #3ba7f0;
+
+  --radius: 16px;
+  --radius-lg: 24px;
+  --tap: 56px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+  font-size: 17px;
+  line-height: 1.4;
+  /* The board never scrolls sideways, and never bounces on iOS. */
+  overscroll-behavior: none;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+}
+
+/* --------------------------------------------------------------- layout */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  /* The trailing 72px reserves the corner the floating "?" lives in, so it
+     never sits on top of the screen's primary action. */
+  padding: calc(var(--safe-top) + 16px) 16px calc(var(--safe-bottom) + 72px);
+  gap: 16px;
+}
+
+.screen--center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.grow {
+  flex: 1;
+  min-height: 0;
+}
+
+/* The frise sits in whatever room is left, vertically centred rather than
+   pinned to the top of a tall empty column. */
+.board {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.row--between {
+  justify-content: space-between;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --------------------------------------------------------------- type */
+
+.title {
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.muted {
+  color: var(--text-dim);
+}
+
+.wordmark {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(120deg, var(--amber), #ffd98a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --------------------------------------------------------------- buttons */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--tap);
+  padding: 0 20px;
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  font-weight: 700;
+  font-size: 17px;
+  transition: transform 0.08s ease, opacity 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.btn--primary {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--amber-ink);
+}
+
+.btn--danger {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #2a0b08;
+}
+
+.btn--ghost {
+  background: transparent;
+}
+
+.btn--big {
+  min-height: 72px;
+  /* Labels like "Choisis un emplacement" have to survive a 360px screen. */
+  font-size: clamp(16px, 4.6vw, 21px);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------- cards */
+
+.panel {
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+/* --------------------------------------------------------------- timeline */
+
+.timeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  overflow-x: auto;
+  padding: 8px 0;
+  scrollbar-width: none;
+}
+
+.timeline::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-card {
+  flex: 0 0 auto;
+  width: 104px;
+  padding: 10px;
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.timeline-card__year {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--amber);
+}
+
+.timeline-card__title {
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.timeline-card__artist {
+  font-size: 11px;
+  color: var(--text-dim);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.timeline-card--fresh {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 2px rgba(245, 165, 36, 0.25);
+}
+
+/* The tappable gap between two cards. Wide enough to hit while laughing. */
+.gap {
+  flex: 0 0 auto;
+  width: 46px;
+  margin: 4px 0;
+  border-radius: 12px;
+  border: 2px dashed var(--line);
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.12s ease;
+}
+
+.gap--armed {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.gap--chosen {
+  border-style: solid;
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--amber-ink);
+  width: 60px;
+}
+
+.gap--challenge {
+  border-style: solid;
+  border-color: var(--azure);
+  background: rgba(59, 167, 240, 0.18);
+  color: var(--azure);
+}
+
+.gap--correct {
+  border-style: solid;
+  border-color: var(--mint);
+  background: var(--mint);
+  color: #05261c;
+}
+
+.gap--wrong {
+  border-style: solid;
+  border-color: var(--coral);
+  background: var(--coral);
+  color: #2a0b08;
+}
+
+.gap--static {
+  cursor: default;
+}
+
+/* --------------------------------------------------------------- tokens */
+
+.tokens {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.token {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.token--spent {
+  background: transparent;
+  border: 1.5px solid var(--line);
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------- players */
+
+.player-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+}
+
+.player-chip--active {
+  border-color: var(--amber);
+}
+
+.player-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.player-chip--offline {
+  opacity: 0.45;
+}
+
+/* --------------------------------------------------------------- chips */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--ink-raised);
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 44px;
+}
+
+.chip--on {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--amber-ink);
+}
+
+/* --------------------------------------------------------------- reveal */
+
+.reveal-card {
+  border-radius: var(--radius-lg);
+  padding: 28px 20px;
+  text-align: center;
+  background: linear-gradient(160deg, #1e1a12, #101018);
+  border: 1px solid var(--amber);
+}
+
+.reveal-card__year {
+  font-size: 76px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--amber);
+}
+
+.reveal-card__title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.reveal-card__artist {
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.verdict {
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.verdict--good {
+  color: var(--mint);
+}
+
+.verdict--bad {
+  color: var(--coral);
+}
+
+/* --------------------------------------------------------------- karaoke */
+
+.lyrics {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 30vh 8px;
+  text-align: center;
+}
+
+.lyric {
+  font-size: 20px;
+  font-weight: 600;
+  color: #55525f;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.lyric--now {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text);
+  transform: scale(1.02);
+}
+
+.lyric--next {
+  color: var(--text-dim);
+}
+
+/* --------------------------------------------------------------- sheet */
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 40;
+}
+
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 88vh;
+  z-index: 41;
+  background: var(--ink-raised);
+  border-top: 1px solid var(--line);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 12px 16px calc(var(--safe-bottom) + 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: sheet-in 0.22s ease;
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(12%);
+    opacity: 0;
+  }
+}
+
+.sheet__grip {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  margin: 4px auto 0;
+}
+
+/* --------------------------------------------------------------- misc */
+
+.help-button {
+  position: fixed;
+  right: 12px;
+  bottom: calc(var(--safe-bottom) + 12px);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  font-weight: 800;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.field {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0 16px;
+  border-radius: var(--radius);
+  background: var(--ink-sunken);
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-align: center;
+  color: var(--amber);
+}
+
+.qr {
+  background: #fff;
+  padding: 12px;
+  border-radius: var(--radius);
+  align-self: center;
+  line-height: 0;
+}
+
+.qr img {
+  display: block;
+  width: min(56vw, 260px);
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.banner {
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  border: 1px solid;
+}
+
+.banner--warn {
+  border-color: rgba(245, 165, 36, 0.4);
+  background: rgba(245, 165, 36, 0.1);
+  color: #ffd18a;
+}
+
+.banner--error {
+  border-color: rgba(232, 76, 61, 0.45);
+  background: rgba(232, 76, 61, 0.12);
+  color: #ffb3ab;
+}
+
+.spin {
+  animation: spin 1.1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
