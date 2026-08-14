@@ -1,1 +1,3022 @@
-{}
+{
+  "13-organise--bande-organisee": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "2-unlimited--no-limit": {
+    "year": 1993,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "2pac--california-love": {
+    "year": 1995,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1996) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "50-cent--in-da-club": {
+    "year": 2003,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "a-ha--take-on-me": {
+    "year": 1985,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "abba--dancing-queen": {
+    "year": 1976,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1978) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "abba--gimme-gimme-gimme-a-man-after-midnight": {
+    "year": 1979,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "abba--waterloo": {
+    "year": 1974,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ac-dc--back-in-black": {
+    "year": 1980,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1981) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "ac-dc--highway-to-hell": {
+    "year": 1979,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ace-of-base--all-that-she-wants": {
+    "year": 1992,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1993) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "adele--easy-on-me": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "adele--hello": {
+    "year": 2015,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une chanson homonyme ; 25 est sorti en 2015."
+  },
+  "adele--rolling-in-the-deep": {
+    "year": 2010,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "adele--someone-like-you": {
+    "year": 2011,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "aerosmith--i-don-t-want-to-miss-a-thing": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "air--sexy-boy": {
+    "year": 1997,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1998) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "alain-bashung--la-nuit-je-mens": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "alain-souchon--foule-sentimentale": {
+    "year": 1993,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "alanis-morissette--you-oughta-know": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "alex-warren--ordinary": {
+    "year": 2025,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "alpha-blondy--brigadier-sabari": {
+    "year": 1983,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "alphaville--big-in-japan": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "amy-winehouse--back-to-black": {
+    "year": 2006,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "amy-winehouse--rehab": {
+    "year": 2006,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2007) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "angele--balance-ton-quoi": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "angele--bruxelles-je-t-aime": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "angele-dua-lipa--fever": {
+    "year": 2020,
+    "source": "manual",
+    "ref": "Absente du catalogue MusicBrainz ; année vérifiée à la main."
+  },
+  "anita-ward--ring-my-bell": {
+    "year": 1979,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "antoine--les-elucubrations": {
+    "year": 1966,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1982) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "aqua--barbie-girl": {
+    "year": 1997,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "arctic-monkeys--do-i-wanna-know": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "arctic-monkeys--i-bet-you-look-good-on-the-dancefloor": {
+    "year": 2005,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "aretha-franklin--respect": {
+    "year": 1967,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "avicii--levels": {
+    "year": 2011,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "avicii--wake-me-up": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "aya-nakamura--copines": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "aya-nakamura--djadja": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "aya-nakamura--doudou": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "aya-nakamura--pookie": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bad-bunny--dakiti": {
+    "year": 2020,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2026) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bad-bunny--me-porto-bonito": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bad-bunny--titi-me-pregunto": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "baltimora--tarzan-boy": {
+    "year": 1985,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "barbara--gottingen": {
+    "year": 1964,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1965) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "barbara--l-aigle-noir": {
+    "year": 1970,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1981) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "barry-white--you-re-the-first-the-last-my-everything": {
+    "year": 1974,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "beck--loser": {
+    "year": 1993,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1994) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bee-gees--night-fever": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bee-gees--stayin-alive": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ben-e-king--stand-by-me": {
+    "year": 1961,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2015) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "benson-boone--beautiful-things": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "berlin--take-my-breath-away": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "beyonce--break-my-soul": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "beyonce--crazy-in-love": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bigflo-oli--coup-de-vieux": {
+    "year": 2020,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2023) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bigflo-oli--dommage": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bill-conti--gonna-fly-now-theme-from-rocky": {
+    "year": 1976,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1977) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bill-haley-his-comets--rock-around-the-clock": {
+    "year": 1954,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1981) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bill-medley-jennifer-warnes--i-ve-had-the-time-of-my-life": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bill-withers--ain-t-no-sunshine": {
+    "year": 1971,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bill-withers--lovely-day": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "billie-eilish--bad-guy": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "billie-eilish--birds-of-a-feather": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "billy-idol--rebel-yell": {
+    "year": 1983,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bjork--army-of-me": {
+    "year": 1995,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "black-eyed-peas--i-gotta-feeling": {
+    "year": 2009,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "black-eyed-peas--where-is-the-love": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "black-m--sur-ma-route": {
+    "year": 2014,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "black-sabbath--paranoid": {
+    "year": 1970,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "blondie--call-me": {
+    "year": 1980,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "blondie--heart-of-glass": {
+    "year": 1978,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "blur--song-2": {
+    "year": 1997,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bob-dylan--like-a-rolling-stone": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1978) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bob-marley-the-wailers--could-you-be-loved": {
+    "year": 1980,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "bob-marley-the-wailers--is-this-love": {
+    "year": 1978,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "bob-marley-the-wailers--jamming": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bob-marley-the-wailers--no-woman-no-cry": {
+    "year": 1974,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bob-marley-the-wailers--three-little-birds": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bob-sinclar--love-generation": {
+    "year": 2005,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bobby-darin--mack-the-knife": {
+    "year": 1959,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bon-jovi--it-s-my-life": {
+    "year": 2000,
+    "source": "manual",
+    "ref": "MusicBrainz apparie un homonyme ; l’album Crush est de 2000."
+  },
+  "bon-jovi--livin-on-a-prayer": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "boney-m--daddy-cool": {
+    "year": 1976,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "boney-m--rasputin": {
+    "year": 1978,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bonnie-tyler--total-eclipse-of-the-heart": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "boris-vian--le-deserteur": {
+    "year": 1954,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1955) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "britney-spears--baby-one-more-time": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "britney-spears--toxic": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "bryan-adams--everything-i-do-i-do-it-for-you": {
+    "year": 1991,
+    "source": "manual",
+    "ref": "MusicBrainz apparie un autre enregistrement ; la bande originale de Robin des Bois est de 1991."
+  },
+  "bts--dynamite": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "buddy-holly--that-ll-be-the-day": {
+    "year": 1957,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1977) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "c-ur-de-pirate--comme-des-enfants": {
+    "year": 2008,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "calogero--en-apesanteur": {
+    "year": 2002,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "calvin-harris--feel-so-close": {
+    "year": 2011,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "cardi-b--wap": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "carl-douglas--kung-fu-fighting": {
+    "year": 1974,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1990) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "carly-rae-jepsen--call-me-maybe": {
+    "year": 2011,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "cassius--feeling-for-you": {
+    "year": 1999,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "celine-dion--my-heart-will-go-on": {
+    "year": 1997,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "celine-dion--pour-que-tu-m-aimes-encore": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "cerrone--supernature": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "chappell-roan--good-luck-babe": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "charles-aznavour--je-m-voyais-deja": {
+    "year": 1960,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1961) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "charles-aznavour--la-boheme": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1966) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "charles-trenet--la-mer": {
+    "year": 1946,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1947) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "charli-xcx--360": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "cher--believe": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "chic--le-freak": {
+    "year": 1978,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "childish-gambino--this-is-america": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "chris-isaak--wicked-game": {
+    "year": 1989,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "christine-and-the-queens--christine": {
+    "year": 2014,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "christophe-mae--on-s-attache": {
+    "year": 2007,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "chuck-berry--johnny-b-goode": {
+    "year": 1958,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1972) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "chuck-berry--maybellene": {
+    "year": 1955,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "chuck-berry--roll-over-beethoven": {
+    "year": 1956,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1976) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "chumbawamba--tubthumping": {
+    "year": 1997,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "clara-luciani--la-grenade": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "clara-luciani--respire-encore": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "claude-francois--alexandrie-alexandra": {
+    "year": 1978,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "claude-francois--comme-d-habitude": {
+    "year": 1967,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "claude-nougaro--toulouse": {
+    "year": 1967,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "clean-bandit--rather-be": {
+    "year": 2014,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2017) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "coldplay--clocks": {
+    "year": 2002,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2003) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "coldplay--viva-la-vida": {
+    "year": 2008,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "coldplay--yellow": {
+    "year": 2000,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "cookie-dingler--femme-liberee": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "coolio--gangsta-s-paradise": {
+    "year": 1995,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1996) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "corneille--parce-qu-on-vient-de-loin": {
+    "year": 2002,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "corona--the-rhythm-of-the-night": {
+    "year": 1993,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1994) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "cream--sunshine-of-your-love": {
+    "year": 1967,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "creedence-clearwater-revival--fortunate-son": {
+    "year": 1969,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "cyndi-lauper--girls-just-want-to-have-fun": {
+    "year": 1983,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1984) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "dadju--reine": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "daft-punk--around-the-world": {
+    "year": 1997,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "daft-punk--da-funk": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "daft-punk--get-lucky": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "daft-punk--harder-better-faster-stronger": {
+    "year": 2001,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "daft-punk--one-more-time": {
+    "year": 2000,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2001) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "dalida--bambino": {
+    "year": 1956,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1999) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "dalida--gigi-l-amoroso": {
+    "year": 1974,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "daniel-balavoine--le-chanteur": {
+    "year": 1978,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "daryl-hall-john-oates--maneater": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "david-bowie--heroes": {
+    "year": 1977,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "david-bowie--life-on-mars": {
+    "year": 1971,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1973) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "david-guetta--love-is-gone": {
+    "year": 2007,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "david-guetta--titanium": {
+    "year": 2011,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2012) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "david-guetta-bebe-rexha--i-m-good-blue": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dead-or-alive--you-spin-me-round-like-a-record": {
+    "year": 1984,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1987) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "dean-martin--that-s-amore": {
+    "year": 1953,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "debut-de-soiree--nuit-de-folie": {
+    "year": 1988,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "deep-purple--smoke-on-the-water": {
+    "year": 1972,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1974) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "depeche-mode--enjoy-the-silence": {
+    "year": 1990,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "depeche-mode--just-can-t-get-enough": {
+    "year": 1981,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1983) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "desireless--voyage-voyage": {
+    "year": 1986,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1995) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "desmond-dekker-the-aces--israelites": {
+    "year": 1968,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1987) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "destiny-s-child--say-my-name": {
+    "year": 1999,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "diam-s--la-boulette": {
+    "year": 2006,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dire-straits--money-for-nothing": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "disclosure--latch": {
+    "year": 2012,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2013) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "disturbed--down-with-the-sickness": {
+    "year": 2000,
+    "source": "manual",
+    "ref": "MusicBrainz retient une démo ; l’album The Sickness est de 2000."
+  },
+  "doc-gyneco--nirvana": {
+    "year": 1996,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "doja-cat--kiss-me-more": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "doja-cat--paint-the-town-red": {
+    "year": 2023,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "doja-cat--say-so": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "donna-summer--i-feel-love": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dr-dre--nuthin-but-a-g-thang": {
+    "year": 1992,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "drake--one-dance": {
+    "year": 2016,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dua-lipa--dance-the-night": {
+    "year": 2023,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dua-lipa--don-t-start-now": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dua-lipa--levitating": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dua-lipa--new-rules": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dua-lipa--physical": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "duran-duran--rio": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dusty-springfield--son-of-a-preacher-man": {
+    "year": 1968,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1984) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "eagles--hotel-california": {
+    "year": 1976,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "earth-wind-fire--september": {
+    "year": 1978,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ed-sheeran--bad-habits": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ed-sheeran--shape-of-you": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ed-sheeran--thinking-out-loud": {
+    "year": 2014,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "eddy-de-pretto--kid": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "edith-piaf--la-vie-en-rose": {
+    "year": 1947,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2012) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "edith-piaf--non-je-ne-regrette-rien": {
+    "year": 1960,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "eiffel-65--blue-da-ba-dee": {
+    "year": 1998,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1999) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "elsa--t-en-va-pas": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "elton-john--can-you-feel-the-love-tonight": {
+    "year": 1994,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "elton-john--rocket-man": {
+    "year": 1972,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1973) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "elton-john--your-song": {
+    "year": 1970,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "elton-john-dua-lipa--cold-heart-pnau-remix": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "elvis-presley--can-t-help-falling-in-love": {
+    "year": 1961,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1970) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "elvis-presley--heartbreak-hotel": {
+    "year": 1956,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1976) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "elvis-presley--hound-dog": {
+    "year": 1956,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1975) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "elvis-presley--jailhouse-rock": {
+    "year": 1957,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2015) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "eminem--lose-yourself": {
+    "year": 2002,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "eminem--my-name-is": {
+    "year": 1999,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "empire-of-the-sun--walking-on-a-dream": {
+    "year": 2008,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "etienne-daho--week-end-a-rome": {
+    "year": 1984,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1989) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "europe--the-final-countdown": {
+    "year": 1986,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "eurythmics--sweet-dreams-are-made-of-this": {
+    "year": 1983,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "falco--rock-me-amadeus": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "farruko--pepas": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "fatboy-slim--praise-you": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "fine-young-cannibals--she-drives-me-crazy": {
+    "year": 1988,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "fleetwood-mac--dreams": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "france-gall--ella-elle-l-a": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "france-gall--poupee-de-cire-poupee-de-son": {
+    "year": 1965,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "france-gall--resiste": {
+    "year": 1981,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "francis-cabrel--je-l-aime-a-mourir": {
+    "year": 1979,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "frank-sinatra--fly-me-to-the-moon": {
+    "year": 1964,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1977) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "frankie-goes-to-hollywood--relax": {
+    "year": 1983,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2003) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "franz-ferdinand--take-me-out": {
+    "year": 2004,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "fredericks-goldman-jones--ne-en-17-a-leidenstadt": {
+    "year": 1990,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "fugees--killing-me-softly-with-his-song": {
+    "year": 1996,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1999) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "gazo-tiakola--mande": {
+    "year": 2022,
+    "source": "manual",
+    "ref": "Absente du catalogue MusicBrainz ; année vérifiée à la main."
+  },
+  "george-michael--careless-whisper": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "georges-brassens--les-copains-d-abord": {
+    "year": 1964,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "gilbert-becaud--nathalie": {
+    "year": 1964,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1965) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "gims--ciel": {
+    "year": 2019,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2024) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "glass-animals--heat-waves": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "gloria-gaynor--i-will-survive": {
+    "year": 1978,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "gnarls-barkley--crazy": {
+    "year": 2006,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "gold--ville-de-lumiere": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "gorillaz--clint-eastwood": {
+    "year": 2001,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "gorillaz--feel-good-inc": {
+    "year": 2005,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "gotye--somebody-that-i-used-to-know": {
+    "year": 2011,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "green-day--basket-case": {
+    "year": 1994,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "guns-n-roses--november-rain": {
+    "year": 1991,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "guns-n-roses--sweet-child-o-mine": {
+    "year": 1987,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "guns-n-roses--welcome-to-the-jungle": {
+    "year": 1987,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "haddaway--what-is-love": {
+    "year": 1993,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "hans-zimmer--time": {
+    "year": 2010,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "harry-styles--as-it-was": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "harry-styles--late-night-talking": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "harry-styles--watermelon-sugar": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "hoshi--ta-mariniere": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "hozier--take-me-to-church": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "hozier--too-sweet": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "iam--je-danse-le-mia": {
+    "year": 1993,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "idina-menzel--let-it-go": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ike-tina-turner--river-deep-mountain-high": {
+    "year": 1966,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "images--les-demons-de-minuit": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "imagine-dragons--radioactive": {
+    "year": 2012,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "indeep--last-night-a-d-j-saved-my-life": {
+    "year": 1982,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2003) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "indila--derniere-danse": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "indochine--l-aventurier": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "indochine--trois-nuits-par-semaine": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "inner-circle--sweat-a-la-la-la-la-long": {
+    "year": 1992,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "inxs--need-you-tonight": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "irene-cara--flashdance-what-a-feeling": {
+    "year": 1983,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2000) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "iron-maiden--the-trooper": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jack-johnson--better-together": {
+    "year": 2005,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jacques-brel--amsterdam": {
+    "year": 1964,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jacques-brel--ne-me-quitte-pas": {
+    "year": 1959,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jacques-brel--quand-on-n-a-que-l-amour": {
+    "year": 1956,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jacques-dutronc--et-moi-et-moi-et-moi": {
+    "year": 1966,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jacques-dutronc--il-est-cinq-heures-paris-s-eveille": {
+    "year": 1968,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "james-brown--i-got-you-i-feel-good": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1994) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "jason-mraz--i-m-yours": {
+    "year": 2008,
+    "source": "manual",
+    "ref": "Jouée en concert dès 2005, mais éditée sur We Sing. We Dance. We Steal Things. en 2008."
+  },
+  "jay-z--99-problems": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jean-jacques-goldman--comme-toi": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jean-jacques-goldman--la-bas": {
+    "year": 1987,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "jean-jacques-goldman-michael-jones--je-te-donne": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jean-pierre-mader--macumba": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jeff-buckley--hallelujah": {
+    "year": 1994,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2003) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "jerry-lee-lewis--great-balls-of-fire": {
+    "year": 1957,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2025) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "jimmy-cliff--you-can-get-it-if-you-really-want": {
+    "year": 1972,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "joe-dassin--l-ete-indien": {
+    "year": 1975,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "joe-dassin--les-champs-elysees": {
+    "year": 1969,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "john-lennon--imagine": {
+    "year": 1971,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "john-williams--main-title-star-wars": {
+    "year": 1977,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2004) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "johnny-hallyday--que-je-t-aime": {
+    "year": 1969,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1977) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "journey--don-t-stop-believin": {
+    "year": 1981,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "joy-division--love-will-tear-us-apart": {
+    "year": 1980,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1984) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "judas-priest--breaking-the-law": {
+    "year": 1980,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1981) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "jul--tchikita": {
+    "year": 2015,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2016) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "julien-clerc--femmes-je-vous-aime": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "julien-dore--nous": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "julien-dore--paris-seychelles": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jung-kook--seven": {
+    "year": 2023,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2024) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "justice--d-a-n-c-e": {
+    "year": 2007,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "justin-bieber--peaches": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "justin-bieber--sorry": {
+    "year": 2015,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "justin-timberlake--sexyback": {
+    "year": 2006,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kanye-west--gold-digger": {
+    "year": 2005,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kate-bush--running-up-that-hill-a-deal-with-god": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "keane--somewhere-only-we-know": {
+    "year": 2004,
+    "source": "manual",
+    "ref": "MusicBrainz retient un pressage promotionnel ; Hopes and Fears est de 2004."
+  },
+  "kendji-girac--color-gitano": {
+    "year": 2014,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kendrick-lamar--humble": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kendrick-lamar--not-like-us": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kenny-loggins--danger-zone": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kenny-loggins--footloose": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kings-of-leon--sex-on-fire": {
+    "year": 2008,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kool-the-gang--celebration": {
+    "year": 1980,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1990) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "kool-the-gang--ladies-night": {
+    "year": 1979,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1983) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "korn--freak-on-a-leash": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "kyo--le-chemin": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "la-bouche--be-my-lover": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lady-gaga--abracadabra": {
+    "year": 2025,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lady-gaga--just-dance": {
+    "year": 2008,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lady-gaga--poker-face": {
+    "year": 2008,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lady-gaga-bradley-cooper--shallow": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lady-gaga-bruno-mars--die-with-a-smile": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "laid-back--sunshine-reggae": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lauryn-hill--doo-wop-that-thing": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "led-zeppelin--stairway-to-heaven": {
+    "year": 1971,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "led-zeppelin--whole-lotta-love": {
+    "year": 1969,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1981) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "leo-ferre--avec-le-temps": {
+    "year": 1970,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1971) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "les-rita-mitsouko--andy": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "les-rita-mitsouko--marcia-baila": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lil-nas-x--industry-baby": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lil-nas-x--montero-call-me-by-your-name": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "limp-bizkit--rollin-air-raid-vehicle": {
+    "year": 2000,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "linkin-park--in-the-end": {
+    "year": 2000,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "linkin-park--numb": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lio--amoureux-solitaires": {
+    "year": 1980,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lionel-richie--all-night-long-all-night": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "little-richard--tutti-frutti": {
+    "year": 1955,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1989) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "lizzo--about-damn-time": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lorde--royals": {
+    "year": 2013,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "lorie--pres-de-toi": {
+    "year": 2001,
+    "source": "manual",
+    "ref": "Absente du catalogue MusicBrainz ; année vérifiée à la main."
+  },
+  "los-del-rio--macarena": {
+    "year": 1993,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1995) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "lou-bega--mambo-no-5-a-little-bit-of": {
+    "year": 1999,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "louane--avenir": {
+    "year": 2015,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "louane--jour-1": {
+    "year": 2014,
+    "source": "manual",
+    "ref": "Single sorti le 24 novembre 2014, un an avant l’album Chambre 12."
+  },
+  "louis-armstrong--what-a-wonderful-world": {
+    "year": 1967,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "louise-attaque--j-t-emmene-au-vent": {
+    "year": 1997,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "luis-fonsi--despacito": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lukas-graham--7-years": {
+    "year": 2015,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lynyrd-skynyrd--sweet-home-alabama": {
+    "year": 1974,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "madonna--frozen": {
+    "year": 1998,
+    "source": "manual",
+    "ref": "MusicBrainz apparie un homonyme ; Ray of Light est de 1998."
+  },
+  "madonna--like-a-virgin": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "madonna--material-girl": {
+    "year": 1984,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1985) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "maitre-gims--bella": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "major-lazer--lean-on": {
+    "year": 2015,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "manau--la-tribu-de-dana": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "maneskin--zitti-e-buoni": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "manu-chao--clandestino": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "manu-chao--me-gustas-tu": {
+    "year": 2001,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "mariah-carey--all-i-want-for-christmas-is-you": {
+    "year": 1994,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "marilyn-manson--the-beautiful-people": {
+    "year": 1996,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2001) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "mark-ronson--uptown-funk": {
+    "year": 2014,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2018) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "marvin-gaye--i-heard-it-through-the-grapevine": {
+    "year": 1968,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1974) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "marvin-gaye--what-s-going-on": {
+    "year": 1971,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1975) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "marvin-gaye-tammi-terrell--ain-t-no-mountain-high-enough": {
+    "year": 1967,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "massive-attack--teardrop": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "mc-solaar--bouge-de-la": {
+    "year": 1991,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "mc-solaar--caroline": {
+    "year": 1991,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "megan-thee-stallion--savage": {
+    "year": 2020,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "metallica--enter-sandman": {
+    "year": 1991,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1992) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "metallica--master-of-puppets": {
+    "year": 1986,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "metallica--nothing-else-matters": {
+    "year": 1991,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1992) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "metallica--one": {
+    "year": 1988,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1993) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "mgmt--kids": {
+    "year": 2007,
+    "source": "manual",
+    "ref": "Présente sur l’EP Time to Pretend (2005), éditée sur Oracular Spectacular en 2007."
+  },
+  "michael-jackson--bad": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "michael-jackson--beat-it": {
+    "year": 1982,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1986) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "michael-jackson--billie-jean": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "michael-jackson--don-t-stop-til-you-get-enough": {
+    "year": 1979,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "michael-jackson--smooth-criminal": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "michael-jackson--thriller": {
+    "year": 1982,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1987) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "michel-delpech--wight-is-wight": {
+    "year": 1969,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "michel-polnareff--love-me-please-love-me": {
+    "year": 1966,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "michel-sardou--les-lacs-du-connemara": {
+    "year": 1981,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "miley-cyrus--flowers": {
+    "year": 2023,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "missy-elliott--get-ur-freak-on": {
+    "year": 2001,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "modern-talking--you-re-my-heart-you-re-my-soul": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "modjo--lady-hear-me-tonight": {
+    "year": 2000,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "motorhead--ace-of-spades": {
+    "year": 1980,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "muse--supermassive-black-hole": {
+    "year": 2006,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "mylene-farmer--desenchantee": {
+    "year": 1991,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "mylene-farmer--libertine": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "nancy-sinatra--these-boots-are-made-for-walkin": {
+    "year": 1966,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "naps--la-kiffance": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "nat-king-cole--unforgettable": {
+    "year": 1951,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1966) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "nekfeu--on-verra": {
+    "year": 2015,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "nelly-furtado--maneater": {
+    "year": 2006,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "nena--99-luftballons": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "new-order--blue-monday": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "niagara--j-ai-vu": {
+    "year": 1986,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1990) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "nina-simone--feeling-good": {
+    "year": 1965,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "nino-ferrer--le-sud": {
+    "year": 1975,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "nino-ferrer--mirza": {
+    "year": 1966,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "nirvana--come-as-you-are": {
+    "year": 1991,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1994) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "nirvana--smells-like-teen-spirit": {
+    "year": 1991,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1995) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "no-doubt--don-t-speak": {
+    "year": 1995,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1996) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "noir-desir--le-vent-nous-portera": {
+    "year": 2001,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "norah-jones--don-t-know-why": {
+    "year": 2002,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "oasis--don-t-look-back-in-anger": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "oasis--wonderwall": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "of-monsters-and-men--little-talks": {
+    "year": 2011,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "olivia-rodrigo--deja-vu": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "olivia-rodrigo--drivers-license": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "olivia-rodrigo--good-4-u": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "olivia-rodrigo--vampire": {
+    "year": 2023,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "opus--live-is-life": {
+    "year": 1985,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "orelsan--basique": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "orelsan--l-odeur-de-l-essence": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "orelsan--la-quete": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "otis-redding--sittin-on-the-dock-of-the-bay": {
+    "year": 1968,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1984) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "otis-redding--try-a-little-tenderness": {
+    "year": 1966,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1970) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "outkast--hey-ya": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ozzy-osbourne--crazy-train": {
+    "year": 1980,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1982) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "partenaire-particulier--partenaire-particulier": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "passenger--let-her-go": {
+    "year": 2012,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "patrick-bruel--casser-la-voix": {
+    "year": 1989,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "patrick-hernandez--born-to-be-alive": {
+    "year": 1979,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "pearl-jam--alive": {
+    "year": 1991,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1993) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "percy-sledge--when-a-man-loves-a-woman": {
+    "year": 1966,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1986) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "peso-pluma-eslabon-armado--ella-baila-sola": {
+    "year": 2023,
+    "source": "manual",
+    "ref": "Absente du catalogue MusicBrainz ; année vérifiée à la main."
+  },
+  "peter-tosh--legalize-it": {
+    "year": 1976,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "pharrell-williams--happy": {
+    "year": 2013,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "phil-collins--you-ll-be-in-my-heart": {
+    "year": 1999,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "pink-floyd--another-brick-in-the-wall-pt-2": {
+    "year": 1979,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1999) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "pink-floyd--money": {
+    "year": 1973,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "plastic-bertrand--ca-plane-pour-moi": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "pnl--au-dd": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "pomme--on-brulera": {
+    "year": 2017,
+    "source": "manual",
+    "ref": "Parue sur À peu près (2017), pas sur Les Failles (2019)."
+  },
+  "portishead--glory-box": {
+    "year": 1994,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1995) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "post-malone--rockstar": {
+    "year": 2017,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "prince--kiss": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "prince--purple-rain": {
+    "year": 1984,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "prince--when-doves-cry": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "procol-harum--a-whiter-shade-of-pale": {
+    "year": 1967,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "psy--gangnam-style": {
+    "year": 2012,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "queen--another-one-bites-the-dust": {
+    "year": 1980,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1984) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "queen--bohemian-rhapsody": {
+    "year": 1975,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1979) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "queen--radio-ga-ga": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "queen-david-bowie--under-pressure": {
+    "year": 1981,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "r-e-m--losing-my-religion": {
+    "year": 1991,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "radiohead--creep": {
+    "year": 1992,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1993) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "rage-against-the-machine--killing-in-the-name": {
+    "year": 1992,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "rammstein--du-hast": {
+    "year": 1997,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ramones--blitzkrieg-bop": {
+    "year": 1976,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1990) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "ray-charles--what-d-i-say": {
+    "year": 1959,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1960) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "ray-parker-jr--ghostbusters": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "red-hot-chili-peppers--californication": {
+    "year": 1999,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2000) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "red-hot-chili-peppers--under-the-bridge": {
+    "year": 1991,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1992) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "rednex--cotton-eye-joe": {
+    "year": 1994,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "rema--calm-down": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "renaud--des-que-le-vent-soufflera": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "renaud--mistral-gagnant": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "rick-astley--never-gonna-give-you-up": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "ricky-martin--livin-la-vida-loca": {
+    "year": 1999,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "right-said-fred--i-m-too-sexy": {
+    "year": 1991,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "rihanna--umbrella": {
+    "year": 2007,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "rihanna--we-found-love": {
+    "year": 2011,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2012) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "ritchie-valens--la-bamba": {
+    "year": 1958,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1992) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "robert-miles--children": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "robin-thicke--blurred-lines": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "rod-stewart--da-ya-think-i-m-sexy": {
+    "year": 1978,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "rosalia--despecha": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "rose-bruno-mars--apt": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "roxette--joyride": {
+    "year": 1991,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "roxette--the-look": {
+    "year": 1988,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1989) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "roy-orbison--oh-pretty-woman": {
+    "year": 1964,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1972) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "sabrina-carpenter--espresso": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sabrina-carpenter--please-please-please": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "salvatore-adamo--tombe-la-neige": {
+    "year": 1963,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1981) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "sam-cooke--a-change-is-gonna-come": {
+    "year": 1964,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sam-dave--soul-man": {
+    "year": 1967,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "sam-smith--stay-with-me": {
+    "year": 2014,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sam-smith-kim-petras--unholy": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "santa--popcorn-sale": {
+    "year": 2023,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "santana--smooth": {
+    "year": 1999,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2000) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "scott-mckenzie--san-francisco-be-sure-to-wear-flowers-in-your-hair": {
+    "year": 1967,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1990) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "sean-paul--get-busy": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sean-paul--temperature": {
+    "year": 2005,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sebastien-tellier--la-ritournelle": {
+    "year": 2004,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "serge-gainsbourg--bonnie-and-clyde": {
+    "year": 1968,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "serge-gainsbourg--je-t-aime-moi-non-plus": {
+    "year": 1969,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2001) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "serge-gainsbourg--la-javanaise": {
+    "year": 1963,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "serge-gainsbourg--requiem-pour-un-con": {
+    "year": 1968,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2004) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "sex-pistols--anarchy-in-the-u-k": {
+    "year": 1976,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "shaboozey--a-bar-song-tipsy": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "shaggy--boombastic": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "shaggy--it-wasn-t-me": {
+    "year": 2000,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "shakira--hips-don-t-lie": {
+    "year": 2006,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "shakira--whenever-wherever": {
+    "year": 2001,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sheila--l-ecole-est-finie": {
+    "year": 1963,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sia--chandelier": {
+    "year": 2014,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sidney-bechet--petite-fleur": {
+    "year": 1952,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1984) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "silk-sonic--leave-the-door-open": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "simon-garfunkel--mrs-robinson": {
+    "year": 1968,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "simon-garfunkel--the-sound-of-silence": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "simple-minds--don-t-you-forget-about-me": {
+    "year": 1985,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sinead-o-connor--nothing-compares-2-u": {
+    "year": 1990,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sinsemilia--tout-le-bonheur-du-monde": {
+    "year": 2004,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sister-sledge--we-are-family": {
+    "year": 1979,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "slipknot--duality": {
+    "year": 2004,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "snap--rhythm-is-a-dancer": {
+    "year": 1992,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "snoop-dogg--gin-and-juice": {
+    "year": 1993,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1994) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "snow-patrol--chasing-cars": {
+    "year": 2006,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "soprano--cosmo": {
+    "year": 2016,
+    "source": "manual",
+    "ref": "MusicBrainz apparie un autre enregistrement ; L’Everest est de 2016."
+  },
+  "soso-maness--petrouchka": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "soul-ii-soul--back-to-life-however-do-you-want-me": {
+    "year": 1989,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1994) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "spice-girls--wannabe": {
+    "year": 1996,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "stardust--music-sounds-better-with-you": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "steve-lacy--bad-habit": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "steve-miller-band--the-joker": {
+    "year": 1973,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1983) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "stevie-wonder--superstition": {
+    "year": 1972,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "stromae--alors-on-danse": {
+    "year": 2009,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "stromae--formidable": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "stromae--l-enfer": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "stromae--papaoutai": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "supertramp--the-logical-song": {
+    "year": 1979,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "supreme-ntm--laisse-pas-trainer-ton-fils": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "survivor--eye-of-the-tiger": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "swedish-house-mafia--don-t-you-worry-child": {
+    "year": 2012,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "system-of-a-down--chop-suey": {
+    "year": 2001,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "system-of-a-down--toxicity": {
+    "year": 2001,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2008) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "sza--kill-bill": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "sza--snooze": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "talking-heads--once-in-a-lifetime": {
+    "year": 1980,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "tame-impala--the-less-i-know-the-better": {
+    "year": 2015,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "tate-mcrae--greedy": {
+    "year": 2023,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "tayc--le-temps": {
+    "year": 2020,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2021) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "tayc--n-y-pense-plus": {
+    "year": 2021,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "taylor-swift--anti-hero": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "taylor-swift--blank-space": {
+    "year": 2014,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "taylor-swift--shake-it-off": {
+    "year": 2014,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "tears-for-fears--everybody-wants-to-rule-the-world": {
+    "year": 1985,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1986) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "technotronic--pump-up-the-jam": {
+    "year": 1989,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "teddy-swims--lose-control": {
+    "year": 2023,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "telephone--cendrillon": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "telephone--un-autre-monde": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-animals--the-house-of-the-rising-sun": {
+    "year": 1964,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-b-52-s--love-shack": {
+    "year": 1989,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1993) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-beach-boys--good-vibrations": {
+    "year": 1966,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1973) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-beach-boys--surfin-u-s-a": {
+    "year": 1963,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1972) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-beatles--a-hard-day-s-night": {
+    "year": 1964,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-beatles--come-together": {
+    "year": 1969,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-beatles--hey-jude": {
+    "year": 1968,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-beatles--let-it-be": {
+    "year": 1970,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1972) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-beatles--she-loves-you": {
+    "year": 1963,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-beatles--twist-and-shout": {
+    "year": 1963,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1978) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-byrds--mr-tambourine-man": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1975) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-chemical-brothers--block-rockin-beats": {
+    "year": 1997,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-cure--boys-don-t-cry": {
+    "year": 1979,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1993) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-cure--just-like-heaven": {
+    "year": 1987,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1991) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-doors--light-my-fire": {
+    "year": 1967,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1968) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-everly-brothers--bye-bye-love": {
+    "year": 1957,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1976) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-jackson-5--i-want-you-back": {
+    "year": 1969,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-jimi-hendrix-experience--hey-joe": {
+    "year": 1966,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-jimi-hendrix-experience--purple-haze": {
+    "year": 1967,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-kid-laroi-justin-bieber--stay": {
+    "year": 2021,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-killers--mr-brightside": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-kinks--you-really-got-me": {
+    "year": 1964,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1968) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-knack--my-sharona": {
+    "year": 1979,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-lumineers--ho-hey": {
+    "year": 2012,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "the-mamas-the-papas--california-dreamin": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1970) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-monkees--i-m-a-believer": {
+    "year": 1966,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-notorious-b-i-g--juicy": {
+    "year": 1994,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1995) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-offspring--self-esteem": {
+    "year": 1994,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-platters--only-you": {
+    "year": 1955,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1973) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-police--every-breath-you-take": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-police--roxanne": {
+    "year": 1978,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-prodigy--firestarter": {
+    "year": 1996,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-righteous-brothers--unchained-melody": {
+    "year": 1965,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-rolling-stones--i-can-t-get-no-satisfaction": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1977) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-rolling-stones--paint-it-black": {
+    "year": 1966,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1977) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-rolling-stones--sympathy-for-the-devil": {
+    "year": 1968,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1976) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-smiths--there-is-a-light-that-never-goes-out": {
+    "year": 1986,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "the-supremes--you-can-t-hurry-love": {
+    "year": 1966,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-temptations--my-girl": {
+    "year": 1964,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2002) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-trammps--disco-inferno": {
+    "year": 1976,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1996) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "the-turtles--happy-together": {
+    "year": 1967,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-verve--bitter-sweet-symphony": {
+    "year": 1997,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-weeknd--blinding-lights": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-weeknd--can-t-feel-my-face": {
+    "year": 2015,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-weeknd--save-your-tears": {
+    "year": 2020,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "the-white-stripes--seven-nation-army": {
+    "year": 2003,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-who--my-generation": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1976) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "theodora--kongolese-sous-bbl": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "tina-turner--what-s-love-got-to-do-with-it": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "tlc--no-scrubs": {
+    "year": 1999,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "tom-jones--it-s-not-unusual": {
+    "year": 1965,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1967) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "tones-and-i--dance-monkey": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "toto--africa": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "trio--da-da-da": {
+    "year": 1982,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "u2--sunday-bloody-sunday": {
+    "year": 1983,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1990) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "u2--with-or-without-you": {
+    "year": 1987,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1989) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "ub40--red-red-wine": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "underworld--born-slippy-nuxx": {
+    "year": 1995,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "van-halen--jump": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "vanessa-paradis--joe-le-taxi": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "vangelis--chariots-of-fire": {
+    "year": 1981,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "vengaboys--we-like-to-party-the-vengabus": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "veronique-sanson--amoureuse": {
+    "year": 1972,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "vianney--je-m-en-vais": {
+    "year": 2016,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "village-people--y-m-c-a": {
+    "year": 1978,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1979) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "vitaa-slimane--ca-va-ca-vient": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "weezer--buddy-holly": {
+    "year": 1994,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "wham--last-christmas": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "wham--wake-me-up-before-you-go-go": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "whitney-houston--i-wanna-dance-with-somebody-who-loves-me": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "whitney-houston--i-will-always-love-you": {
+    "year": 1992,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "wilson-pickett--land-of-1000-dances": {
+    "year": 1966,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "wings--live-and-let-die": {
+    "year": 1973,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "wu-tang-clan--c-r-e-a-m": {
+    "year": 1993,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (2002) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "yannick--ces-soirees-la": {
+    "year": 2000,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "yazoo--don-t-go": {
+    "year": 1982,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "yves-montand--les-feuilles-mortes": {
+    "year": 1949,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition (1954) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "zaho-de-sagazan--la-symphonie-des-eclairs": {
+    "year": 2023,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "zaz--je-veux": {
+    "year": 2010,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "zebda--tomber-la-chemise": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  }
+}

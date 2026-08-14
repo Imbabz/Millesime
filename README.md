@@ -106,8 +106,27 @@ npm run apply:years    # fusionne les concordances, liste ce qui reste à tranch
 
 Les concordances passent seules : deux sources indépendantes qui disent la même
 chose ne demandent aucun arbitrage. Les désaccords sont tranchés à la main, avec
-une note expliquant pourquoi — MusicBrainz se trompe assez souvent pour qu'une
-réécriture automatique remplace une série d'erreurs par une autre.
+une note expliquant pourquoi.
+
+Le premier balayage complet a donné **383 concordances, 217 écarts, 4 cartes
+introuvables**. Les écarts se lisent en deux tas, et la direction suffit à les
+séparer :
+
+- **169 fois MusicBrainz est postérieur.** Une réédition ne peut pas précéder la
+  sortie d'origine : il a donc apparié un pressage plus tardif. Great Balls of
+  Fire en 2025, La Vie en rose en 2012, Bohemian Rhapsody en 1979. L'année du
+  catalogue tient.
+- **48 fois il est antérieur**, ce qui ne peut pas s'écarter d'un revers de main
+  — chacune a été tranchée individuellement. La plupart sont des homonymes
+  (« Hello » d'Adele daté de 2005) ou des pressages promotionnels. **Deux étaient
+  de vraies erreurs de catalogue**, corrigées : *Jour 1* de Louane est un single
+  de novembre 2014, et *On brûlera* de Pomme figure sur « À peu près » (2017).
+
+C'est aussi ce qui a réglé son compte à une première version du script, qui
+retenait l'enregistrement le plus ancien parmi les candidats : elle contredisait
+la moitié du catalogue, parce qu'une seule démo égarée tire la réponse vers le
+passé. Le score de recherche identifie désormais l'enregistrement, et la date ne
+sert plus qu'à départager.
 
 Un mauvais millésime est invisible en partie : la carte devient simplement
 impossible à placer, et c'est le joueur qui se fait accuser.
