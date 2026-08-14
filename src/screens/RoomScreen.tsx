@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CATALOGUE_BY_ID } from '@/deck/catalogue';
-import { DEFAULT_HOOK_MS, type Card } from '@/game/types';
+import { DEFAULT_HOOK_MS, type Card, type GameState } from '@/game/types';
 import { LocalTransport } from '@/net/local';
 import { SupabaseTransport } from '@/net/supabase';
 import type { Transport } from '@/net/transport';
-import { arbiter } from '@/game/engine';
+import { arbiter, eligibleChallengers } from '@/game/engine';
 import { useSession } from '@/session/useSession';
 import { playerId as selfPlayerId, playerName } from '@/session/identity';
 import { hasRealtime, hasSpotify, loadConfig } from '@/config';
@@ -23,8 +23,42 @@ import { GameOverScreen } from './GameOverScreen';
 /** How long the table waits for a missing arbiter before the host steps in. */
 const ARBITER_GRACE_MS = 20_000;
 
-/** Simulated players never tap anything, so the harness must not wait on them. */
-const MOCK_ARBITER_GRACE_MS = 700;
+/**
+ * On a single device, whose turn is it to hold the phone?
+ *
+ * Nothing in this game is secret between players — timelines and tokens are
+ * face up, and the only hidden thing is the card, which nobody sees. So one
+ * phone can be passed around the table and simply act as whoever the current
+ * phase concerns. Without this the "jouer sur ce seul téléphone" mode stalls
+ * the moment the turn leaves the first seat.
+ */
+function actingPlayerId(state: GameState, fallback: string): string {
+  const active = state.players[state.activeIndex];
+  const dealer = arbiter(state) ?? active;
+
+  switch (state.phase) {
+    case 'draw':
+      return dealer?.id ?? fallback;
+    case 'listening':
+      return active?.id ?? fallback;
+    case 'challenge': {
+      // The phone goes round the table, one opponent at a time.
+      const turn = state.turn;
+      const answered = new Set([
+        ...(turn?.challenges ?? []).map((c) => c.playerId),
+        ...(turn?.passed ?? []),
+      ]);
+      const next = eligibleChallengers(state).find((p) => !answered.has(p.id));
+      return next?.id ?? active?.id ?? fallback;
+    }
+    case 'reveal':
+    case 'karaoke':
+      // The arbiter rules on the announcement.
+      return dealer?.id ?? fallback;
+    default:
+      return fallback;
+  }
+}
 
 /**
  * One room, one game.
@@ -51,6 +85,8 @@ export function RoomScreen({
   const config = useMemo(loadConfig, []);
   const selfId = useMemo(selfPlayerId, []);
   const isHost = role === 'host';
+  /** One phone for the whole table: the demo harness and the solo room. */
+  const singleDevice = mock || code === 'LOCAL';
 
   // Local when explicitly asked for, and also whenever Supabase is not set up —
   // the game must remain playable on one phone before anything is configured.
@@ -132,12 +168,15 @@ export function RoomScreen({
     if (!isHost || state.phase !== 'draw') return;
     const dealer = arbiter(state) ?? state.players[state.activeIndex];
     if (!dealer) return;
+    // On one device the arbiter is right here, holding it; only a genuinely
+    // absent phone needs covering for.
+    if (singleDevice) return;
     const timer = setTimeout(
       () => dispatch({ type: 'DRAW_CARD', playerId: dealer.id }),
-      mock ? MOCK_ARBITER_GRACE_MS : ARBITER_GRACE_MS,
+      ARBITER_GRACE_MS,
     );
     return () => clearTimeout(timer);
-  }, [isHost, mock, state, dispatch]);
+  }, [isHost, singleDevice, state, dispatch]);
 
   // Close the steal window on the deadline the host itself stamped.
   useEffect(() => {
@@ -167,7 +206,9 @@ export function RoomScreen({
   useEffect(() => {
     if (!mock || seededRef.current || state.players.length > 0) return;
     seededRef.current = true;
-    for (const [i, name] of ['Toi', 'Bob', 'Chloé', 'Dimitri'].entries()) {
+    // Real names, because on one device the phone speaks as each of them in
+    // turn and "Toi" would end up labelling somebody else.
+    for (const [i, name] of ['Alex', 'Bob', 'Chloé', 'Dimitri'].entries()) {
       dispatch({ type: 'ADD_PLAYER', playerId: i === 0 ? selfId : `dev-${i}`, name });
     }
   }, [mock, state.players.length, dispatch, selfId]);
@@ -220,6 +261,12 @@ export function RoomScreen({
     );
   }
 
+  // On one device the phone speaks as whoever the phase concerns; on a real
+  // table it only ever speaks as its owner.
+  const actingId = singleDevice ? actingPlayerId(state, selfId) : selfId;
+  const acting = state.players.find((p) => p.id === actingId);
+  const inPlay = state.phase !== 'lobby' && state.phase !== 'gameover';
+
   const spotifyBanner = mock
     ? null
     : !hasSpotify(config)
@@ -249,14 +296,22 @@ export function RoomScreen({
         />
       )}
 
+      {singleDevice && inPlay && acting && (
+        <div style={{ padding: '12px 16px 0' }}>
+          <Banner tone="warn">
+            📱 Le téléphone est à <strong>{acting.name}</strong>
+          </Banner>
+        </div>
+      )}
+
       {state.phase === 'draw' && (
-        <DrawScreen state={state} selfId={selfId} dispatch={dispatch} />
+        <DrawScreen state={state} selfId={actingId} dispatch={dispatch} />
       )}
 
       {(state.phase === 'listening' || state.phase === 'challenge') && (
         <TurnScreen
           state={state}
-          selfId={selfId}
+          selfId={actingId}
           dispatch={dispatch}
           control={control}
           playback={playback}
@@ -264,7 +319,7 @@ export function RoomScreen({
       )}
 
       {state.phase === 'reveal' && (
-        <RevealScreen state={state} card={card} selfId={selfId} dispatch={dispatch} />
+        <RevealScreen state={state} card={card} selfId={actingId} dispatch={dispatch} />
       )}
 
       {state.phase === 'karaoke' && (
@@ -279,7 +334,7 @@ export function RoomScreen({
       {state.phase === 'gameover' && (
         <GameOverScreen
           state={state}
-          selfId={selfId}
+          selfId={actingId}
           isHost={isHost}
           dispatch={dispatch}
         />

@@ -11,6 +11,10 @@ import { RoomScreen } from './RoomScreen';
  * session wiring — everything except the network and Spotify. It is the test
  * that would catch a screen wired to the wrong action, which no amount of
  * reducer coverage can.
+ *
+ * It also runs single-device, so the one phone stands in for whoever the
+ * current phase concerns — which is how the demo mode and the "jouer sur ce
+ * seul téléphone" room actually work.
  */
 
 const renderRoom = () =>
@@ -27,7 +31,7 @@ const renderRoom = () =>
 describe('a game, played through the UI', () => {
   it('seats the simulated table and shows the deck size', async () => {
     renderRoom();
-    await screen.findByText('Toi');
+    await screen.findByText('Alex');
     expect(screen.getByText('Bob')).toBeDefined();
     expect(screen.getByText('Chloé')).toBeDefined();
     expect(screen.getByText('Dimitri')).toBeDefined();
@@ -37,7 +41,7 @@ describe('a game, played through the UI', () => {
   it('refuses to start on a selection too thin to seat everyone', async () => {
     const user = userEvent.setup();
     renderRoom();
-    await screen.findByText('Toi');
+    await screen.findByText('Alex');
 
     await user.click(screen.getByRole('button', { name: '50s' }));
     await user.click(screen.getByRole('button', { name: 'Piège à dater' }));
@@ -50,28 +54,29 @@ describe('a game, played through the UI', () => {
     ).toBe(true);
   });
 
-  it('hands the draw to the arbiter, never to the player who has to guess', async () => {
+  it('gives the draw to the arbiter, not to the player who has to guess', async () => {
     const user = userEvent.setup();
     renderRoom();
-    await screen.findByText('Toi');
+    await screen.findByText('Alex');
     await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
 
-    // We hold the first seat, so our neighbour Bob is the arbiter and the
-    // draw button must not be on our screen.
-    await screen.findByText('Bob tire la carte');
-    expect(screen.queryByRole('button', { name: /Tirer la carte/ })).toBeNull();
-    expect(screen.getByText(/Ne touche à rien/)).toBeDefined();
+    // Alex plays the first turn, so his neighbour Bob draws for him. On one
+    // device that means the phone is handed to Bob.
+    await screen.findByText(/Le téléphone est à/);
+    expect(screen.getByText('Bob')).toBeDefined();
+    expect(screen.getByText('Tire la carte pour Alex')).toBeDefined();
+    expect(screen.getByRole('button', { name: /Tirer la carte/ })).toBeDefined();
   });
 
-  it('runs a turn from placement through the steal window to the reveal', async () => {
+  it('runs a turn from the draw through to the reveal, rotating the arbiter', async () => {
     const user = userEvent.setup();
     const { container } = renderRoom();
-    await screen.findByText('Toi');
+    await screen.findByText('Alex');
 
     await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
 
-    // The simulated arbiter draws for us, then the placement is ours.
-    await screen.findByText('Où se range ce morceau ?', undefined, { timeout: 4000 });
+    await user.click(await screen.findByRole('button', { name: /Tirer la carte/ }));
+    await screen.findByText('Où se range ce morceau ?');
     expect(
       screen.getByRole('button', { name: 'Choisis un emplacement' }).hasAttribute('disabled'),
     ).toBe(true);
@@ -91,22 +96,22 @@ describe('a game, played through the UI', () => {
     expect(Number(year?.textContent)).toBeGreaterThan(1900);
 
     await user.click(screen.getByRole('button', { name: 'Joueur suivant' }));
-    // The turn moves on, and so does the arbiter: Bob plays, Chloé now draws.
-    await screen.findByText('Chloé tire la carte');
+    // The turn moves on and the arbiter moves with it: Bob plays, Chloé draws.
+    await screen.findByText('Tire la carte pour Bob');
   });
 
-  it('lets any phone pause and resume the music', async () => {
+  it('starts the music on the draw, and lets it be paused', async () => {
     const user = userEvent.setup();
     renderRoom();
-    await screen.findByText('Toi');
+    await screen.findByText('Alex');
     await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
 
-    // The mock speaker starts once the card has been drawn.
-    const pause = await screen.findByRole(
-      'button',
-      { name: /Pause/ },
-      { timeout: 4000 },
-    );
+    // Nothing plays until the arbiter draws — that is the whole point of the
+    // extra beat.
+    expect(screen.queryByRole('button', { name: /Pause/ })).toBeNull();
+
+    await user.click(await screen.findByRole('button', { name: /Tirer la carte/ }));
+    const pause = await screen.findByRole('button', { name: /Pause/ });
     await user.click(pause);
     await screen.findByRole('button', { name: /Reprendre/ });
   });
@@ -114,15 +119,16 @@ describe('a game, played through the UI', () => {
   it('offers the rules from inside the game without leaving it', async () => {
     const user = userEvent.setup();
     renderRoom();
-    await screen.findByText('Toi');
+    await screen.findByText('Alex');
 
     await user.click(screen.getByRole('button', { name: 'Les règles' }));
     const dialog = await screen.findByRole('dialog');
     expect(within(dialog).getByText('⚡ Voler une carte')).toBeDefined();
+    expect(within(dialog).getByText('🎴 L’arbitre du tour')).toBeDefined();
 
     await user.click(within(dialog).getByRole('button', { name: 'Fermer' }));
     await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
     // Still in the lobby: the rules never cost anyone their place.
-    expect(screen.getByText('Toi')).toBeDefined();
+    expect(screen.getByText('Alex')).toBeDefined();
   });
 });

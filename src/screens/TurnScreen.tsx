@@ -133,7 +133,7 @@ export function TurnScreen({
             <span>
               🪙 J’annonce le titre <em>et</em> l’artiste
               <br />
-              <span className="subtitle">Dis-les à voix haute, la table jugera</span>
+              <span className="subtitle">Dis-les à voix haute, l’arbitre jugera</span>
             </span>
             <input
               type="checkbox"
