@@ -13,7 +13,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "icons": "node scripts/make-icons.mjs",
-    "verify:years": "tsx scripts/verify-years.mjs"
+    "verify:years": "tsx scripts/verify-years.mjs",
+    "apply:years": "node scripts/apply-years.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.3",

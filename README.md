@@ -15,6 +15,10 @@ l'application est le support, le jeu reste la musique et les gens autour.
 - **Une app web installable (PWA)**, pas une app native. Un invité scanne un QR
   code avec l'appareil photo, tape son prénom, et joue. Aucune installation,
   aucun compte, aucun Spotify de son côté.
+- **L'arbitre tourne à chaque tour.** Le joueur à gauche de celui qui joue tire
+  la carte et lance le morceau, exactement comme le joueur qui scanne la carte
+  dans le jeu physique. Celui qui doit deviner ne touche à rien : c'est ce qui
+  l'empêche d'être trahi par son propre écran.
 - **Seul l'hôte se connecte à Spotify.** La musique sort par **Spotify Connect**
   sur l'appareil de son choix : enceinte Bluetooth, Google Home, l'app Spotify du
   téléphone. Elle continue quand l'écran se verrouille, contrairement à un
@@ -30,6 +34,10 @@ l'application est le support, le jeu reste la musique et les gens autour.
 ## Les règles
 
 - Objectif : **10 cartes bien placées** (réglable). La carte de départ compte.
+- **L'arbitre du tour** — le voisin de gauche du joueur actif — tire la carte,
+  contrôle la lecture, et tranche après la révélation si l'annonce du titre et
+  de l'artiste était juste. Il ne voit pas la réponse avant les autres, donc il
+  joue et vole normalement.
 - Bien placé → la carte rejoint la frise. Mal placé → défausse.
 - **Jeton** : +1 si on annonce le titre *et* l'artiste, même en cas de mauvais
   placement. Maximum 5 jetons.
@@ -54,18 +62,23 @@ npm run lint
 npm run build        # BASE_PATH=/Magellan/ pour un déploiement GitHub Pages
 ```
 
-### Mode démo
+### Mode démo et partie sur un seul téléphone
 
-Ouvrir `?dev=1#/room/ABCD` : quatre joueurs simulés, aucune connexion réseau, un
-faux lecteur qui avance vraiment. La partie entière est jouable sans le moindre
+Ouvrir `?dev=1#/room/ABCD` : quatre joueurs, aucune connexion réseau, un faux
+lecteur qui avance vraiment. La partie entière est jouable sans le moindre
 identifiant — c'est aussi le filet qui rend l'interface testable en CI.
+
+Sur un seul appareil, le téléphone se fait passer pour le joueur que la phase
+concerne, et une bannière indique à qui le tendre. Rien n'est secret entre
+joueurs — frises et jetons sont face visible, et la seule chose cachée est la
+carte, que personne ne voit — donc un téléphone qui circule suffit.
 
 ### Structure
 
 | Dossier | Rôle |
 |---|---|
 | `src/game/` | Le moteur de règles, pur : aucun React, aucun réseau, entièrement testé. |
-| `src/deck/` | Le catalogue de 604 cartes et ses tests d'intégrité. |
+| `src/deck/` | Le catalogue de 604 cartes, les années vérifiées, et leurs tests. |
 | `src/net/` | `LocalTransport` (un appareil) et `SupabaseTransport` (temps réel). |
 | `src/session/` | Identité du joueur, code de salon, liaison moteur ↔ transport. |
 | `src/spotify/` | Auth PKCE, client API, contrôleur Connect, résolution du deck. |
@@ -73,12 +86,31 @@ identifiant — c'est aussi le filet qui rend l'interface testable en CI.
 | `src/screens/` | Un écran par phase de jeu. |
 | `src/ui/` | Frise, jetons, feuilles, QR code. |
 
-### Les années viennent du catalogue, pas de Spotify
+### Les années sont vérifiées, et verrouillées
 
 C'est le choix structurant du projet. `album.release_date` renvoie la date du
 master servi : 2011 pour *Bohemian Rhapsody*, 2015 pour la moitié de la Motown.
-Comme dater les morceaux **est** le jeu, chaque année de `src/deck/catalogue.ts`
-est vérifiée à la main, et Spotify ne sert qu'à trouver quelque chose à jouer.
+Comme dater les morceaux **est** le jeu, l'année ne peut pas venir de Spotify,
+qui ne sert qu'à trouver quelque chose à jouer.
+
+Chaque carte porte donc une année **vérifiée et sourcée** dans
+`src/deck/years.json`, et un test refuse toute carte qui n'en a pas, ou dont
+l'année contredit sa source. La vérification tourne en CI contre **MusicBrainz**,
+qui modélise les enregistrements séparément des sorties et expose
+`first-release-date` — précisément la question que pose le jeu :
+
+```bash
+npm run verify:years   # interroge MusicBrainz, écrit years.report.json (~11 min)
+npm run apply:years    # fusionne les concordances, liste ce qui reste à trancher
+```
+
+Les concordances passent seules : deux sources indépendantes qui disent la même
+chose ne demandent aucun arbitrage. Les désaccords sont tranchés à la main, avec
+une note expliquant pourquoi — MusicBrainz se trompe assez souvent pour qu'une
+réécriture automatique remplace une série d'erreurs par une autre.
+
+Un mauvais millésime est invisible en partie : la carte devient simplement
+impossible à placer, et c'est le joueur qui se fait accuser.
 
 La difficulté d'une carte décrit sa difficulté à **dater**, pas sa notoriété.
 Une carte `hard` est un titre que toute la table reconnaît et que personne ne
