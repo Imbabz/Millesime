@@ -1,0 +1,63 @@
+name: Vérifier les années du deck
+
+# It takes a quarter of an hour and leans on a volunteer-run service, so it does
+# not run on every push. It runs on demand, and whenever the verification logic
+# itself changes — a new matching rule is worth re-checking the whole deck.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/verify-years.mjs'
+      - '.github/workflows/verify-years.yml'
+
+jobs:
+  verify:
+    name: Comparer le catalogue à MusicBrainz
+    runs-on: ubuntu-latest
+    # The sweep paces itself at one request per second by design, and backs off
+    # further when MusicBrainz asks it to; the ceiling is here only so a hung
+    # fetch cannot burn an hour.
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Interroger MusicBrainz
+        run: npm run verify:years
+
+      - name: Publier le rapport
+        # Uploaded even on failure: a partial sweep is still worth reading, and
+        # the script writes as it goes precisely so that stays true.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: years-report
+          path: years.report.json
+          if-no-files-found: warn
+
+      - name: Résumé
+        if: always()
+        run: |
+          node -e '
+            const r = require("./years.report.json");
+            const line = (s) => process.stdout.write(s + "\n");
+            line("| | |");
+            line("|---|---|");
+            line(`| Concordances | ${r.agree.length} |`);
+            line(`| Écarts | ${r.disagree.length} |`);
+            line(`| Introuvables | ${r.missing.length} |`);
+            line(`| Échecs réseau | ${r.failed.length} |`);
+            line("");
+            line("### Écarts les plus importants");
+            line("| Carte | Catalogue | MusicBrainz | Écart |");
+            line("|---|---|---|---|");
+            for (const d of r.disagree.slice(0, 40)) {
+              line(`| ${d.artist} — ${d.title} | ${d.year} | ${d.mbYear} | ${d.delta > 0 ? "+" : ""}${d.delta} |`);
+            }
+          ' >> "$GITHUB_STEP_SUMMARY"

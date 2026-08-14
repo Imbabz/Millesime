@@ -59,7 +59,7 @@ npm run dev          # http://localhost:5173
 npm test             # moteur de règles, deck, paroles, parcours d'interface
 npm run typecheck
 npm run lint
-npm run build        # BASE_PATH=/Magellan/ pour un déploiement GitHub Pages
+npm run build        # BASE_PATH=/millesime/ pour un déploiement GitHub Pages
 ```
 
 ### Mode démo et partie sur un seul téléphone
