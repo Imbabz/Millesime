@@ -10,13 +10,24 @@
  * release carrying that recording. That is exactly the question the game asks,
  * and exactly the question Spotify's `album.release_date` answers wrongly.
  *
+ * Picking the right recording is the hard part, and getting it wrong is worse
+ * than useless. A search for any famous song returns dozens of recordings that
+ * share its title and artist: live takes, re-recordings, radio edits, demos,
+ * and compilation entries whose dates mean nothing. An early attempt at this
+ * took the *earliest* plausible candidate, on the theory that the original must
+ * be the oldest — and disagreed with half the catalogue, because any single
+ * stray demo or mis-dated compilation drags the answer backwards.
+ *
+ * So candidates are now ranked, not minimised: MusicBrainz's own search score
+ * decides which recording this is, and only ties are broken by date. Every
+ * disagreement is printed with its runners-up, because a verdict you cannot
+ * inspect is a verdict you cannot trust.
+ *
  * This writes a report and changes nothing. MusicBrainz is wrong often enough
- * — compilations dated by their reissue, a cover matched to the original, live
- * takes folded in — that an automatic rewrite would trade one set of errors for
- * another. A human reads the disagreements.
+ * that an automatic rewrite would trade one set of errors for another.
  *
  * Rate limit: MusicBrainz asks for one request per second and a descriptive
- * User-Agent, and enforces both. Roughly ten minutes for the full deck.
+ * User-Agent, and enforces both. Roughly 25 minutes for the full deck.
  */
 import { writeFileSync } from 'node:fs';
 import { CATALOGUE } from '../src/deck/catalogue.ts';
@@ -32,9 +43,17 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 /** Lucene needs its quotes escaped, and a few titles contain them. */
 const escape = (value) => value.replace(/(["\\])/g, '\\$1');
 
+const normalise = (value) =>
+  value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+
 async function query(card, attempt = 0) {
   const q = `recording:"${escape(card.title)}" AND artist:"${escape(card.artist)}"`;
-  const url = `${ENDPOINT}?query=${encodeURIComponent(q)}&limit=8&fmt=json`;
+  const url = `${ENDPOINT}?query=${encodeURIComponent(q)}&limit=25&fmt=json`;
 
   const response = await fetch(url, {
     headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' },
@@ -50,71 +69,113 @@ async function query(card, attempt = 0) {
   return response.json();
 }
 
+const creditOf = (rec) =>
+  (rec['artist-credit'] ?? []).map((a) => a.name ?? '').join(' ');
+
+/** Recordings that are plainly not the studio original on the card. */
+const ASIDE = /\b(live|demo|instrumental|karaoke|remix|acoustic|reprise|edit|mix|session|rehearsal|interview|medley)\b/i;
+
 /**
- * Picks the recording that is actually this card.
+ * Ranks the candidates and returns them best-first.
  *
- * Search scores are unreliable on their own: a karaoke rendition and the
- * original often score alike. Candidates must clear a name and artist check
- * before their date is trusted at all.
+ * MusicBrainz's own score does the identification; everything here is a
+ * tiebreak or a veto. A candidate whose title or artist does not actually match
+ * is dropped rather than ranked down, because a confident wrong answer is the
+ * failure mode that matters.
  */
-function pick(card, recordings = []) {
+function rank(card, recordings = []) {
   const wantTitle = normalise(card.title);
   const wantArtist = normalise(card.artist);
 
-  const viable = recordings.filter((rec) => {
-    if (!rec['first-release-date']) return false;
-    const title = normalise(rec.title ?? '');
-    if (!title.includes(wantTitle) && !wantTitle.includes(title)) return false;
-    const credit = normalise(
-      (rec['artist-credit'] ?? []).map((a) => a.name ?? '').join(' '),
-    );
-    return credit.includes(wantArtist) || wantArtist.includes(credit);
-  });
-
-  if (viable.length === 0) return null;
-  // Among genuine matches, the earliest date is the original release; later
-  // ones are reissues and compilations, which is precisely the trap.
-  return viable.reduce((best, rec) =>
-    rec['first-release-date'] < best['first-release-date'] ? rec : best,
-  );
+  return recordings
+    .filter((rec) => {
+      if (!rec['first-release-date']) return false;
+      const title = normalise(rec.title ?? '');
+      if (!title.includes(wantTitle) && !wantTitle.includes(title)) return false;
+      const credit = normalise(creditOf(rec));
+      return credit.includes(wantArtist) || wantArtist.includes(credit);
+    })
+    .map((rec) => {
+      const title = rec.title ?? '';
+      // A live take or a remix is the same song and the wrong card to play,
+      // unless the card itself asked for one.
+      const aside = ASIDE.test(title) && !ASIDE.test(card.title);
+      const exact = normalise(title) === wantTitle;
+      return {
+        rec,
+        aside,
+        // Score first, exact title second, date last: the original is whichever
+        // recording MusicBrainz is most confident about, not the oldest thing
+        // that happens to share a name.
+        key: [aside ? 1 : 0, -(rec.score ?? 0), exact ? 0 : 1, rec['first-release-date']],
+      };
+    })
+    .sort((a, b) => {
+      for (let i = 0; i < a.key.length; i++) {
+        if (a.key[i] < b.key[i]) return -1;
+        if (a.key[i] > b.key[i]) return 1;
+      }
+      return 0;
+    })
+    .map(({ rec, aside }) => ({
+      mbid: rec.id,
+      title: rec.title,
+      artist: creditOf(rec),
+      date: rec['first-release-date'],
+      year: Number(String(rec['first-release-date']).slice(0, 4)),
+      score: rec.score ?? 0,
+      aside,
+    }));
 }
 
-const normalise = (value) =>
-  value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim();
-
-const report = { checkedAt: new Date().toISOString(), agree: [], disagree: [], missing: [], failed: [] };
+const report = {
+  checkedAt: new Date().toISOString(),
+  agree: [],
+  disagree: [],
+  missing: [],
+  failed: [],
+};
 
 for (const [index, card] of CATALOGUE.entries()) {
   try {
     const data = await query(card);
-    const match = pick(card, data.recordings);
+    const candidates = rank(card, data.recordings);
+    const best = candidates[0];
 
-    if (!match) {
-      report.missing.push({ id: card.id, artist: card.artist, title: card.title, year: card.year });
+    if (!best) {
+      report.missing.push({
+        id: card.id,
+        artist: card.artist,
+        title: card.title,
+        year: card.year,
+      });
     } else {
-      const mbYear = Number(String(match['first-release-date']).slice(0, 4));
       const entry = {
         id: card.id,
         artist: card.artist,
         title: card.title,
         year: card.year,
-        mbYear,
-        mbid: match.id,
-        mbDate: match['first-release-date'],
+        mbYear: best.year,
+        mbid: best.mbid,
+        mbDate: best.date,
       };
-      if (mbYear === card.year) report.agree.push(entry);
-      else report.disagree.push({ ...entry, delta: mbYear - card.year });
+      if (best.year === card.year) {
+        report.agree.push(entry);
+      } else {
+        report.disagree.push({
+          ...entry,
+          delta: best.year - card.year,
+          // Keeping the runners-up is what makes a disagreement adjudicable
+          // instead of a coin toss.
+          candidates: candidates.slice(0, 4),
+        });
+      }
     }
   } catch (error) {
     report.failed.push({ id: card.id, error: String(error) });
   }
 
-  if ((index + 1) % 25 === 0) {
+  if ((index + 1) % 50 === 0) {
     console.log(
       `${index + 1}/${CATALOGUE.length} — ${report.agree.length} ok, ` +
         `${report.disagree.length} écarts, ${report.missing.length} introuvables`,
@@ -132,3 +193,20 @@ console.log(
   `\nTerminé : ${report.agree.length} concordances, ${report.disagree.length} écarts, ` +
     `${report.missing.length} introuvables, ${report.failed.length} échecs réseau.`,
 );
+
+// The artifact store is not reachable from every environment that needs to read
+// this, so the verdicts also go to stdout, one line per card, where the job log
+// makes them available to anyone who can see the run.
+console.log('\n===== ÉCARTS =====');
+for (const d of report.disagree) {
+  const alts = d.candidates
+    .slice(1)
+    .map((c) => `${c.year}/${c.score}${c.aside ? '~' : ''}`)
+    .join(' ');
+  console.log(
+    `DIFF\t${d.id}\t${d.year}\t${d.mbYear}\t${d.candidates[0]?.score ?? ''}\t${d.candidates[0]?.title ?? ''}\t${alts}`,
+  );
+}
+console.log('===== INTROUVABLES =====');
+for (const m of report.missing) console.log(`MISS\t${m.id}\t${m.year}`);
+console.log('===== FIN =====');
