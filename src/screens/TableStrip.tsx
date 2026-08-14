@@ -1,3 +1,4 @@
+import { arbiter } from '@/game/engine';
 import { PLAYER_COLORS, type GameState, type PlayerId } from '@/game/types';
 
 /**
@@ -5,6 +6,9 @@ import { PLAYER_COLORS, type GameState, type PlayerId } from '@/game/types';
  *
  * Cards and tokens are the only two numbers that matter mid-turn, and this
  * needs to be readable from across the table without anyone tapping anything.
+ *
+ * Both roles are marked, because "whose turn is it" and "who is holding the
+ * card" are different questions and the table asks them both.
  */
 export function TableStrip({
   state,
@@ -17,6 +21,7 @@ export function TableStrip({
     <div className="row scroll" style={{ gap: 8, paddingBottom: 4 }}>
       {state.players.map((player, index) => {
         const isActive = index === state.activeIndex;
+        const isArbiter = arbiter(state)?.id === player.id;
         const isSelf = player.id === selfId;
         return (
           <div
@@ -33,6 +38,7 @@ export function TableStrip({
             <span style={{ fontWeight: isSelf ? 800 : 600, fontSize: 14 }}>
               {isSelf ? 'Toi' : player.name}
             </span>
+            {isArbiter && <span title="Arbitre de ce tour">🎴</span>}
             <span style={{ fontSize: 14, color: 'var(--text-dim)' }}>
               {player.timeline.length}/{state.settings.targetCards}
             </span>

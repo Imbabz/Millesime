@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
   activePlayer,
+  arbiter,
+  canDraw,
   correctSlotFor,
   eligibleChallengers,
   initialState,
@@ -34,8 +36,24 @@ const card = (year: number): Card => ctx.cards.get(`c${year}`) as Card;
 const run = (state: GameState, ...actions: Action[]): GameState =>
   actions.reduce((s, a) => reduce(s, a, ctx), state);
 
-/** A started game with `names.length` players and a known shuffle. */
+/** The turn cannot begin until the arbiter draws, so most tests want this. */
+const drawn = (state: GameState): GameState =>
+  run(state, {
+    type: 'DRAW_CARD',
+    playerId: (arbiter(state) ?? activePlayer(state))?.id ?? '',
+  });
+
+/** A game dealt, started and with the first card drawn. */
 function startedGame(names = ['Alice', 'Bob', 'Chloé']): GameState {
+  const lobby = run(
+    initialState(),
+    ...names.map((name, i): Action => ({ type: 'ADD_PLAYER', playerId: `p${i}`, name })),
+  );
+  return drawn(run(lobby, { type: 'START_GAME', seed: 42 }));
+}
+
+/** The same game held at the draw step, for the tests that are about it. */
+function gameAwaitingDraw(names = ['Alice', 'Bob', 'Chloé']): GameState {
   const lobby = run(
     initialState(),
     ...names.map((name, i): Action => ({ type: 'ADD_PLAYER', playerId: `p${i}`, name })),
@@ -368,7 +386,7 @@ describe('tokens', () => {
       startedGame(),
       { type: 'SET_CLAIM', playerId: 'p0', value: true },
       { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
-      { type: 'RESOLVE_CLAIM', granted: true },
+      { type: 'RESOLVE_CLAIM', playerId: 'p1', granted: true },
     );
     expect(playerById(state, 'p0')?.tokens).toBe(1);
   });
@@ -382,7 +400,7 @@ describe('tokens', () => {
       base,
       { type: 'SET_CLAIM', playerId: 'p0', value: true },
       { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
-      { type: 'RESOLVE_CLAIM', granted: true },
+      { type: 'RESOLVE_CLAIM', playerId: 'p1', granted: true },
     );
     expect(state.turn?.outcome?.activeCorrect).toBe(false);
     expect(playerById(state, 'p0')?.tokens).toBe(1);
@@ -393,7 +411,7 @@ describe('tokens', () => {
       startedGame(),
       { type: 'SET_CLAIM', playerId: 'p0', value: true },
       { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
-      { type: 'RESOLVE_CLAIM', granted: false },
+      { type: 'RESOLVE_CLAIM', playerId: 'p1', granted: false },
     );
     expect(playerById(state, 'p0')?.tokens).toBe(0);
   });
@@ -403,8 +421,8 @@ describe('tokens', () => {
       startedGame(),
       { type: 'SET_CLAIM', playerId: 'p0', value: true },
       { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
-      { type: 'RESOLVE_CLAIM', granted: true },
-      { type: 'RESOLVE_CLAIM', granted: true },
+      { type: 'RESOLVE_CLAIM', playerId: 'p1', granted: true },
+      { type: 'RESOLVE_CLAIM', playerId: 'p1', granted: true },
     );
     expect(playerById(state, 'p0')?.tokens).toBe(1);
   });
@@ -420,7 +438,7 @@ describe('tokens', () => {
       base,
       { type: 'SET_CLAIM', playerId: 'p0', value: true },
       { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
-      { type: 'RESOLVE_CLAIM', granted: true },
+      { type: 'RESOLVE_CLAIM', playerId: 'p1', granted: true },
     );
     expect(playerById(state, 'p0')?.tokens).toBe(MAX_TOKENS);
   });
@@ -465,10 +483,12 @@ describe('trading three tokens for a card', () => {
 describe('turn flow', () => {
   it('passes the turn on and deals a new card', () => {
     const started = startedGame();
-    const state = run(
-      started,
-      { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
-      { type: 'NEXT_TURN' },
+    const state = drawn(
+      run(
+        started,
+        { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
+        { type: 'NEXT_TURN' },
+      ),
     );
     expect(state.phase).toBe('listening');
     expect(activePlayer(state)?.id).toBe('p1');
@@ -479,10 +499,12 @@ describe('turn flow', () => {
   it('wraps around to the first player', () => {
     let state = startedGame();
     for (let i = 0; i < 3; i++) {
-      state = run(
-        state,
-        { type: 'COMMIT_PLACEMENT', playerId: `p${i}`, slot: 0, at: 0 },
-        { type: 'NEXT_TURN' },
+      state = drawn(
+        run(
+          state,
+          { type: 'COMMIT_PLACEMENT', playerId: `p${i}`, slot: 0, at: 0 },
+          { type: 'NEXT_TURN' },
+        ),
       );
     }
     expect(activePlayer(state)?.id).toBe('p0');
@@ -496,7 +518,7 @@ describe('turn flow', () => {
     );
     expect(state.phase).toBe('karaoke');
     expect(run(state, { type: 'CLOSE_KARAOKE' }).phase).toBe('reveal');
-    expect(run(state, { type: 'NEXT_TURN' }).phase).toBe('listening');
+    expect(run(state, { type: 'NEXT_TURN' }).phase).toBe('draw');
   });
 
   it('ends the game when someone reaches the target', () => {
@@ -555,6 +577,7 @@ describe('turn flow', () => {
 describe('redactForGuests', () => {
   it('hides the card in play and the pile while the song is on', () => {
     const state = startedGame();
+    expect(state.phase).toBe('listening');
     const guest = redactForGuests(state);
     expect(guest.turn?.cardId).toBe('');
     expect(guest.drawPile).toEqual([]);
@@ -598,10 +621,12 @@ describe('challenge deadline', () => {
       playerId: 'p0',
       name: 'Alice',
     });
-    const started = run(
-      base,
-      { type: 'SET_SETTINGS', settings: { challengeSeconds: 0 } },
-      { type: 'START_GAME', seed: 5 },
+    const started = drawn(
+      run(
+        base,
+        { type: 'SET_SETTINGS', settings: { challengeSeconds: 0 } },
+        { type: 'START_GAME', seed: 5 },
+      ),
     );
     const state = run(started, {
       type: 'COMMIT_PLACEMENT',
@@ -610,5 +635,120 @@ describe('challenge deadline', () => {
       at: 1_000_000,
     });
     expect(state.turn?.challengeEndsAt).toBeNull();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// The rotating arbiter
+// ---------------------------------------------------------------------------
+
+describe('the arbiter', () => {
+  it('is the player to the active player’s left', () => {
+    const state = startedGame();
+    expect(activePlayer(state)?.id).toBe('p0');
+    expect(arbiter(state)?.id).toBe('p1');
+  });
+
+  it('rotates with the turn, staying one seat ahead', () => {
+    let state = startedGame();
+    const seen: [string, string][] = [];
+    for (let i = 0; i < 4; i++) {
+      seen.push([activePlayer(state)?.id ?? '', arbiter(state)?.id ?? '']);
+      state = drawn(
+        run(
+          state,
+          { type: 'COMMIT_PLACEMENT', playerId: activePlayer(state)?.id ?? '', slot: 0, at: 0 },
+          { type: 'NEXT_TURN' },
+        ),
+      );
+    }
+    expect(seen).toEqual([
+      ['p0', 'p1'],
+      ['p1', 'p2'],
+      ['p2', 'p0'],
+      ['p0', 'p1'],
+    ]);
+  });
+
+  it('is the other player in a two-handed game', () => {
+    const state = startedGame(['Alice', 'Bob']);
+    expect(arbiter(state)?.id).toBe('p1');
+  });
+
+  it('does not exist in a solo game', () => {
+    expect(arbiter(startedGame(['Alice']))).toBeUndefined();
+  });
+});
+
+describe('drawing the card', () => {
+  it('waits for the arbiter rather than starting on its own', () => {
+    const state = gameAwaitingDraw();
+    expect(state.phase).toBe('draw');
+    expect(state.turn?.drawnBy).toBeNull();
+  });
+
+  it('starts the song when the arbiter draws', () => {
+    const state = run(gameAwaitingDraw(), { type: 'DRAW_CARD', playerId: 'p1' });
+    expect(state.phase).toBe('listening');
+    expect(state.turn?.drawnBy).toBe('p1');
+  });
+
+  it('refuses the draw to the active player — that is the whole point', () => {
+    const state = run(gameAwaitingDraw(), { type: 'DRAW_CARD', playerId: 'p0' });
+    expect(state.phase).toBe('draw');
+  });
+
+  it('refuses the draw to a player who is neither', () => {
+    const state = run(gameAwaitingDraw(), { type: 'DRAW_CARD', playerId: 'p2' });
+    expect(state.phase).toBe('draw');
+  });
+
+  it('lets a solo player draw for themselves, so the game is not stuck', () => {
+    const solo = run(
+      run(initialState(), { type: 'ADD_PLAYER', playerId: 'p0', name: 'Alice' }),
+      { type: 'START_GAME', seed: 9 },
+    );
+    expect(canDraw(solo, 'p0')).toBe(true);
+    expect(run(solo, { type: 'DRAW_CARD', playerId: 'p0' }).phase).toBe('listening');
+  });
+
+  it('hands the next card back to the draw step', () => {
+    const state = run(
+      startedGame(),
+      { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
+      { type: 'NEXT_TURN' },
+    );
+    expect(state.phase).toBe('draw');
+    expect(state.turn?.drawnBy).toBeNull();
+  });
+
+  it('keeps the card hidden from guests while it is still face down', () => {
+    const state = gameAwaitingDraw();
+    expect(redactForGuests(state).turn?.cardId).toBe('');
+  });
+});
+
+describe('ruling on the announcement', () => {
+  const claimed = () =>
+    run(
+      startedGame(),
+      { type: 'SET_CLAIM', playerId: 'p0', value: true },
+      { type: 'COMMIT_PLACEMENT', playerId: 'p0', slot: 0, at: 0 },
+    );
+
+  it('belongs to the arbiter', () => {
+    const state = run(claimed(), { type: 'RESOLVE_CLAIM', playerId: 'p1', granted: true });
+    expect(playerById(state, 'p0')?.tokens).toBe(1);
+  });
+
+  it('is refused to another player at the table', () => {
+    const state = run(claimed(), { type: 'RESOLVE_CLAIM', playerId: 'p2', granted: true });
+    expect(state.turn?.outcome?.claimGranted).toBeNull();
+    expect(playerById(state, 'p0')?.tokens).toBe(0);
+  });
+
+  it('is refused to the player who made the announcement', () => {
+    const state = run(claimed(), { type: 'RESOLVE_CLAIM', playerId: 'p0', granted: true });
+    expect(state.turn?.outcome?.claimGranted).toBeNull();
   });
 });

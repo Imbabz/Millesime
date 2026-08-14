@@ -50,6 +50,19 @@ describe('a game, played through the UI', () => {
     ).toBe(true);
   });
 
+  it('hands the draw to the arbiter, never to the player who has to guess', async () => {
+    const user = userEvent.setup();
+    renderRoom();
+    await screen.findByText('Toi');
+    await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
+
+    // We hold the first seat, so our neighbour Bob is the arbiter and the
+    // draw button must not be on our screen.
+    await screen.findByText('Bob tire la carte');
+    expect(screen.queryByRole('button', { name: /Tirer la carte/ })).toBeNull();
+    expect(screen.getByText(/Ne touche à rien/)).toBeDefined();
+  });
+
   it('runs a turn from placement through the steal window to the reveal', async () => {
     const user = userEvent.setup();
     const { container } = renderRoom();
@@ -57,8 +70,8 @@ describe('a game, played through the UI', () => {
 
     await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
 
-    // The first seat is ours, so the placement controls belong to us.
-    await screen.findByText('Où se range ce morceau ?');
+    // The simulated arbiter draws for us, then the placement is ours.
+    await screen.findByText('Où se range ce morceau ?', undefined, { timeout: 4000 });
     expect(
       screen.getByRole('button', { name: 'Choisis un emplacement' }).hasAttribute('disabled'),
     ).toBe(true);
@@ -78,7 +91,8 @@ describe('a game, played through the UI', () => {
     expect(Number(year?.textContent)).toBeGreaterThan(1900);
 
     await user.click(screen.getByRole('button', { name: 'Joueur suivant' }));
-    await screen.findByText('Bob réfléchit');
+    // The turn moves on, and so does the arbiter: Bob plays, Chloé now draws.
+    await screen.findByText('Chloé tire la carte');
   });
 
   it('lets any phone pause and resume the music', async () => {
@@ -87,8 +101,12 @@ describe('a game, played through the UI', () => {
     await screen.findByText('Toi');
     await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
 
-    // The mock speaker starts as soon as a card comes into play.
-    const pause = await screen.findByRole('button', { name: /Pause/ });
+    // The mock speaker starts once the card has been drawn.
+    const pause = await screen.findByRole(
+      'button',
+      { name: /Pause/ },
+      { timeout: 4000 },
+    );
     await user.click(pause);
     await screen.findByRole('button', { name: /Reprendre/ });
   });

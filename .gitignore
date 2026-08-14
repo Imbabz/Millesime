@@ -4,3 +4,4 @@ dev-dist/
 .vite/
 *.local
 .DS_Store
+years.report.json

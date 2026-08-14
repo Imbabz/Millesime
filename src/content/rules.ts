@@ -23,12 +23,24 @@ export const RULES: RuleSection[] = [
     ],
   },
   {
+    id: 'arbitre',
+    title: '🎴 L’arbitre du tour',
+    lines: [
+      'À chaque tour, le joueur à gauche de celui qui joue devient l’arbitre.',
+      'C’est lui qui tire la carte et lance le morceau : le joueur actif ne touche à rien, donc rien ne peut le trahir.',
+      'Il contrôle la lecture — pause, reprise, retour au début.',
+      'Il ne voit pas la réponse avant les autres : il manipule la carte sans la retourner. Il peut donc jouer et voler normalement.',
+      'Après la révélation, c’est lui qui tranche si l’annonce du titre et de l’artiste était juste.',
+      'Le rôle tourne à chaque tour, comme le reste.',
+    ],
+  },
+  {
     id: 'tour',
     title: '🎧 Ton tour',
     lines: [
-      'Un morceau se lance. Personne ne voit ni le titre, ni l’artiste, ni l’année.',
+      'L’arbitre tire la carte et le morceau se lance. Personne ne voit ni le titre, ni l’artiste, ni l’année.',
       'Écoute, puis choisis l’endroit de TA frise où tu penses qu’il se range : avant, entre deux cartes, ou après.',
-      'Tu peux mettre en pause et relancer autant que tu veux — n’importe quel téléphone peut le faire.',
+      'L’arbitre peut mettre en pause et relancer autant que nécessaire ; les autres aussi, en cas de besoin.',
       'Bien placé : la carte rejoint ta frise. Mal placé : elle part à la défausse.',
     ],
   },
@@ -37,7 +49,7 @@ export const RULES: RuleSection[] = [
     title: '🪙 Gagner un jeton',
     lines: [
       'Avant de valider, annonce que tu connais le titre ET l’artiste.',
-      'Dis-les à voix haute : c’est la table qui juge, pas l’application.',
+      'Dis-les à voix haute : c’est l’arbitre du tour qui juge, pas l’application.',
       'Si c’est juste, tu gagnes un jeton — même si tu as mal placé la carte.',
       'On ne peut pas détenir plus de 5 jetons.',
     ],
@@ -90,6 +102,11 @@ export const ONBOARDING: { emoji: string; title: string; body: string }[] = [
     emoji: '📱',
     title: 'Un téléphone chacun',
     body: 'Chacun scanne le QR code et entre son prénom. Rien à installer, aucun compte à créer.',
+  },
+  {
+    emoji: '🎴',
+    title: 'L’arbitre tire la carte',
+    body: 'À chaque tour, ton voisin de gauche tire la carte et lance la musique. Toi, tu écoutes — tu ne touches à rien qui puisse te trahir.',
   },
   {
     emoji: '🎧',

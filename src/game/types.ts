@@ -59,6 +59,8 @@ export type Challenge = {
 
 export type Turn = {
   cardId: string;
+  /** The arbiter who drew this card; `null` until they do. */
+  drawnBy: PlayerId | null;
   /** Slot chosen by the active player; `null` until they commit. */
   placement: number | null;
   /** The active player announced they can name the title *and* the artist. */
@@ -90,6 +92,8 @@ export type TurnOutcome = {
 
 export type Phase =
   | 'lobby'
+  /** Waiting for the arbiter to draw the top card and start the song. */
+  | 'draw'
   | 'listening'
   | 'challenge'
   | 'reveal'

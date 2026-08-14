@@ -4,6 +4,7 @@ import { DEFAULT_HOOK_MS, type Card } from '@/game/types';
 import { LocalTransport } from '@/net/local';
 import { SupabaseTransport } from '@/net/supabase';
 import type { Transport } from '@/net/transport';
+import { arbiter } from '@/game/engine';
 import { useSession } from '@/session/useSession';
 import { playerId as selfPlayerId, playerName } from '@/session/identity';
 import { hasRealtime, hasSpotify, loadConfig } from '@/config';
@@ -13,10 +14,17 @@ import { resolveCard } from '@/spotify/resolve';
 import { RulesButton } from '@/ui/RulesSheet';
 import { Banner, Sheet } from '@/ui/bits';
 import { LobbyScreen } from './LobbyScreen';
+import { DrawScreen } from './DrawScreen';
 import { TurnScreen } from './TurnScreen';
 import { RevealScreen } from './RevealScreen';
 import { KaraokeScreen } from './KaraokeScreen';
 import { GameOverScreen } from './GameOverScreen';
+
+/** How long the table waits for a missing arbiter before the host steps in. */
+const ARBITER_GRACE_MS = 20_000;
+
+/** Simulated players never tap anything, so the harness must not wait on them. */
+const MOCK_ARBITER_GRACE_MS = 700;
 
 /**
  * One room, one game.
@@ -117,6 +125,19 @@ export function RoomScreen({
       if (resolved) void musicRef.current.play(resolved, 0);
     })();
   }, [isHost, state.phase, card, spotifyReady, config.spotifyClientId]);
+
+  // If the arbiter has wandered off — phone locked, gone to the kitchen — the
+  // host draws in their place rather than leaving the game parked forever.
+  useEffect(() => {
+    if (!isHost || state.phase !== 'draw') return;
+    const dealer = arbiter(state) ?? state.players[state.activeIndex];
+    if (!dealer) return;
+    const timer = setTimeout(
+      () => dispatch({ type: 'DRAW_CARD', playerId: dealer.id }),
+      mock ? MOCK_ARBITER_GRACE_MS : ARBITER_GRACE_MS,
+    );
+    return () => clearTimeout(timer);
+  }, [isHost, mock, state, dispatch]);
 
   // Close the steal window on the deadline the host itself stamped.
   useEffect(() => {
@@ -228,6 +249,10 @@ export function RoomScreen({
         />
       )}
 
+      {state.phase === 'draw' && (
+        <DrawScreen state={state} selfId={selfId} dispatch={dispatch} />
+      )}
+
       {(state.phase === 'listening' || state.phase === 'challenge') && (
         <TurnScreen
           state={state}
@@ -286,6 +311,16 @@ export function RoomScreen({
                 quel morceau une seconde, puis reviens ici.
               </p>
             )}
+            {/* A phone playing its own audio shows the title on its lock
+                screen and in the Dynamic Island — which spoils whoever is
+                holding it. Any other kind of device is a safe speaker. */}
+            {music.devices.some((d) => d.id === music.deviceId && d.type === 'Smartphone') && (
+              <Banner tone="warn">
+                La musique sort de ce téléphone : le titre et l’année s’affichent
+                sur l’écran verrouillé. Préfère une enceinte, un Google Home ou
+                un ordinateur.
+              </Banner>
+            )}
             {music.devices.map((device) => (
               <button
                 key={device.id ?? device.name}
@@ -295,7 +330,7 @@ export function RoomScreen({
                   setDevicesOpen(false);
                 }}
               >
-                {device.name}
+                {device.type === 'Smartphone' ? '📱' : '🔊'} {device.name}
                 <span className="subtitle"> · {device.type}</span>
               </button>
             ))}

@@ -35,13 +35,14 @@ export type Action =
   | { type: 'SET_CONNECTED'; playerId: PlayerId; connected: boolean }
   | { type: 'SET_SETTINGS'; settings: Partial<GameSettings> }
   | { type: 'START_GAME'; seed: number }
+  | { type: 'DRAW_CARD'; playerId: PlayerId }
   | { type: 'SET_CLAIM'; playerId: PlayerId; value: boolean }
   | { type: 'COMMIT_PLACEMENT'; playerId: PlayerId; slot: number; at: number }
   | { type: 'TRADE_TOKENS'; playerId: PlayerId }
   | { type: 'CHALLENGE'; playerId: PlayerId; slot: number; at: number }
   | { type: 'PASS_CHALLENGE'; playerId: PlayerId }
   | { type: 'CLOSE_CHALLENGES' }
-  | { type: 'RESOLVE_CLAIM'; granted: boolean }
+  | { type: 'RESOLVE_CLAIM'; playerId: PlayerId; granted: boolean }
   | { type: 'OPEN_KARAOKE' }
   | { type: 'CLOSE_KARAOKE' }
   | { type: 'NEXT_TURN' }
@@ -113,6 +114,34 @@ export const playerById = (state: GameState, id: PlayerId): Player | undefined =
 
 export const currentCard = (state: GameState, ctx: EngineContext): Card | undefined =>
   state.turn ? ctx.cards.get(state.turn.cardId) : undefined;
+
+/**
+ * The arbiter of this turn: the player to the active player's left.
+ *
+ * Derived from `activeIndex` rather than stored, so the role rotates on its own
+ * and there is nothing extra to keep in sync. The arbiter draws the card and
+ * runs the music — which is what keeps the active player away from anything
+ * that could give the answer away — and rules on the spoken title-and-artist
+ * announcement once the card is face up.
+ *
+ * They do *not* see the answer any earlier than anyone else: like the player
+ * who scans a face-down card in the physical game, they handle it without
+ * turning it over. So they keep playing normally, steal included.
+ *
+ * Undefined in a solo game, where there is nobody to hand the role to.
+ */
+export const arbiter = (state: GameState): Player | undefined =>
+  state.players.length < 2
+    ? undefined
+    : state.players[(state.activeIndex + 1) % state.players.length];
+
+/** Solo play has no arbiter, so the active player draws for themselves. */
+export const canDraw = (state: GameState, playerId: PlayerId): boolean =>
+  (arbiter(state) ?? activePlayer(state))?.id === playerId;
+
+/** Same fallback for ruling on the announcement. */
+export const canJudge = (state: GameState, playerId: PlayerId): boolean =>
+  (arbiter(state) ?? activePlayer(state))?.id === playerId;
 
 /** Opponents who still hold a token, and so could still shout "HITSTER !". */
 export const eligibleChallengers = (state: GameState): Player[] =>
@@ -205,7 +234,7 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
       });
 
       return bump(state, {
-        phase: 'listening',
+        phase: 'draw',
         players,
         activeIndex: 0,
         drawPile: pile.slice(1),
@@ -214,6 +243,7 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
         winner: null,
         turn: {
           cardId: pile[0] as string,
+          drawnBy: null,
           placement: null,
           claimsTitleArtist: false,
           challenges: [],
@@ -221,6 +251,15 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
           challengeEndsAt: null,
           outcome: null,
         },
+      });
+    }
+
+    case 'DRAW_CARD': {
+      if (state.phase !== 'draw' || !state.turn) return state;
+      if (!canDraw(state, action.playerId)) return state;
+      return bump(state, {
+        phase: 'listening',
+        turn: { ...state.turn, drawnBy: action.playerId },
       });
     }
 
@@ -331,6 +370,8 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
 
     case 'RESOLVE_CLAIM': {
       if (state.phase !== 'reveal' && state.phase !== 'karaoke') return state;
+      // The ruling belongs to the arbiter of this turn, and to nobody else.
+      if (!canJudge(state, action.playerId)) return state;
       const turn = state.turn;
       if (!turn?.outcome || !turn.claimsTitleArtist) return state;
       if (turn.outcome.claimGranted !== null) return state;
@@ -368,11 +409,12 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
       }
       const [next, ...rest] = state.drawPile;
       return bump(state, {
-        phase: 'listening',
+        phase: 'draw',
         activeIndex: (state.activeIndex + 1) % state.players.length,
         drawPile: rest,
         turn: {
           cardId: next as string,
+          drawnBy: null,
           placement: null,
           claimsTitleArtist: false,
           challenges: [],
@@ -495,7 +537,10 @@ function leaderOf(players: readonly Player[]): PlayerId | null {
  * happened.
  */
 export function redactForGuests(state: GameState): GameState {
-  const hideCard = state.phase === 'listening' || state.phase === 'challenge';
+  const hideCard =
+    state.phase === 'draw' ||
+    state.phase === 'listening' ||
+    state.phase === 'challenge';
   return {
     ...state,
     drawPile: [],

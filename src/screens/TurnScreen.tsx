@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { Action } from '@/game/engine';
+import { arbiter, type Action } from '@/game/engine';
 import { TOKENS_PER_FREE_CARD, type GameState, type PlayerId } from '@/game/types';
 import type { PlaybackSnapshot } from '@/net/transport';
 import { Timeline, type GapState } from '@/ui/Timeline';
@@ -31,6 +31,9 @@ export function TurnScreen({
   const me = state.players.find((p) => p.id === selfId);
   const turn = state.turn;
   const isMyTurn = active?.id === selfId;
+  // The arbiter drew this card and runs the music; it is their job, not a
+  // shared one, so it reads as the main action on their phone only.
+  const isArbiter = arbiter(state)?.id === selfId;
 
   const [pick, setPick] = useState<number | null>(null);
   const [arming, setArming] = useState(false);
@@ -88,19 +91,26 @@ export function TurnScreen({
         </h1>
       </div>
 
-      {/* Playback is available to every phone: whoever is nearest the speaker
-          should be able to pause without asking the host. */}
-      <div className="row" style={{ justifyContent: 'center' }}>
-        <button
-          className="btn btn--big"
-          style={{ flex: 1 }}
-          onClick={() => control(playback.playing ? 'pause' : 'play')}
-        >
-          {playback.playing ? '⏸ Pause' : '▶︎ Reprendre'}
-        </button>
-        <button className="btn btn--big" onClick={() => control('restart')}>
-          ⟲
-        </button>
+      {/* The arbiter runs the music, so the controls are full-size on their
+          phone. They stay available to everyone else, just smaller: "attends,
+          j'ai pas entendu" must not require catching someone's eye. */}
+      <div className="stack" style={{ gap: 6 }}>
+        {isArbiter && <div className="eyebrow" style={{ textAlign: 'center' }}>Tu tiens la carte</div>}
+        <div className="row" style={{ justifyContent: 'center' }}>
+          <button
+            className={isArbiter ? 'btn btn--big' : 'btn'}
+            style={{ flex: 1 }}
+            onClick={() => control(playback.playing ? 'pause' : 'play')}
+          >
+            {playback.playing ? '⏸ Pause' : '▶︎ Reprendre'}
+          </button>
+          <button
+            className={isArbiter ? 'btn btn--big' : 'btn'}
+            onClick={() => control('restart')}
+          >
+            ⟲
+          </button>
+        </div>
       </div>
 
       {playback.error && <Banner tone="error">{playback.error}</Banner>}

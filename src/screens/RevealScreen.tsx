@@ -1,4 +1,4 @@
-import type { Action } from '@/game/engine';
+import { arbiter, canJudge, type Action } from '@/game/engine';
 import type { Card, GameState, PlayerId } from '@/game/types';
 import { Timeline, type GapState } from '@/ui/Timeline';
 import { TableStrip } from './TableStrip';
@@ -31,8 +31,11 @@ export function RevealScreen({
     ? state.players.find((p) => p.id === outcome.wonBy)
     : null;
   const stolen = Boolean(outcome.wonBy) && outcome.wonBy !== active.id;
-  const isActive = active.id === selfId;
   const awaitingClaim = turn.claimsTitleArtist && outcome.claimGranted === null;
+  // Ruling on the spoken announcement is the arbiter's job for this turn, the
+  // same way the person holding the card reads out the answer at a real table.
+  const judge = arbiter(state) ?? active;
+  const iAmJudge = canJudge(state, selfId);
 
   // The frise shown is the one that was bet on: the active player's, as it was
   // *before* the card was inserted, so the marks line up with what people saw.
@@ -84,23 +87,23 @@ export function RevealScreen({
             <br />
             <span className="subtitle">C’était juste ?</span>
           </div>
-          {isActive ? (
+          {!iAmJudge ? (
             <p className="subtitle" style={{ textAlign: 'center' }}>
-              La table tranche — pas toi.
+              {judge.name} tranche — c’est l’arbitre de ce tour.
             </p>
           ) : (
             <div className="row">
               <button
                 className="btn btn--primary btn--big"
                 style={{ flex: 1 }}
-                onClick={() => dispatch({ type: 'RESOLVE_CLAIM', granted: true })}
+                onClick={() => dispatch({ type: 'RESOLVE_CLAIM', playerId: selfId, granted: true })}
               >
                 ✓ Oui, +1 jeton
               </button>
               <button
                 className="btn btn--big"
                 style={{ flex: 1 }}
-                onClick={() => dispatch({ type: 'RESOLVE_CLAIM', granted: false })}
+                onClick={() => dispatch({ type: 'RESOLVE_CLAIM', playerId: selfId, granted: false })}
               >
                 ✕ Non
               </button>
