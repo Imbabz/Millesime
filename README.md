@@ -8,9 +8,11 @@ l'erreur pour voler la carte.
 Mécaniques reprises du genre « devine l'année », adaptées au mobile :
 l'application est le support, le jeu reste la musique et les gens autour.
 
-> **Pour mettre le jeu en ligne et le configurer, voir
-> [`MISE-EN-LIGNE.md`](./MISE-EN-LIGNE.md)** — hébergement, Spotify, Supabase,
-> et dans quel ordre les tester. Ce README-ci s'adresse au développement.
+**En ligne : https://millesime-weld.vercel.app**
+
+> **Pour le configurer, voir [`MISE-EN-LIGNE.md`](./MISE-EN-LIGNE.md)** —
+> Spotify, Supabase, et dans quel ordre les tester. Ce README-ci s'adresse au
+> développement.
 
 ---
 
