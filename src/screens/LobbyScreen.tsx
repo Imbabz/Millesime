@@ -32,6 +32,8 @@ export function LobbyScreen({
   state,
   isHost,
   code,
+  selfId,
+  singleDevice,
   dispatch,
   onOpenSpotify,
   spotifyBanner,
@@ -39,13 +41,36 @@ export function LobbyScreen({
   state: GameState;
   isHost: boolean;
   code: string;
+  /** This device's identity, given to the first seat on a shared phone. */
+  selfId: string;
+  /** One phone for the whole table, so the seats are filled here by hand. */
+  singleDevice: boolean;
   dispatch: (action: Action) => void;
   onOpenSpotify: () => void;
   spotifyBanner: string | null;
 }) {
   const [showQr, setShowQr] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [newName, setNewName] = useState('');
   const { settings, players } = state;
+
+  /**
+   * Seats somebody on a shared phone.
+   *
+   * The first name takes this device's own id, so the phone counts as seated
+   * and stays the host across a refresh. The rest get invented ids — nobody is
+   * holding a second phone to claim them.
+   */
+  const addLocalPlayer = () => {
+    const name = newName.trim();
+    if (!name) return;
+    const taken = new Set(players.map((p) => p.id));
+    const id = taken.has(selfId)
+      ? `local-${Date.now().toString(36)}`
+      : selfId;
+    dispatch({ type: 'ADD_PLAYER', playerId: id, name });
+    setNewName('');
+  };
 
   const poolSize = useMemo(
     () => filterDeck(CATALOGUE, settings).length,
@@ -99,8 +124,9 @@ export function LobbyScreen({
         </div>
         {players.length === 0 && (
           <p className="subtitle">
-            Personne n’a encore rejoint. Fais scanner le QR code, ou passe ce téléphone
-            de main en main.
+            {singleDevice
+              ? 'Écris le prénom de chacun, dans l’ordre où vous êtes assis autour de la table.'
+              : 'Personne n’a encore rejoint. Fais scanner le QR code.'}
           </p>
         )}
         {players.map((player) => (
@@ -120,6 +146,31 @@ export function LobbyScreen({
             }
           />
         ))}
+
+        {/* On one phone there is nobody else to claim a seat, so the seats are
+            filled here. The field keeps focus and empties itself, because the
+            realistic gesture is four names in a row, not one. */}
+        {singleDevice && players.length < MAX_PLAYERS && (
+          <div className="row" style={{ gap: 8 }}>
+            <input
+              className="field"
+              style={{ flex: 1, minWidth: 0 }}
+              value={newName}
+              maxLength={14}
+              placeholder={players.length === 0 ? 'Ton prénom' : 'Joueur suivant'}
+              aria-label="Prénom du joueur à ajouter"
+              onChange={(e) => setNewName(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && addLocalPlayer()}
+            />
+            <button
+              className="btn btn--primary"
+              disabled={!newName.trim()}
+              onClick={addLocalPlayer}
+            >
+              + Ajouter
+            </button>
+          </div>
+        )}
       </section>
 
       {isHost && (

@@ -28,6 +28,57 @@ const renderRoom = () =>
     />,
   );
 
+/** A real one-phone room: no seeded table, no mock harness. */
+const renderLocalRoom = () =>
+  render(
+    <RoomScreen
+      code="LOCAL"
+      role="host"
+      mock={false}
+      onLeave={() => {}}
+      onOpenConfig={() => {}}
+    />,
+  );
+
+describe('a table sharing one phone', () => {
+  it('fills the seats from the lobby, without asking who is holding it', async () => {
+    const user = userEvent.setup();
+    renderLocalRoom();
+
+    // No "prends ta place" detour: that seated the owner and then left no way
+    // to add anybody else.
+    const field = await screen.findByLabelText('Prénom du joueur à ajouter');
+    for (const name of ['Alex', 'Bob', 'Chloé']) {
+      await user.type(field, name);
+      await user.click(screen.getByRole('button', { name: '+ Ajouter' }));
+    }
+
+    expect(screen.getByText('Alex')).toBeDefined();
+    expect(screen.getByText('Bob')).toBeDefined();
+    expect(screen.getByText('Chloé')).toBeDefined();
+    expect(screen.getByText(/Joueurs \(3\//)).toBeDefined();
+
+    // Seating order is the table's order, so the arbiter lands on the left.
+    await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
+    await screen.findByText('Tire la carte pour Alex');
+  });
+
+  it('lets a seat be removed and the name reused', async () => {
+    const user = userEvent.setup();
+    renderLocalRoom();
+    const field = await screen.findByLabelText('Prénom du joueur à ajouter');
+
+    await user.type(field, 'Alex');
+    await user.click(screen.getByRole('button', { name: '+ Ajouter' }));
+    await user.click(screen.getByRole('button', { name: 'Retirer' }));
+
+    expect(screen.queryByText('Alex')).toBeNull();
+    await user.type(field, 'Alex');
+    await user.click(screen.getByRole('button', { name: '+ Ajouter' }));
+    expect(screen.getByText('Alex')).toBeDefined();
+  });
+});
+
 describe('a game, played through the UI', () => {
   it('seats the simulated table and shows the deck size', async () => {
     renderRoom();

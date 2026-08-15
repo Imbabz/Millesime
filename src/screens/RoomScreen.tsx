@@ -244,7 +244,11 @@ export function RoomScreen({
 
   const seated = state.players.some((p) => p.id === selfId);
 
-  if (!seated && state.phase === 'lobby') {
+  // On a shared phone there is no "me" to seat separately — everyone is added
+  // in the lobby, from one list. Asking for a single name first would seat the
+  // owner and then leave no way to add anybody else, which is exactly the dead
+  // end this replaces.
+  if (!seated && state.phase === 'lobby' && !singleDevice) {
     return (
       <div className="screen screen--center">
         <h1 className="title">Ton prénom</h1>
@@ -274,7 +278,9 @@ export function RoomScreen({
     );
   }
 
-  if (!seated) {
+  // A shared phone is never a spectator: it speaks as whoever is playing, even
+  // if the seat carrying its own id was removed from the lobby.
+  if (!seated && !singleDevice) {
     return (
       <div className="screen screen--center">
         <h1 className="title">Partie en cours</h1>
@@ -353,6 +359,8 @@ export function RoomScreen({
           state={state}
           isHost={isHost}
           code={code}
+          selfId={selfId}
+          singleDevice={singleDevice}
           dispatch={dispatch}
           onOpenSpotify={onOpenConfig}
           spotifyBanner={spotifyBanner}

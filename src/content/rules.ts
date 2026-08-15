@@ -102,8 +102,8 @@ export const ONBOARDING: { emoji: string; title: string; body: string }[] = [
   },
   {
     emoji: '📱',
-    title: 'Un téléphone chacun',
-    body: 'Chacun scanne le QR code et entre son prénom. Rien à installer, aucun compte à créer.',
+    title: 'Un téléphone, ou plusieurs',
+    body: 'À plusieurs : chacun scanne le QR code et entre son prénom, rien à installer. Sur un seul : entrez tous les prénoms dans le salon, dans l’ordre où vous êtes assis, et faites tourner l’appareil.',
   },
   {
     emoji: '🎴',
