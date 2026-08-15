@@ -147,6 +147,19 @@ export const pausePlayback = (clientId: string, deviceId: string | null) =>
     method: 'PUT',
   });
 
+/**
+ * Hands playback to a device, waking it on the way.
+ *
+ * `/me/player/play?device_id=` also names a device, but only one Spotify
+ * already lists as available; a device that has gone quiet answers 404 there
+ * and accepts a transfer instead.
+ */
+export const transferPlayback = (clientId: string, deviceId: string, play: boolean) =>
+  spotifyFetch<null>(clientId, '/me/player', {
+    method: 'PUT',
+    body: JSON.stringify({ device_ids: [deviceId], play }),
+  });
+
 export const seekTo = (clientId: string, positionMs: number, deviceId: string | null) =>
   spotifyFetch<null>(
     clientId,

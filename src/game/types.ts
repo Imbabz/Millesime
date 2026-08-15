@@ -112,6 +112,12 @@ export type GameSettings = {
   startOnHook: boolean;
   /** Seconds the "HITSTER !" window stays open. 0 disables the timer. */
   challengeSeconds: number;
+  /**
+   * Tokens dealt to each player at the start. At zero the steal mechanic is
+   * dormant for the first turns: a token can only be earned by naming a title
+   * and artist, so nobody can spend one until somebody has.
+   */
+  startingTokens: number;
 };
 
 export type GameState = {
@@ -160,6 +166,7 @@ export const DEFAULT_SETTINGS: GameSettings = {
   difficultyMix: { easy: 6, medium: 3, hard: 1 },
   startOnHook: true,
   challengeSeconds: 10,
+  startingTokens: 1,
 };
 
 export const decadeOf = (year: number): Decade =>

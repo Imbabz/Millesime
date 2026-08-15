@@ -46,8 +46,12 @@ Puis, dans le jeu : **⚙ Configuration → Se connecter à Spotify**.
 
 ### D'où sort le son
 
-Ouvre l'app Spotify sur un appareil et lance n'importe quoi une seconde, pour
-qu'il se signale. Dans une partie, bouton **🔊** pour choisir la sortie.
+Spotify ne sait commander que des appareils déjà réveillés — c'est une limite de
+Spotify, pas du jeu. Si aucun ne l'est, le jeu te le dit à l'écran et propose
+**▶ Ouvrir Spotify** : un aller-retour, et le morceau démarre tout seul au
+retour.
+
+Dans une partie, le bouton **🔊** choisit la sortie.
 
 > **Choisis une enceinte, pas ton téléphone.** Un téléphone qui joue son propre
 > son affiche le titre et l'année sur son écran verrouillé — autant regarder la
@@ -89,7 +93,7 @@ je corrige le catalogue.
 |---|---|---|
 | `INVALID_CLIENT: Invalid redirect URI` | L'URI déclarée ne correspond pas au caractère près | Étape 2, point 2 — la barre finale |
 | Refus mentionnant le *Developer Dashboard* | Ton compte n'est pas dans la liste | Étape 2, point 3 |
-| « Aucun appareil Spotify actif » | Aucune enceinte ne s'est signalée | Ouvrir Spotify, jouer un morceau une seconde, revenir, bouton 🔊 |
+| « Aucun appareil Spotify actif » | Aucune enceinte ne s'est signalée | Appuyer sur **▶ Ouvrir Spotify** dans le message : le jeu relance au retour |
 | « La lecture demande Premium » | Compte gratuit | Premium est requis |
 | Les invités n'arrivent pas dans le salon | Projet Supabase en pause | Voir l'annexe |
 | Une correction ne s'affiche pas | Ancienne version en cache | Fermer l'app et la rouvrir |

@@ -120,6 +120,8 @@ export function RoomScreen({
 
   const [devicesOpen, setDevicesOpen] = useState(false);
   const [nameDraft, setNameDraft] = useState(() => playerName());
+  /** Set when Spotify has no playable match for the card in play. */
+  const [noTrack, setNoTrack] = useState(false);
 
   // ------------------------------------------------------------- host wiring
 
@@ -139,6 +141,7 @@ export function RoomScreen({
     playedCardRef.current = card.id;
 
     const startMs = state.settings.startOnHook ? (card.hookMs ?? DEFAULT_HOOK_MS) : 0;
+    setNoTrack(false);
     void (async () => {
       if (!spotifyReady) {
         void musicRef.current.play(`mock:${card.id}`, startMs);
@@ -146,8 +149,10 @@ export function RoomScreen({
       }
       const uri = await resolveCard(config.spotifyClientId, card).catch(() => null);
       // A card Spotify cannot serve must not stall the turn: the table can still
-      // place it, they simply have to do it without hearing anything.
+      // place it, they simply have to do it without hearing anything. Saying so
+      // matters though — silence alone reads as "the app is broken".
       if (uri) void musicRef.current.play(uri, startMs);
+      else setNoTrack(true);
     })();
   }, [isHost, card, state.phase, state.settings.startOnHook, spotifyReady, config.spotifyClientId]);
 
@@ -285,6 +290,42 @@ export function RoomScreen({
         </div>
       )}
 
+      {/* The reason "rien ne se passe" used to be the whole experience: a
+          playback failure only ever appeared inside the 🔊 sheet, which nobody
+          opens when they are waiting for a song to start. It belongs here, on
+          the screen the host is already looking at, next to the one tap that
+          fixes it. */}
+      {isHost && spotifyReady && inPlay && (music.error || noTrack) && (
+        <div style={{ padding: '12px 16px 0' }}>
+          <Banner tone={music.needsDevice || noTrack ? 'warn' : 'error'}>
+            <div>
+              {music.error ??
+                'Spotify n’a pas ce morceau. La carte reste jouable, sans musique.'}
+            </div>
+            {music.error && (
+              <div className="row" style={{ gap: 8, marginTop: 10 }}>
+                {music.needsDevice && (
+                  <button
+                    className="btn btn--primary"
+                    style={{ minHeight: 40 }}
+                    onClick={music.wake}
+                  >
+                    ▶ Ouvrir Spotify
+                  </button>
+                )}
+                <button
+                  className="btn"
+                  style={{ minHeight: 40 }}
+                  onClick={() => void music.retry()}
+                >
+                  ↻ Réessayer
+                </button>
+              </div>
+            )}
+          </Banner>
+        </div>
+      )}
+
       {state.phase === 'lobby' && (
         <LobbyScreen
           state={state}
@@ -361,10 +402,18 @@ export function RoomScreen({
           <div className="stack">
             {music.error && <Banner tone="error">{music.error}</Banner>}
             {music.devices.length === 0 && (
-              <p className="subtitle">
-                Aucun appareil Spotify visible. Ouvre l’app Spotify, lance n’importe
-                quel morceau une seconde, puis reviens ici.
-              </p>
+              <>
+                <p className="subtitle">
+                  Aucun appareil Spotify visible. Spotify ne sait commander que des
+                  appareils déjà réveillés : il faut en ouvrir un une fois.
+                </p>
+                <button className="btn btn--primary btn--block" onClick={music.wake}>
+                  ▶ Ouvrir Spotify
+                </button>
+                <p className="subtitle">
+                  Reviens ensuite ici : le jeu relance le morceau tout seul.
+                </p>
+              </>
             )}
             {/* A phone playing its own audio shows the title on its lock
                 screen and in the Dynamic Island — which spoils whoever is

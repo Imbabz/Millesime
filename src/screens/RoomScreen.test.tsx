@@ -88,8 +88,13 @@ describe('a game, played through the UI', () => {
 
     await user.click(screen.getByRole('button', { name: 'Valider ce placement' }));
 
-    // Nobody holds a token on the first turn, so there is nothing to steal
-    // with and the game goes straight to the reveal.
+    // Everyone is dealt a token, so the steal window opens on the very first
+    // turn and the phone goes round the table one opponent at a time. Three
+    // opponents, three refusals, and only then the reveal.
+    for (let opponent = 0; opponent < 3; opponent += 1) {
+      await user.click(await screen.findByRole('button', { name: 'Laisser passer' }));
+    }
+
     await screen.findByText(/Bien joué|Personne ne l’a placée/);
     // Timeline cards also show years, so target the reveal card itself.
     const year = container.querySelector('.reveal-card__year');
@@ -98,6 +103,24 @@ describe('a game, played through the UI', () => {
     await user.click(screen.getByRole('button', { name: 'Joueur suivant' }));
     // The turn moves on and the arbiter moves with it: Bob plays, Chloé draws.
     await screen.findByText('Tire la carte pour Bob');
+  });
+
+  it('lets the arbiter hand out a token from the draw screen', async () => {
+    const user = userEvent.setup();
+    renderRoom();
+    await screen.findByText('Alex');
+    await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
+    await screen.findByRole('button', { name: /Tirer la carte/ });
+
+    // Four players, one token each to start with.
+    expect(screen.getAllByTitle('1 jeton')).toHaveLength(4);
+
+    await user.click(screen.getByRole('button', { name: /Donner un jeton/ }));
+    // The list is in seating order, so the first +1 goes to Alex.
+    await user.click(screen.getAllByRole('button', { name: '+1' })[0] as HTMLElement);
+
+    await waitFor(() => expect(screen.getByTitle('2 jetons')).toBeDefined());
+    expect(screen.getAllByTitle('1 jeton')).toHaveLength(3);
   });
 
   it('starts the music on the draw, and lets it be paused', async () => {

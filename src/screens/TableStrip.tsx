@@ -42,9 +42,15 @@ export function TableStrip({
             <span style={{ fontSize: 14, color: 'var(--text-dim)' }}>
               {player.timeline.length}/{state.settings.targetCards}
             </span>
-            {player.tokens > 0 && (
-              <span style={{ fontSize: 13 }}>🪙{player.tokens}</span>
-            )}
+            {/* Shown at zero too. Hiding it there made tokens look like a
+                feature that did not exist, when this number *is* the answer to
+                "puis-je voler ?" — and zero is the answer worth reading. */}
+            <span
+              style={{ fontSize: 13, opacity: player.tokens > 0 ? 1 : 0.45 }}
+              title={`${player.tokens} jeton${player.tokens > 1 ? 's' : ''}`}
+            >
+              🪙{player.tokens}
+            </span>
           </div>
         );
       })}

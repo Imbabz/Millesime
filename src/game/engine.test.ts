@@ -43,22 +43,29 @@ const drawn = (state: GameState): GameState =>
     playerId: (arbiter(state) ?? activePlayer(state))?.id ?? '',
   });
 
-/** A game dealt, started and with the first card drawn. */
-function startedGame(names = ['Alice', 'Bob', 'Chloé']): GameState {
-  const lobby = run(
+/**
+ * Everyone seated, nobody holding a token.
+ *
+ * The opening hand is pinned here rather than inherited from the defaults: the
+ * scenarios below are about placement, rotation and the reveal, and a table
+ * that can steal turns every one of them into a test of the challenge window
+ * as well. The tests that are about opening tokens set their own.
+ */
+const seatedLobby = (names: string[]): GameState =>
+  run(
     initialState(),
     ...names.map((name, i): Action => ({ type: 'ADD_PLAYER', playerId: `p${i}`, name })),
+    { type: 'SET_SETTINGS', settings: { startingTokens: 0 } },
   );
-  return drawn(run(lobby, { type: 'START_GAME', seed: 42 }));
+
+/** A game dealt, started and with the first card drawn. */
+function startedGame(names = ['Alice', 'Bob', 'Chloé']): GameState {
+  return drawn(run(seatedLobby(names), { type: 'START_GAME', seed: 42 }));
 }
 
 /** The same game held at the draw step, for the tests that are about it. */
 function gameAwaitingDraw(names = ['Alice', 'Bob', 'Chloé']): GameState {
-  const lobby = run(
-    initialState(),
-    ...names.map((name, i): Action => ({ type: 'ADD_PLAYER', playerId: `p${i}`, name })),
-  );
-  return run(lobby, { type: 'START_GAME', seed: 42 });
+  return run(seatedLobby(names), { type: 'START_GAME', seed: 42 });
 }
 
 /** Rewrites timelines and tokens so a scenario can be set up exactly. */
@@ -441,6 +448,80 @@ describe('tokens', () => {
       { type: 'RESOLVE_CLAIM', playerId: 'p1', granted: true },
     );
     expect(playerById(state, 'p0')?.tokens).toBe(MAX_TOKENS);
+  });
+});
+
+describe('the opening hand', () => {
+  const opened = (startingTokens: number): GameState =>
+    run(
+      initialState(),
+      { type: 'ADD_PLAYER', playerId: 'p0', name: 'Alice' },
+      { type: 'ADD_PLAYER', playerId: 'p1', name: 'Bob' },
+      { type: 'ADD_PLAYER', playerId: 'p2', name: 'Chloé' },
+      { type: 'SET_SETTINGS', settings: { startingTokens } },
+      { type: 'START_GAME', seed: 42 },
+    );
+
+  it('deals the configured tokens to everyone', () => {
+    expect(opened(2).players.map((p) => p.tokens)).toEqual([2, 2, 2]);
+  });
+
+  it('defaults to one, so the steal is live from the first turn', () => {
+    const state = drawn(
+      run(
+        initialState(),
+        { type: 'ADD_PLAYER', playerId: 'p0', name: 'Alice' },
+        { type: 'ADD_PLAYER', playerId: 'p1', name: 'Bob' },
+        { type: 'START_GAME', seed: 42 },
+      ),
+    );
+    expect(state.players.every((p) => p.tokens === 1)).toBe(true);
+    expect(eligibleChallengers(state)).toHaveLength(1);
+  });
+
+  it('leaves the steal dormant at zero', () => {
+    expect(eligibleChallengers(drawn(opened(0)))).toHaveLength(0);
+  });
+
+  it('never deals more than the cap', () => {
+    expect(opened(99).players.every((p) => p.tokens === MAX_TOKENS)).toBe(true);
+  });
+});
+
+describe('the arbiter handing out a token', () => {
+  // p0 plays, so p1 is the arbiter.
+  const grant = (byId: string, playerId = 'p2') =>
+    run(startedGame(), { type: 'GRANT_TOKEN', playerId, byId });
+
+  it('adds one to whoever the arbiter names', () => {
+    expect(playerById(grant('p1'), 'p2')?.tokens).toBe(1);
+  });
+
+  it('can be given to the arbiter themselves, or to the player guessing', () => {
+    expect(playerById(grant('p1', 'p1'), 'p1')?.tokens).toBe(1);
+    expect(playerById(grant('p1', 'p0'), 'p0')?.tokens).toBe(1);
+  });
+
+  it('is refused to anyone who is not the arbiter', () => {
+    expect(playerById(grant('p0'), 'p2')?.tokens).toBe(0);
+    expect(playerById(grant('p2'), 'p2')?.tokens).toBe(0);
+  });
+
+  it('respects the cap rather than overflowing it', () => {
+    const full = withTable(startedGame(), [
+      { years: [1980] },
+      { years: [1985] },
+      { years: [1990], tokens: MAX_TOKENS },
+    ]);
+    const state = run(full, { type: 'GRANT_TOKEN', playerId: 'p2', byId: 'p1' });
+    expect(playerById(state, 'p2')?.tokens).toBe(MAX_TOKENS);
+    // Refused outright, so nothing moved and no version was burned.
+    expect(state.version).toBe(full.version);
+  });
+
+  it('does nothing in the lobby', () => {
+    const lobby = seatedLobby(['Alice', 'Bob']);
+    expect(run(lobby, { type: 'GRANT_TOKEN', playerId: 'p1', byId: 'p0' })).toBe(lobby);
   });
 });
 

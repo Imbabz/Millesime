@@ -48,9 +48,11 @@ export const RULES: RuleSection[] = [
     id: 'jeton',
     title: '🪙 Gagner un jeton',
     lines: [
+      'Chacun démarre avec 1 jeton — réglable avant la partie.',
       'Avant de valider, annonce que tu connais le titre ET l’artiste.',
       'Dis-les à voix haute : c’est l’arbitre du tour qui juge, pas l’application.',
       'Si c’est juste, tu gagnes un jeton — même si tu as mal placé la carte.',
+      'L’arbitre peut aussi en donner un à la main, depuis son écran de tirage.',
       'On ne peut pas détenir plus de 5 jetons.',
     ],
   },

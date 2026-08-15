@@ -6,6 +6,7 @@ import { CATALOGUE } from '@/deck/catalogue';
 import {
   DIFFICULTY_LABELS,
   GENRE_LABELS,
+  MAX_TOKENS,
   type Decade,
   type Difficulty,
   type GameState,
@@ -190,6 +191,37 @@ export function LobbyScreen({
                   className="btn"
                   style={{ minHeight: 40, width: 44 }}
                   onClick={() => set({ targetCards: Math.min(20, settings.targetCards + 1) })}
+                >
+                  +
+                </button>
+              </span>
+            </label>
+
+            <label className="row row--between">
+              <span>
+                Jetons au départ
+                <br />
+                <span className="subtitle">à 0, personne ne peut voler</span>
+              </span>
+              <span className="row">
+                <button
+                  className="btn"
+                  style={{ minHeight: 40, width: 44 }}
+                  onClick={() =>
+                    set({ startingTokens: Math.max(0, settings.startingTokens - 1) })
+                  }
+                >
+                  −
+                </button>
+                <strong style={{ minWidth: 28, textAlign: 'center' }}>
+                  {settings.startingTokens}
+                </strong>
+                <button
+                  className="btn"
+                  style={{ minHeight: 40, width: 44 }}
+                  onClick={() =>
+                    set({ startingTokens: Math.min(MAX_TOKENS, settings.startingTokens + 1) })
+                  }
                 >
                   +
                 </button>

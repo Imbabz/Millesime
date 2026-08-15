@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import type { Action } from '@/game/engine';
 import { arbiter, canDraw } from '@/game/engine';
-import type { GameState, PlayerId } from '@/game/types';
+import { MAX_TOKENS, PLAYER_COLORS, type GameState, type PlayerId } from '@/game/types';
 import { TableStrip } from './TableStrip';
 
 /**
@@ -27,6 +28,7 @@ export function DrawScreen({
   const dealer = arbiter(state) ?? active;
   const myDraw = canDraw(state, selfId);
   const isActive = active?.id === selfId;
+  const [tokensOpen, setTokensOpen] = useState(false);
   if (!active || !dealer) return null;
 
   return (
@@ -61,6 +63,45 @@ export function DrawScreen({
           </>
         )}
       </div>
+
+      {/* The app keeps the score, but the table has the last word. A close
+          call the group decides to reward, a house rule, an announcement judged
+          generously after the fact — without a way to hand out a token, the
+          only recourse is arguing with a phone. Folded away by default so it
+          never competes with the one button that matters here. */}
+      {myDraw && (
+        <div className="stack" style={{ gap: 8 }}>
+          <button
+            className="btn btn--ghost btn--block"
+            onClick={() => setTokensOpen((open) => !open)}
+          >
+            🪙 Donner un jeton {tokensOpen ? '▾' : '▸'}
+          </button>
+          {tokensOpen &&
+            state.players.map((player) => (
+              <div key={player.id} className="row" style={{ gap: 10 }}>
+                <span
+                  className="player-dot"
+                  style={{
+                    background: PLAYER_COLORS[player.colorIndex % PLAYER_COLORS.length],
+                  }}
+                />
+                <strong style={{ flex: 1, minWidth: 0 }}>{player.name}</strong>
+                <span className="subtitle">🪙{player.tokens}</span>
+                <button
+                  className="btn"
+                  style={{ minHeight: 40 }}
+                  disabled={player.tokens >= MAX_TOKENS}
+                  onClick={() =>
+                    dispatch({ type: 'GRANT_TOKEN', playerId: player.id, byId: selfId })
+                  }
+                >
+                  +1
+                </button>
+              </div>
+            ))}
+        </div>
+      )}
 
       {myDraw ? (
         <button

@@ -39,6 +39,7 @@ export type Action =
   | { type: 'SET_CLAIM'; playerId: PlayerId; value: boolean }
   | { type: 'COMMIT_PLACEMENT'; playerId: PlayerId; slot: number; at: number }
   | { type: 'TRADE_TOKENS'; playerId: PlayerId }
+  | { type: 'GRANT_TOKEN'; playerId: PlayerId; byId: PlayerId }
   | { type: 'CHALLENGE'; playerId: PlayerId; slot: number; at: number }
   | { type: 'PASS_CHALLENGE'; playerId: PlayerId }
   | { type: 'CLOSE_CHALLENGES' }
@@ -147,6 +148,9 @@ export const canJudge = (state: GameState, playerId: PlayerId): boolean =>
 export const eligibleChallengers = (state: GameState): Player[] =>
   state.players.filter((p, i) => i !== state.activeIndex && p.tokens > 0);
 
+const clampTokens = (n: number): number =>
+  Math.max(0, Math.min(MAX_TOKENS, Math.floor(n)));
+
 const mapPlayer = (
   state: GameState,
   id: PlayerId,
@@ -228,9 +232,10 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
       const rng = mulberry32(action.seed);
       const pile = buildDrawPile(pool, state.settings.difficultyMix, rng);
 
+      const opening = clampTokens(state.settings.startingTokens);
       const players = state.players.map((p) => {
         const card = ctx.cards.get(pile.shift() as string) as Card;
-        return { ...p, timeline: [card], tokens: 0 };
+        return { ...p, timeline: [card], tokens: opening };
       });
 
       return bump(state, {
@@ -290,6 +295,28 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
       return eligibleChallengers(committed).length === 0
         ? reduce(committed, { type: 'CLOSE_CHALLENGES' }, ctx)
         : committed;
+    }
+
+    /**
+     * The arbiter hands somebody a token by hand.
+     *
+     * The app scores the game, but a table still overrules it: a near-miss the
+     * group decides to reward, a house rule, a forfeit, an announcement judged
+     * generously after the fact. Without this the only recourse is to argue
+     * with a phone, so the arbiter — who already rules on the announcement —
+     * can simply add one, capped like every other route to a token.
+     */
+    case 'GRANT_TOKEN': {
+      if (state.phase === 'lobby' || state.phase === 'gameover') return state;
+      if (!canJudge(state, action.byId)) return state;
+      const target = state.players.find((p) => p.id === action.playerId);
+      if (!target || target.tokens >= MAX_TOKENS) return state;
+      return bump(state, {
+        players: mapPlayer(state, target.id, (p) => ({
+          ...p,
+          tokens: clampTokens(p.tokens + 1),
+        })),
+      });
     }
 
     case 'TRADE_TOKENS': {

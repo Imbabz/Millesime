@@ -7,6 +7,7 @@ import {
   resumePlayback,
   seekTo,
   startPlayback,
+  transferPlayback,
   SpotifyError,
   type SpotifyDevice,
 } from './api';
@@ -25,9 +26,13 @@ import {
  *  - it never fights Safari's autoplay rules, because no audio element is
  *    involved on this device at all.
  *
- * The cost is that a Spotify device must be awake somewhere. That is the single
- * most common failure at the table, so it gets a real error message and a
- * device picker rather than a silent no-op.
+ * The cost is that a Spotify device has to exist somewhere, and on a phone that
+ * has not opened Spotify today, none does — the API then answers 404 and the
+ * song simply never starts. That is by far the most common failure at a table,
+ * so it is handled rather than merely reported: the command is retried against
+ * a freshly listed device, and if there is genuinely none, `needsDevice` goes
+ * up so the UI can offer `wake()` — one tap into the Spotify app, which is what
+ * registers the phone — and replay the pending track on the way back.
  */
 
 export interface MusicController {
@@ -43,6 +48,12 @@ export interface MusicController {
   snapshot: PlaybackSnapshot;
   error: string | null;
   clearError: () => void;
+  /** True when everything is in order except that no Spotify device is awake. */
+  needsDevice: boolean;
+  /** Opens the Spotify app, which is what makes this phone a usable device. */
+  wake: () => void;
+  /** Replays whatever the game last asked for. Used once a device turns up. */
+  retry: () => Promise<void>;
 }
 
 const DEVICE_KEY = 'millesime.spotify.device';
@@ -63,16 +74,26 @@ export function useSpotifyMusic(clientId: string, enabled: boolean): MusicContro
   );
   const [snapshot, setSnapshot] = useState<PlaybackSnapshot>(IDLE);
   const [error, setError] = useState<string | null>(null);
+  const [needsDevice, setNeedsDevice] = useState(false);
 
   // Where the current card starts, so "restart" means the hook, not 0:00.
   const originRef = useRef(0);
   const uriRef = useRef<string | null>(null);
+  /** Set while the host is away in the Spotify app, so the return can act. */
+  const wokenRef = useRef(false);
 
   const fail = useCallback((e: unknown) => {
     const message =
       e instanceof SpotifyError ? e.message : 'La commande Spotify a échoué.';
     setError(message);
+    if (e instanceof SpotifyError && e.status === 404) setNeedsDevice(true);
     setSnapshot((s) => ({ ...s, playing: false, error: message }));
+  }, []);
+
+  const succeed = useCallback((patch: Partial<PlaybackSnapshot>) => {
+    setError(null);
+    setNeedsDevice(false);
+    setSnapshot((s) => ({ ...s, ...patch, atEpochMs: Date.now(), error: null }));
   }, []);
 
   const chooseDevice = useCallback((id: string | null) => {
@@ -81,59 +102,120 @@ export function useSpotifyMusic(clientId: string, enabled: boolean): MusicContro
     else localStorage.removeItem(DEVICE_KEY);
   }, []);
 
+  /**
+   * Lists devices and settles on one, returning it.
+   *
+   * It returns the id rather than only storing it because the retry path needs
+   * the value immediately — a `setState` would not be visible until the next
+   * render, long after the command it is meant to rescue.
+   */
+  const ensureDevice = useCallback(async (): Promise<string | null> => {
+    const found = (await listDevices(clientId))?.devices ?? [];
+    setDevices(found);
+    const remembered = localStorage.getItem(DEVICE_KEY);
+    // Prefer the one this table chose, then whatever Spotify already considers
+    // active, then anything at all — so the common case needs no configuration.
+    const chosen =
+      found.find((d) => d.id === remembered) ??
+      found.find((d) => d.is_active) ??
+      found[0];
+    const next = chosen?.id ?? null;
+    setDeviceId(next);
+    if (next) localStorage.setItem(DEVICE_KEY, next);
+    setNeedsDevice(found.length === 0);
+    return next;
+  }, [clientId]);
+
   const refreshDevices = useCallback(async () => {
     if (!enabled) return;
     try {
-      const response = await listDevices(clientId);
-      const found = response?.devices ?? [];
-      setDevices(found);
+      await ensureDevice();
       setError(null);
-      // Fall back to whatever Spotify already considers active, so the common
-      // case needs no configuration at all.
-      setDeviceId((current) => {
-        if (current && found.some((d) => d.id === current)) return current;
-        const active = found.find((d) => d.is_active) ?? found[0];
-        const next = active?.id ?? null;
-        if (next) localStorage.setItem(DEVICE_KEY, next);
-        return next;
-      });
     } catch (e) {
       fail(e);
     }
-  }, [clientId, enabled, fail]);
+  }, [enabled, ensureDevice, fail]);
 
   const play = useCallback(
     async (uri: string, positionMs: number) => {
       if (!enabled) return;
       uriRef.current = uri;
       originRef.current = positionMs;
+      const started = () => succeed({ playing: true, positionMs });
       try {
         await startPlayback(clientId, uri, positionMs, deviceId);
-        setError(null);
-        setSnapshot((s) => ({
-          ...s,
-          playing: true,
-          positionMs,
-          atEpochMs: Date.now(),
-          error: null,
-        }));
+        started();
       } catch (e) {
-        fail(e);
+        // A 404 means the remembered device has gone quiet, or there never was
+        // one. Both are ordinary: look again, and if something is there, wake
+        // it and replay. Only a second failure is worth telling anyone about.
+        if (!(e instanceof SpotifyError) || e.status !== 404) return fail(e);
+        try {
+          const id = await ensureDevice();
+          if (!id) return fail(e);
+          await transferPlayback(clientId, id, false).catch(() => {});
+          await startPlayback(clientId, uri, positionMs, id);
+          started();
+        } catch (second) {
+          fail(second);
+        }
       }
     },
-    [clientId, deviceId, enabled, fail],
+    [clientId, deviceId, enabled, ensureDevice, fail, succeed],
   );
+
+  /** Replays the pending track. What the "réessayer" button calls. */
+  const retry = useCallback(async () => {
+    if (!enabled) return;
+    if (!uriRef.current) {
+      await refreshDevices();
+      return;
+    }
+    await play(uriRef.current, originRef.current);
+  }, [enabled, play, refreshDevices]);
+
+  /**
+   * Sends the host into the Spotify app.
+   *
+   * Opening it is what makes the phone announce itself as a Connect device;
+   * there is no API that can do it from here. The visibility listener below
+   * picks the game back up on the way in, so the round trip costs one tap.
+   */
+  const wake = useCallback(() => {
+    wokenRef.current = true;
+    window.location.href = 'spotify:';
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
+    const onVisible = () => {
+      if (document.visibilityState !== 'visible' || !wokenRef.current) return;
+      wokenRef.current = false;
+      void retry();
+    };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => document.removeEventListener('visibilitychange', onVisible);
+  }, [enabled, retry]);
 
   const resume = useCallback(async () => {
     if (!enabled) return;
     try {
       await resumePlayback(clientId, deviceId);
-      setError(null);
-      setSnapshot((s) => ({ ...s, playing: true, atEpochMs: Date.now(), error: null }));
+      succeed({ playing: true });
     } catch (e) {
-      fail(e);
+      // A speaker that dozed off between two turns is the same ordinary 404 as
+      // never having had one; a transfer wakes it and resumes in one call.
+      if (!(e instanceof SpotifyError) || e.status !== 404) return fail(e);
+      try {
+        const id = await ensureDevice();
+        if (!id) return fail(e);
+        await transferPlayback(clientId, id, true);
+        succeed({ playing: true });
+      } catch (second) {
+        fail(second);
+      }
     }
-  }, [clientId, deviceId, enabled, fail]);
+  }, [clientId, deviceId, enabled, ensureDevice, fail, succeed]);
 
   const pause = useCallback(async () => {
     if (!enabled) return;
@@ -212,6 +294,9 @@ export function useSpotifyMusic(clientId: string, enabled: boolean): MusicContro
     snapshot,
     error,
     clearError: () => setError(null),
+    needsDevice,
+    wake,
+    retry,
   };
 }
 
@@ -262,5 +347,8 @@ export function useMockMusic(): MusicController {
     snapshot,
     error: null,
     clearError: () => {},
+    needsDevice: false,
+    wake: () => {},
+    retry: async () => {},
   };
 }
