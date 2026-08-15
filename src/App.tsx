@@ -12,10 +12,11 @@ import { RoomScreen } from '@/screens/RoomScreen';
 /**
  * Hash routing, hand-rolled.
  *
- * Hash routes rather than paths because the app is served as a static bundle
- * from a GitHub Pages subdirectory, where a deep link to `/room/ABCD` would
- * simply 404. `#/join/ABCD` survives, which matters: that string is what the QR
- * code contains.
+ * Hash routes rather than paths because the app is a static bundle with no
+ * server to rewrite requests: a deep link to `/room/ABCD` would 404 on any host
+ * that has not been told otherwise. `#/join/ABCD` survives everywhere, which
+ * matters — that string is what the QR code contains, and a guest scanning it
+ * has no second chance.
  */
 type Route =
   | { name: 'home' }

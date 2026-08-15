@@ -4,10 +4,15 @@ import { appUrl } from '@/config';
  * Spotify sign-in, Authorization Code + PKCE.
  *
  * PKCE is not a preference here, it is the only option: the app is a static
- * page on GitHub Pages, so there is no server to hold a client secret and
- * nowhere to hide one. Only the host ever runs this flow — guests never touch
- * Spotify, which also keeps the game inside Development Mode's five-user
- * allowlist with four seats to spare.
+ * page, so there is no server to hold a client secret and nowhere to hide one.
+ * Only the host ever runs this flow — guests never touch Spotify, which also
+ * keeps the game inside Development Mode's five-user allowlist with four seats
+ * to spare.
+ *
+ * The redirect URI is whatever origin the app is served from, so it matches the
+ * one registered with Spotify only on the production domain. A Vercel preview
+ * gets a fresh URL per commit and will be refused; the Configuration screen
+ * shows the current one so that refusal is at least legible.
  */
 
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';

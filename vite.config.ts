@@ -4,11 +4,12 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 /**
- * Deployed to GitHub Pages at https://imbabz.github.io/Magellan/, so every asset
- * URL has to be prefixed. `BASE_PATH` lets CI override it (and keeps `npm run dev`
- * at the root).
+ * Served at the root of a domain on Vercel, so asset URLs need no prefix. The
+ * app briefly lived in a GitHub Pages subdirectory and carried a `BASE_PATH`
+ * override for it; that knob had no user left, and a setting nobody turns is a
+ * setting that eventually misleads someone. A subpath would be this one line.
  */
-const base = process.env.BASE_PATH ?? '/';
+const base = '/';
 
 export default defineConfig({
   base,

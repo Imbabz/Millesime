@@ -59,7 +59,7 @@ npm run dev          # http://localhost:5173
 npm test             # moteur de règles, deck, paroles, parcours d'interface
 npm run typecheck
 npm run lint
-npm run build        # BASE_PATH=/millesime/ pour un déploiement GitHub Pages
+npm run build        # sort dans dist/, servi à la racine du domaine
 ```
 
 ### Mode démo et partie sur un seul téléphone
@@ -138,17 +138,37 @@ saupoudre volontairement plutôt que de mélanger à plat.
 
 ---
 
+## Hébergement
+
+Déployé sur **Vercel** depuis ce dépôt. Rien à régler côté code : l'app est
+servie à la racine du domaine, le routage est en hash (`#/join/CODE`) donc aucune
+réécriture n'est nécessaire, et `appUrl()` dérive l'URL courante — la Redirect
+URI Spotify et le lien du QR code suivent le domaine tout seuls.
+
+Réglages du projet Vercel : *Root Directory* vide, *Framework* Vite, build
+`npm run build`, sortie `dist`. `vercel.json` fige les trois derniers et pose les
+en-têtes de cache, qui sont la seule chose que les valeurs par défaut font mal
+ici : un `sw.js` mis en cache épingle les joueurs sur une version périmée, sans
+qu'un redéploiement puisse les en sortir. Il est donc revalidé à chaque fois,
+tandis que `/assets/*` — dont Vite signe chaque nom par une empreinte de contenu
+— est mis en cache un an.
+
+> **Les déploiements de prévisualisation ne permettent pas de se connecter à
+> Spotify.** Chaque commit reçoit une URL unique, et Spotify exige une
+> correspondance exacte de la Redirect URI : seule celle de production est
+> déclarée. L'écran Configuration affiche l'URL courante, ce qui rend le refus
+> compréhensible.
+
 ## Configuration
 
 Tout se règle depuis l'écran **⚙ Configuration** de l'app, sans redéploiement —
-les valeurs sont stockées dans le navigateur. La CI peut fournir des valeurs par
-défaut via les *variables* GitHub Actions (`VITE_SUPABASE_URL`,
+les valeurs sont stockées dans le navigateur. Vercel peut fournir des valeurs par
+défaut via ses variables d'environnement (`VITE_SUPABASE_URL`,
 `VITE_SUPABASE_ANON_KEY`, `VITE_SPOTIFY_CLIENT_ID`).
 
-1. **GitHub** → Settings → Pages → Source = *GitHub Actions*.
-2. **supabase.com** → nouveau projet → copier *Project URL* et la clé *anon*.
+1. **supabase.com** → nouveau projet → copier *Project URL* et la clé *anon*.
    Aucune table à créer : seuls les canaux temps réel sont utilisés.
-3. **developer.spotify.com/dashboard** → *Create app* → coller la Redirect URI
+2. **developer.spotify.com/dashboard** → *Create app* → coller la Redirect URI
    affichée dans l'écran Configuration → copier le *Client ID*, et ajouter son
    compte Spotify aux utilisateurs autorisés.
 

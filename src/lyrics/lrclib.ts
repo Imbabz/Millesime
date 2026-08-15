@@ -32,7 +32,7 @@ type LrclibRecord = {
 
 /** LRCLIB asks clients to identify themselves; it is a volunteer-run service. */
 const HEADERS = {
-  'Lrclib-Client': 'Millesime (https://github.com/Imbabz/Magellan)',
+  'Lrclib-Client': 'Millesime (https://github.com/Imbabz/millesime)',
 };
 
 function toLyrics(record: LrclibRecord | null): Lyrics | null {

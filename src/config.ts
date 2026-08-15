@@ -54,8 +54,10 @@ export const hasSpotify = (c: AppConfig): boolean => Boolean(c.spotifyClientId);
 /**
  * The origin + path the app is served from, which doubles as the Spotify
  * redirect URI and as the base of the QR join link. Derived rather than
- * configured so it stays correct on GitHub Pages, on localhost and on any
- * future host.
+ * configured, so it stays correct on localhost, on the production domain, and
+ * on a Vercel preview — the last one being why it is worth showing on screen:
+ * a preview URL is unique per commit and will never match the redirect URI
+ * registered with Spotify.
  */
 export function appUrl(): string {
   const base = import.meta.env.BASE_URL || '/';
