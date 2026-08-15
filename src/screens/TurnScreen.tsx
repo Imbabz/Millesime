@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { arbiter, type Action } from '@/game/engine';
+import { arbiter, eligibleChallengers, type Action } from '@/game/engine';
 import { TOKENS_PER_FREE_CARD, type GameState, type PlayerId } from '@/game/types';
 import type { PlaybackSnapshot } from '@/net/transport';
 import { Timeline, type GapState } from '@/ui/Timeline';
@@ -50,6 +50,10 @@ export function TurnScreen({
   const myChallenge = turn.challenges.find((c) => c.playerId === selfId);
   const hasAnswered = Boolean(myChallenge) || turn.passed.includes(selfId);
   const takenSlots = new Set(turn.challenges.map((c) => c.slot));
+  const answered = new Set([...turn.challenges.map((c) => c.playerId), ...turn.passed]);
+  const pending = challenging
+    ? eligibleChallengers(state).filter((p) => !answered.has(p.id))
+    : [];
 
   const gapState = (slot: number): GapState => {
     if (challenging) {
@@ -179,6 +183,15 @@ export function TurnScreen({
           {turn.challengeEndsAt !== null && (
             <p className="subtitle" style={{ textAlign: 'center' }}>
               Fermeture dans <Countdown until={turn.challengeEndsAt} /> s
+            </p>
+          )}
+
+          {/* Naming who has still to answer turns dead air into a queue: on one
+              phone it says who to hand it to, and around a table it says who
+              the game is waiting for rather than leaving everyone staring. */}
+          {pending.length > 0 && (
+            <p className="subtitle" style={{ textAlign: 'center' }}>
+              En attente de {pending.map((p) => p.name).join(', ')}
             </p>
           )}
 

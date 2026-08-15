@@ -16,6 +16,15 @@ export default defineConfig({
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
+  /**
+   * Stamped into the bundle and shown in the Configuration screen. "Is the fix
+   * actually live on my phone, or am I looking at a cached build?" is otherwise
+   * unanswerable from a home-screen icon, and it is the first question after
+   * every deploy.
+   */
+  define: {
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+  },
   plugins: [
     react(),
     VitePWA({
@@ -40,6 +49,10 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
+        // Without this, an old deployment's precache lingers beside the new
+        // one — which is how a home-screen icon nobody thinks to refresh ends
+        // up still serving last week's build.
+        cleanupOutdatedCaches: true,
         // Spotify and LRCLIB responses must never be served from the cache:
         // a stale playback state would desync the whole table.
         navigateFallbackDenylist: [/^\/api/],

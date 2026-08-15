@@ -1,5 +1,12 @@
 import { useRef, useState } from 'react';
-import { appUrl, hasSpotify, loadConfig, saveConfig, type AppConfig } from '@/config';
+import {
+  appUrl,
+  buildStamp,
+  hasSpotify,
+  loadConfig,
+  saveConfig,
+  type AppConfig,
+} from '@/config';
 import { beginLogin, isSignedIn, signOut } from '@/spotify/auth';
 import { CATALOGUE } from '@/deck/catalogue';
 import { checkDeck, forgetAllUris, resolvedCount, type DeckCheckProgress } from '@/spotify/resolve';
@@ -213,6 +220,11 @@ export function ConfigScreen({ onBack }: { onBack: () => void }) {
         <p className="subtitle" style={{ textAlign: 'center', fontSize: 12 }}>
           Millésime — mécaniques inspirées des jeux de placement musical.
           Paroles : LRCLIB. Musique : Spotify.
+          <br />
+          {/* An installed app can keep serving an old precache, so this is what
+              tells "the fix is not live yet" apart from "the fix did not
+              work". */}
+          Version du {buildStamp()}
         </p>
       </div>
     </div>

@@ -13,6 +13,7 @@ import { isSignedIn } from '@/spotify/auth';
 import { resolveCard } from '@/spotify/resolve';
 import { RulesButton } from '@/ui/RulesSheet';
 import { Banner, Sheet } from '@/ui/bits';
+import { GameMenu } from './GameMenu';
 import { LobbyScreen } from './LobbyScreen';
 import { DrawScreen } from './DrawScreen';
 import { TurnScreen } from './TurnScreen';
@@ -119,6 +120,7 @@ export function RoomScreen({
     : null;
 
   const [devicesOpen, setDevicesOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [nameDraft, setNameDraft] = useState(() => playerName());
   /** Set when Spotify has no playable match for the card in play. */
   const [noTrack, setNoTrack] = useState(false);
@@ -182,6 +184,26 @@ export function RoomScreen({
     );
     return () => clearTimeout(timer);
   }, [isHost, singleDevice, state, dispatch]);
+
+  /**
+   * One phone cannot go round a table in ten seconds.
+   *
+   * The countdown is what makes a steal a race between phones — but with a
+   * single device the players answer one after another, by hand, and the timer
+   * simply closed the window before the third person had seen it. The steal was
+   * unreachable, which is exactly what "les jetons ne servent à rien" looks
+   * like from a chair. Nothing here forbids a timer: the lobby still offers it,
+   * this only changes what a solo room starts with.
+   */
+  const timerDefaultedRef = useRef(false);
+  useEffect(() => {
+    if (!isHost || !singleDevice || timerDefaultedRef.current) return;
+    if (state.phase !== 'lobby') return;
+    timerDefaultedRef.current = true;
+    if (state.settings.challengeSeconds !== 0) {
+      dispatch({ type: 'SET_SETTINGS', settings: { challengeSeconds: 0 } });
+    }
+  }, [isHost, singleDevice, state.phase, state.settings.challengeSeconds, dispatch]);
 
   // Close the steal window on the deadline the host itself stamped.
   useEffect(() => {
@@ -395,6 +417,28 @@ export function RoomScreen({
         >
           🔊
         </button>
+      )}
+
+      {state.phase !== 'lobby' && (
+        <button
+          className="help-button"
+          style={{ right: isHost && spotifyReady ? 116 : 66 }}
+          onClick={() => setMenuOpen(true)}
+          aria-label="Scores et réglages"
+        >
+          📊
+        </button>
+      )}
+
+      {menuOpen && (
+        <GameMenu
+          state={state}
+          selfId={selfId}
+          isHost={isHost}
+          dispatch={dispatch}
+          onClose={() => setMenuOpen(false)}
+          onLeave={onLeave}
+        />
       )}
 
       {devicesOpen && (

@@ -105,6 +105,33 @@ describe('a game, played through the UI', () => {
     await screen.findByText('Tire la carte pour Bob');
   });
 
+  it('opens a one-phone room without the steal timer', async () => {
+    renderRoom();
+    await screen.findByText('Alex');
+    // Ten seconds cannot go round a table one phone at a time, so the window
+    // waits for everyone instead of counting down.
+    await waitFor(() => expect(screen.getByText('0s')).toBeDefined());
+  });
+
+  it('shows the scoreboard, and restarts back into the settings', async () => {
+    const user = userEvent.setup();
+    renderRoom();
+    await screen.findByText('Alex');
+    await user.click(screen.getByRole('button', { name: /Lancer la partie/ }));
+    await screen.findByRole('button', { name: /Tirer la carte/ });
+
+    await user.click(screen.getByRole('button', { name: 'Scores et réglages' }));
+    await screen.findByText('Scores');
+    expect(screen.getByText(/objectif 10 cartes/)).toBeDefined();
+
+    await user.click(screen.getByRole('button', { name: /Recommencer/ }));
+    await user.click(screen.getByRole('button', { name: 'Oui, recommencer' }));
+
+    // Back in the lobby, where every setting lives and the table is still sat.
+    await screen.findByRole('button', { name: /Lancer la partie/ });
+    expect(screen.getByText('Chloé')).toBeDefined();
+  });
+
   it('lets the arbiter hand out a token from the draw screen', async () => {
     const user = userEvent.setup();
     renderRoom();

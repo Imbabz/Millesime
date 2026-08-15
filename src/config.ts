@@ -81,3 +81,22 @@ export function appUrl(): string {
   const base = import.meta.env.BASE_URL || '/';
   return `${window.location.origin}${base}`;
 }
+
+/**
+ * When this bundle was built, in local time.
+ *
+ * An installed PWA can keep serving an old precache, so "is the fix live on my
+ * phone?" has no answer from a home-screen icon. This gives one: compare it
+ * with the time of the deploy. Falls back gracefully under Vitest, where Vite's
+ * `define` never runs.
+ */
+export function buildStamp(): string {
+  try {
+    return new Date(__BUILD_TIME__).toLocaleString('fr-FR', {
+      dateStyle: 'short',
+      timeStyle: 'short',
+    });
+  } catch {
+    return 'développement';
+  }
+}
