@@ -6,6 +6,10 @@ name: Vérifier les années du deck
 on:
   workflow_dispatch:
   push:
+    # Only on this repository's own default branch. The branch is staged inside
+    # another repository before it lands here, and a half-hour sweep firing
+    # there is half an hour of nothing.
+    branches: [main]
     paths:
       - 'scripts/verify-years.mjs'
       - '.github/workflows/verify-years.yml'
