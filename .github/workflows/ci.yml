@@ -1,16 +1,13 @@
-name: CI & Pages
+name: CI
 
+# Vercel builds and deploys this repository on its own. What it will not do is
+# refuse a deployment because the tests are red — it only cares that the build
+# command exits zero. So this workflow is the only place that can say no.
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
-
-# Only one deployment at a time; a superseded run is cancelled rather than
-# queued behind the newer build.
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
   check:
@@ -30,36 +27,7 @@ jobs:
       - run: npm run lint
       - run: npm test
 
-      - name: Build
-        env:
-          # The repository name is the GitHub Pages sub-path, so every asset URL
-          # has to be prefixed with it.
-          BASE_PATH: /${{ github.event.repository.name }}/
-          # Optional defaults; the in-app Configuration screen overrides them.
-          # None of these is a secret: the Supabase anon key is public by design
-          # and the Spotify PKCE flow ships no client secret.
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
-          VITE_SPOTIFY_CLIENT_ID: ${{ vars.VITE_SPOTIFY_CLIENT_ID }}
-        run: npm run build
-
-      - name: Upload Pages artifact
-        if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    name: Deploy to GitHub Pages
-    if: github.event_name != 'pull_request'
-    needs: check
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - id: deploy
-        uses: actions/deploy-pages@v4
+      # Building here too, because a type-clean, well-tested app can still fail
+      # to bundle — and finding that out from a failed Vercel deploy is finding
+      # out late.
+      - run: npm run build

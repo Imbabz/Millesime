@@ -1,8 +1,8 @@
 name: Vérifier les années du deck
 
-# It takes a quarter of an hour and leans on a volunteer-run service, so it does
-# not run on every push. It runs on demand, and whenever the verification logic
-# itself changes — a new matching rule is worth re-checking the whole deck.
+# It takes half an hour and leans on a volunteer-run service, so it does not run
+# on every push. It runs on demand, and whenever the verification logic itself
+# changes — a new matching rule is worth re-checking the whole deck against.
 on:
   workflow_dispatch:
   push:
