@@ -167,16 +167,23 @@ tandis que `/assets/*` — dont Vite signe chaque nom par une empreinte de conte
 
 ## Configuration
 
-Tout se règle depuis l'écran **⚙ Configuration** de l'app, sans redéploiement —
-les valeurs sont stockées dans le navigateur. Vercel peut fournir des valeurs par
-défaut via ses variables d'environnement (`VITE_SUPABASE_URL`,
-`VITE_SUPABASE_ANON_KEY`, `VITE_SPOTIFY_CLIENT_ID`).
+Trois couches, de la plus spécifique à la plus générale : ce que l'appareil a
+enregistré dans l'écran **⚙ Configuration**, puis une variable d'environnement de
+build (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_SPOTIFY_CLIENT_ID`),
+puis les constantes de `src/config.ts`.
 
-1. **supabase.com** → nouveau projet → copier *Project URL* et la clé *anon*.
-   Aucune table à créer : seuls les canaux temps réel sont utilisés.
-2. **developer.spotify.com/dashboard** → *Create app* → coller la Redirect URI
-   affichée dans l'écran Configuration → copier le *Client ID*, et ajouter son
-   compte Spotify aux utilisateurs autorisés.
+Ces constantes ne sont pas une facilité : **l'invité en dépend**. Il arrive par
+un QR code sur un téléphone au `localStorage` vide ; sans valeur embarquée il
+n'atteint aucun salon, et la promesse du jeu — rien à installer, aucun compte —
+meurt sur la première personne qui n'est pas l'hôte.
+
+Pour un déploiement à soi, il reste donc à faire, une fois :
+
+1. **supabase.com** → nouveau projet → *Project URL* et clé *anon*. Aucune table
+   à créer : seuls les canaux temps réel sont utilisés.
+2. **developer.spotify.com/dashboard** → *Create app* → déclarer la Redirect URI
+   affichée dans l'écran Configuration → récupérer le *Client ID*, et s'ajouter
+   aux utilisateurs autorisés.
 
 > **Spotify Premium est obligatoire.** Depuis février 2026, une app en
 > Development Mode exige que son propriétaire ait un abonnement Premium actif, et

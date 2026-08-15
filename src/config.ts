@@ -1,16 +1,26 @@
 /**
  * Runtime configuration.
  *
- * The three third-party values the game needs are read from build-time env
- * vars, but can be overridden from the in-app Configuration screen and kept in
- * `localStorage`. That override matters more than it sounds: the whole point of
- * this project is that it can be operated from a phone, and re-running a CI
- * deploy just to rotate a Spotify client id is not something anyone wants to do
- * from an iPhone.
+ * Resolved in three layers, most specific first: what this device saved in the
+ * Configuration screen, then a build-time env var, then the constants below.
  *
- * None of these are secrets. The Supabase `anon` key is designed to be public,
- * and the Spotify client id is public by construction — the PKCE flow exists
- * precisely so that no client secret is ever shipped.
+ * The constants exist because of the guest. A guest scans a QR code and lands
+ * on a phone with an empty `localStorage`; without a shipped default it has no
+ * way to reach the room, and the game's central promise — nothing to install,
+ * no account, no setup — dies at the first person who is not the host. Leaving
+ * these blank made the app configurable and unusable at the same time.
+ *
+ * None of the three is a secret, and this is not a resigned "well, it leaks
+ * anyway": each is public *by design*. The Supabase `anon` key is meant to be
+ * shipped to browsers, and it guards nothing here — the game creates no table
+ * and touches no row, it only opens a Realtime channel, so there is no data
+ * behind it to protect. The Spotify client id is public by construction: PKCE
+ * exists precisely so that no client secret is ever shipped, and the id is
+ * useless without a redirect URI its owner registered. All three are already
+ * readable in the built bundle of any deployment.
+ *
+ * The env vars still win when set, so these can be moved into Vercel — or
+ * rotated after a fork — without touching the code.
  */
 
 export type AppConfig = {
@@ -21,10 +31,18 @@ export type AppConfig = {
 
 const STORAGE_KEY = 'millesime.config';
 
+/** The deployment at millesime-weld.vercel.app. See the note above. */
+const SHIPPED: AppConfig = {
+  supabaseUrl: 'https://zqcvfzzosmszpdkxetsc.supabase.co',
+  supabaseAnonKey:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpxY3Zmenpvc21zenBka3hldHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY3OTUzMDAsImV4cCI6MjEwMjM3MTMwMH0.KCGVF37_z-p5vWD4vemyOUfntsiTsX-TJrhb88cfRbo',
+  spotifyClientId: '6ad2f31510944827b258f524ea3e96f0',
+};
+
 const BUILD_DEFAULTS: AppConfig = {
-  supabaseUrl: import.meta.env.VITE_SUPABASE_URL ?? '',
-  supabaseAnonKey: import.meta.env.VITE_SUPABASE_ANON_KEY ?? '',
-  spotifyClientId: import.meta.env.VITE_SPOTIFY_CLIENT_ID ?? '',
+  supabaseUrl: import.meta.env.VITE_SUPABASE_URL || SHIPPED.supabaseUrl,
+  supabaseAnonKey: import.meta.env.VITE_SUPABASE_ANON_KEY || SHIPPED.supabaseAnonKey,
+  spotifyClientId: import.meta.env.VITE_SPOTIFY_CLIENT_ID || SHIPPED.spotifyClientId,
 };
 
 export function loadConfig(): AppConfig {
