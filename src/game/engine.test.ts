@@ -116,13 +116,43 @@ describe('isCorrectSlot', () => {
     expect(isCorrectSlot(timeline, 1990, 4)).toBe(false);
   });
 
-  it('accepts either side of a card sharing the same year', () => {
-    expect(isCorrectSlot(timeline, 1985, 1)).toBe(true);
-    expect(isCorrectSlot(timeline, 1985, 2)).toBe(true);
-  });
-
   it('is always right on an empty timeline', () => {
     expect(isCorrectSlot([], 1999, 0)).toBe(true);
+  });
+});
+
+describe('poteaux — a card landing on a year already played', () => {
+  it('goes to the right of its twin, and only there', () => {
+    const timeline = [card(1970), card(1985), card(2000)];
+    expect(isCorrectSlot(timeline, 1985, 2)).toBe(true);
+    // The gap on the near side looks just as plausible and is wrong: landing
+    // next to the year is not the same as knowing it is the year.
+    expect(isCorrectSlot(timeline, 1985, 1)).toBe(false);
+  });
+
+  it('goes past a whole run of the same year', () => {
+    const timeline = [card(1985), card(1985), card(1985)];
+    expect(isCorrectSlot(timeline, 1985, 3)).toBe(true);
+    expect(isCorrectSlot(timeline, 1985, 0)).toBe(false);
+    expect(isCorrectSlot(timeline, 1985, 1)).toBe(false);
+    expect(isCorrectSlot(timeline, 1985, 2)).toBe(false);
+  });
+
+  it('still allows the ends when the twin sits at one', () => {
+    expect(isCorrectSlot([card(1985)], 1985, 1)).toBe(true);
+    expect(isCorrectSlot([card(1985)], 1985, 0)).toBe(false);
+  });
+
+  it('leaves exactly one correct slot, whatever the timeline', () => {
+    // The invariant the rule now guarantees, and the reason the reveal can
+    // point at a single gap without lying: accepted === canonical.
+    const timeline = [card(1970), card(1985), card(1985), card(2000)];
+    for (const year of [1960, 1970, 1985, 1990, 2000, 2020]) {
+      const accepted = [0, 1, 2, 3, 4].filter((slot) =>
+        isCorrectSlot(timeline, year, slot),
+      );
+      expect(accepted).toEqual([correctSlotFor(timeline, year)]);
+    }
   });
 });
 

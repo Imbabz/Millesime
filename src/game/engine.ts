@@ -73,9 +73,16 @@ export function initialState(): GameState {
 
 /**
  * A slot is the gap *before* index `slot`, so a timeline of n cards has n+1
- * slots. Ties are deliberately permissive on both sides: when a card shares a
- * year with one already on the table, either side of it is accepted, which is
- * how the physical game is played.
+ * slots. Exactly one of them is correct — ties included.
+ *
+ * When the card shares its year with one already on the table, a *poteau*, it
+ * belongs immediately to the right of it and nowhere else. The physical game
+ * accepts either side, but either side means a tie hands the player two winning
+ * gaps instead of one: the card that is hardest to date becomes the easiest to
+ * place, which is backwards. Here equal years stack in the order they arrived
+ * and the newcomer goes last, so a poteau is read like any other card — and
+ * getting it right means actually knowing it is the same year, not merely
+ * landing nearby.
  */
 export function isCorrectSlot(
   timeline: readonly Card[],
@@ -86,11 +93,17 @@ export function isCorrectSlot(
   const before = timeline[slot - 1];
   const after = timeline[slot];
   if (before && before.year > year) return false;
-  if (after && after.year < year) return false;
+  // `<=` rather than `<` is the whole poteau rule: a card of the same year to
+  // the right of this gap means the card belongs one slot further on.
+  if (after && after.year <= year) return false;
   return true;
 }
 
-/** The canonical slot for a card, used to animate the reveal. */
+/**
+ * Where the card belongs — now the *only* slot `isCorrectSlot` accepts, since
+ * ties resolve to the right. Used to animate the reveal and to insert a card
+ * bought with tokens.
+ */
 export function correctSlotFor(timeline: readonly Card[], year: number): number {
   let slot = 0;
   while (slot < timeline.length && (timeline[slot] as Card).year <= year) slot++;

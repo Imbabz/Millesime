@@ -43,6 +43,9 @@ export function RevealScreen({
     ? active.timeline.filter((c) => c.id !== card.id)
     : active.timeline;
 
+  /** A card already on the board carrying the very same year. */
+  const twin = boardCards.find((c) => c.year === card.year);
+
   const gapState = (slot: number): GapState => {
     if (slot === outcome.correctSlot) return 'correct';
     if (slot === turn.placement && !outcome.activeCorrect) return 'wrong';
@@ -71,6 +74,17 @@ export function RevealScreen({
               ? `✓ Bien joué ${active.name}`
               : '✕ Personne ne l’a placée au bon endroit'}
       </div>
+
+      {/* A poteau read as an injustice is the fastest way to lose a table: the
+          card sits next to an identical year, the placement looks right, and
+          the app says no. Naming the rule at the moment it bites is the
+          difference between a rule and a bug. */}
+      {twin && (
+        <p className="subtitle" style={{ textAlign: 'center', margin: 0 }}>
+          📍 Poteau — même année que « {twin.title} ». Une carte de même année se
+          range juste après, jamais avant.
+        </p>
+      )}
 
       <div className="board">
         <Timeline

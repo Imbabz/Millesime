@@ -45,6 +45,17 @@ export const RULES: RuleSection[] = [
     ],
   },
   {
+    id: 'poteau',
+    title: '📍 Les poteaux',
+    lines: [
+      'Un poteau, c’est une carte qui tombe pile sur une année déjà posée dans ta frise.',
+      'Elle se place obligatoirement JUSTE APRÈS celle de même année — jamais avant.',
+      'S’il y en a plusieurs à la suite, elle passe après toutes.',
+      'Autrement dit : il n’y a qu’un seul emplacement juste, comme pour n’importe quelle autre carte. Tomber à côté de la bonne année ne suffit pas, il faut savoir que c’est la même.',
+      'C’est aussi ce qui permet à la révélation de désigner un seul emplacement sans mentir.',
+    ],
+  },
+  {
     id: 'jeton',
     title: '🪙 Gagner un jeton',
     lines: [
