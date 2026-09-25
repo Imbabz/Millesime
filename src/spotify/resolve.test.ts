@@ -25,13 +25,21 @@ const card = (title: string, artist: string): Card => ({
 type Candidate = Parameters<typeof pickBestMatch>[1][number];
 
 let counter = 0;
-const track = (name: string, artists: string[], album = name): Candidate =>
+/** A plausible three-and-a-half minutes, so the length guard is exercised. */
+const track = (
+  name: string,
+  artists: string[],
+  album = name,
+  extra: Partial<Candidate> = {},
+): Candidate =>
   ({
     id: `t${++counter}`,
     uri: `spotify:track:t${counter}`,
     name,
+    duration_ms: 213_000,
     album: { name: album },
     artists: artists.map((a) => ({ name: a })),
+    ...extra,
   }) as Candidate;
 
 describe('normalise', () => {
@@ -117,6 +125,77 @@ describe('pickBestMatch', () => {
 
   it('returns null on an empty result rather than inventing a match', () => {
     expect(pickBestMatch(card('Bohemian Rhapsody', 'Queen'), [])).toBeNull();
+  });
+
+  it('refuses a track this account cannot play', () => {
+    // The market-scoped search says so outright; taking it would resolve the
+    // card and then produce silence in the middle of a turn.
+    expect(
+      pickBestMatch(card('Bohemian Rhapsody', 'Queen'), [
+        track('Bohemian Rhapsody', ['Queen'], 'A Night at the Opera', {
+          is_playable: false,
+        }),
+      ]),
+    ).toBeNull();
+  });
+
+  it('refuses album furniture wearing the song title', () => {
+    // Starting thirty seconds into a forty-second intro is three seconds of
+    // nothing, then the next turn.
+    expect(
+      pickBestMatch(card('Papaoutai', 'Stromae'), [
+        track('Intro', ['Stromae'], 'Racine carrée', { duration_ms: 41_000 }),
+      ]),
+    ).toBeNull();
+  });
+
+  it.each([
+    ['skit', 'Papaoutai (Skit)'],
+    ['interlude', 'Papaoutai - Interlude'],
+    ['outro', 'Papaoutai Outro'],
+  ])('refuses a %s even at a normal length', (_label, name) => {
+    expect(
+      pickBestMatch(card('Papaoutai', 'Stromae'), [track(name, ['Stromae'])]),
+    ).toBeNull();
+  });
+
+  it('keeps a song whose album happens to be called Intro', () => {
+    // The filter reads the track title, not the record's — rejecting a whole
+    // album for its name would cost more than it saves.
+    expect(
+      pickBestMatch(card('Papaoutai', 'Stromae'), [
+        track('Papaoutai', ['Stromae'], 'Intro'),
+      ]),
+    ).not.toBeNull();
+  });
+
+  it.each([
+    ['a snippet', 44_000],
+    ['a full live side', 46 * 60_000],
+  ])('refuses %s', (_label, duration_ms) => {
+    expect(
+      pickBestMatch(card('Bohemian Rhapsody', 'Queen'), [
+        track('Bohemian Rhapsody', ['Queen'], 'A Night at the Opera', { duration_ms }),
+      ]),
+    ).toBeNull();
+  });
+
+  it('accepts a long song that is simply long', () => {
+    expect(
+      pickBestMatch(card('Hey Jude', 'The Beatles'), [
+        track('Hey Jude', ['The Beatles'], 'Hey Jude', { duration_ms: 431_000 }),
+      ]),
+    ).not.toBeNull();
+  });
+
+  it('treats a missing length as unknown rather than suspect', () => {
+    expect(
+      pickBestMatch(card('Bohemian Rhapsody', 'Queen'), [
+        track('Bohemian Rhapsody', ['Queen'], 'A Night at the Opera', {
+          duration_ms: undefined as unknown as number,
+        }),
+      ]),
+    ).not.toBeNull();
   });
 
   it('returns null when nothing clears the confidence bar', () => {

@@ -111,6 +111,8 @@ export type SearchResponse = {
       uri: string;
       name: string;
       duration_ms: number;
+      /** Present once a market is supplied; false means silence at the table. */
+      is_playable?: boolean;
       artists: { name: string }[];
       album: { name: string; release_date: string };
     }[];
@@ -172,9 +174,18 @@ export const seekTo = (clientId: string, positionMs: number, deviceId: string | 
 /**
  * Development Mode caps search at 10 results, which is plenty: the query is
  * already narrowed by exact title and artist.
+ *
+ * `market=from_token` is not a refinement, it is the difference between a deck
+ * that plays and one that does not. Without it Spotify searches its whole
+ * catalogue, masters unlicensed in the listener's country included: the deck
+ * check happily records such a track as resolved, and the song then refuses to
+ * play in the middle of a turn. With a market, results are limited to what this
+ * account can actually hear, Track Relinking swaps in a playable master where
+ * one exists, and `is_playable` states the outcome instead of leaving it to be
+ * discovered at the party.
  */
 export const searchTracks = (clientId: string, query: string) =>
   spotifyFetch<SearchResponse>(
     clientId,
-    `/search?type=track&limit=10&q=${encodeURIComponent(query)}`,
+    `/search?type=track&limit=10&market=from_token&q=${encodeURIComponent(query)}`,
   );

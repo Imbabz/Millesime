@@ -18,6 +18,18 @@ describe('slugify', () => {
 });
 
 describe('catalogue integrity', () => {
+  it('carries no album furniture', () => {
+    // An intro or a skit is a minute of atmosphere with no year anybody could
+    // guess: it breaks the rhythm of a turn and teaches the table nothing. The
+    // resolver refuses to match one, and the deck should not ask it to.
+    const furniture = CATALOGUE.filter((card) =>
+      /\b(intro|outro|interlude|skit|prelude|prologue|overture|ouverture)\b/i.test(
+        card.title,
+      ),
+    );
+    expect(furniture.map((c) => `${c.artist} — ${c.title}`)).toEqual([]);
+  });
+
   it('has no duplicate ids', () => {
     const seen = new Map<string, string>();
     const clashes: string[] = [];

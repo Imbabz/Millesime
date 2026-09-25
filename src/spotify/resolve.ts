@@ -16,10 +16,43 @@ import { searchTracks, type SearchResponse } from './api';
 
 type Candidate = NonNullable<SearchResponse['tracks']>['items'][number];
 
-const CACHE_KEY = 'millesime.spotify.uris';
+/**
+ * The suffix is a rules version, and bumping it is part of changing the
+ * matcher. A resolved card is remembered forever, so a phone that ran the deck
+ * check before a fix keeps playing exactly the track the fix was meant to
+ * prevent — and nobody thinks to clear a cache they were never told about.
+ * v2: market-scoped search, album furniture and implausible lengths refused.
+ */
+const CACHE_KEY = 'millesime.spotify.uris.v2';
 
 /** Nothing here is a real recording of the song on the card. */
 const IMPOSTORS = /\b(karaoke|karaoké|tribute|made famous by|originally performed|instrumental|cover version|8-?bit|lullaby|piano tribute|remix)\b/i;
+
+/**
+ * Album furniture rather than a song: an intro, a skit, an interlude.
+ *
+ * Checked against the track title only, never the album's. A record may quite
+ * legitimately be called *Intro* while every song on it is real, and rejecting
+ * a whole album for its name would cost far more than it saves.
+ */
+const NOT_A_SONG = /\b(intro|outro|interlude|skit|prelude|prologue|overture|ouverture)\b/i;
+
+/**
+ * What a song on this deck plausibly lasts.
+ *
+ * The floor is what stops an album intro or a skit being played: they run under
+ * a minute, and the game then starts thirty seconds into a forty-second track,
+ * so the table hears three seconds of nothing and the turn is ruined. The
+ * ceiling catches a DJ set or a full live side filed under the song's name.
+ * Both are deliberately loose — a 1950s single can be brief, and Hey Jude runs
+ * past seven minutes.
+ */
+const MIN_SONG_MS = 75_000;
+const MAX_SONG_MS = 15 * 60_000;
+
+/** Unknown length is not suspicious; a stated absurd one is. */
+const plausibleLength = (ms: number | undefined): boolean =>
+  !Number.isFinite(ms) || !ms || (ms >= MIN_SONG_MS && ms <= MAX_SONG_MS);
 
 /** Fold to something comparable: no accents, no punctuation, no chart cruft. */
 export function normalise(input: string): string {
@@ -59,6 +92,11 @@ export function pickBestMatch(card: Card, candidates: Candidate[]): Candidate | 
   for (const candidate of candidates) {
     if (impostor(candidate.name) || impostor(candidate.album.name)) continue;
     if (candidate.artists.some((a) => impostor(a.name))) continue;
+    // Track Relinking has already tried to find a playable master; an explicit
+    // false means this account cannot hear it, whatever its title says.
+    if (candidate.is_playable === false) continue;
+    if (NOT_A_SONG.test(candidate.name) && !NOT_A_SONG.test(card.title)) continue;
+    if (!plausibleLength(candidate.duration_ms)) continue;
 
     const title = normalise(candidate.name);
     const artists = candidate.artists.map((a) => normalise(a.name)).join(' ');

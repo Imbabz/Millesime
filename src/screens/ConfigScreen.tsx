@@ -27,6 +27,7 @@ export function ConfigScreen({ onBack }: { onBack: () => void }) {
   const [check, setCheck] = useState<DeckCheckProgress | null>(null);
   const [checking, setChecking] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [listCopied, setListCopied] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
   const signedIn = isSignedIn();
@@ -188,6 +189,20 @@ export function ConfigScreen({ onBack }: { onBack: () => void }) {
                       </li>
                     ))}
                   </ul>
+                  {/* Reading forty titles aloud off a phone is nobody's idea of
+                      a bug report. One tap turns the gap into something that
+                      can be pasted into a message and acted on. */}
+                  <button
+                    className="btn btn--block"
+                    onClick={() => {
+                      void navigator.clipboard?.writeText(
+                        check.missing.map((c) => `${c.artist} — ${c.title}`).join('\n'),
+                      );
+                      setListCopied(true);
+                    }}
+                  >
+                    {listCopied ? 'Liste copiée ✓' : 'Copier la liste'}
+                  </button>
                 </details>
               )}
             </>
