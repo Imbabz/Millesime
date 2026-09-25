@@ -653,6 +653,50 @@ const ROWS: Row[] = [
   ['Kongolese sous BBL', 'Théodora', 2024, 'rap', 'm'],
   ['Ordinary', 'Alex Warren', 2025, 'pop', 'm'],
   ['Abracadabra', 'Lady Gaga', 2025, 'pop', 'm'],
+
+  // ------------------------------------------------- élargissement 2026
+  // Added to thicken the thin genres rather than to grow the deck: reggae,
+  // latino, metal and soundtracks each had fewer than twenty cards, which is
+  // too few to survive a filtered game. Measuring first was worth it — of a
+  // hundred and fifteen obvious hits considered, seventy-seven were already
+  // here, so the deck was never short of famous songs.
+  ['Le Poinçonneur des Lilas', 'Serge Gainsbourg', 1958, 'chanson', 'm'],
+  ['Sunny', 'Bobby Hebb', 1966, 'funk', 'm'],
+  ['Born to Be Wild', 'Steppenwolf', 1968, 'rock', 'e'],
+  ['Iron Man', 'Black Sabbath', 1970, 'metal', 'h'],
+  ['Jolene', 'Dolly Parton', 1973, 'pop', 'm'],
+  ['Killing Me Softly with His Song', 'Roberta Flack', 1973, 'rnb', 'm'],
+  ['Magnolias for Ever', 'Claude François', 1977, 'chanson', 'm'],
+  ['Rivers of Babylon', 'Boney M.', 1978, 'reggae', 'm'],
+  ['Redemption Song', 'Bob Marley & The Wailers', 1980, 'reggae', 'm'],
+  ['Buffalo Soldier', 'Bob Marley & The Wailers', 1983, 'reggae', 'h'],
+  ['Maniac', 'Michael Sembello', 1983, 'pop', 'm'],
+  ['Besoin de rien, envie de toi', 'Peter et Sloane', 1984, 'pop', 'm'],
+  ['The Power of Love', 'Huey Lewis and the News', 1985, 'ost', 'm'],
+  ['Wasted Years', 'Iron Maiden', 1986, 'metal', 'h'],
+  ['Bamboléo', 'Gipsy Kings', 1987, 'latino', 'm'],
+  ['Wind of Change', 'Scorpions', 1990, 'metal', 'e'],
+  ['Informer', 'Snow', 1992, 'reggae', 'h'],
+  ['Circle of Life', 'Elton John', 1994, 'ost', 'm'],
+  ['Zombie', 'The Cranberries', 1994, 'rock', 'e'],
+  ['Bailando', 'Paradisio', 1996, 'latino', 'm'],
+  ['Alane', 'Wes', 1996, 'pop', 'm'],
+  ['Suavemente', 'Elvis Crespo', 1998, 'latino', 'h'],
+  ['I Want It That Way', 'Backstreet Boys', 1999, 'pop', 'e'],
+  ['Aserejé', 'Las Ketchup', 2002, 'latino', 'e'],
+  ['Bring Me to Life', 'Evanescence', 2003, 'metal', 'm'],
+  ['Dragostea din tei', 'O-Zone', 2003, 'electro', 'e'],
+  ['American Idiot', 'Green Day', 2004, 'rock', 'e'],
+  ['Welcome to Jamrock', 'Damian Marley', 2005, 'reggae', 'h'],
+  ['Sexy Bitch', 'David Guetta', 2009, 'electro', 'e'],
+  ['Empire State of Mind', 'Jay-Z', 2009, 'rap', 'm'],
+  ['Danza Kuduro', 'Don Omar', 2010, 'latino', 'm'],
+  ['Vivir Mi Vida', 'Marc Anthony', 2013, 'latino', 'h'],
+  ['Mi Gente', 'J Balvin', 2017, 'latino', 'm'],
+  ['Tusa', 'Karol G', 2019, 'latino', 'm'],
+  ['Old Town Road', 'Lil Nas X', 2019, 'rap', 'e'],
+  ['Unholy', 'Sam Smith', 2022, 'pop', 'm'],
+  ['Texas Hold \'Em', 'Beyoncé', 2024, 'pop', 'e'],
 ];
 
 /** `Michael Jackson` + `Billie Jean` → `michael-jackson-billie-jean`. */

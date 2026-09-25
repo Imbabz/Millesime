@@ -5,6 +5,14 @@ name: Vérifier les années du deck
 # changes — a new matching rule is worth re-checking the whole deck against.
 on:
   workflow_dispatch:
+    inputs:
+      only:
+        description: >
+          Cartes à vérifier : "new" pour celles qui n'ont pas encore d'année
+          vérifiée, une liste d'identifiants séparés par des virgules, ou vide
+          pour balayer tout le deck.
+        required: false
+        default: new
   push:
     # Only on this repository's own default branch. The branch is staged inside
     # another repository before it lands here, and a half-hour sweep firing
@@ -13,6 +21,12 @@ on:
     paths:
       - 'scripts/verify-years.mjs'
       - '.github/workflows/verify-years.yml'
+
+concurrency:
+  # MusicBrainz is volunteer-run and the sweep paces itself at one request per
+  # second; two at once is both impolite and slower than one.
+  group: verify-years
+  cancel-in-progress: true
 
 jobs:
   verify:
@@ -33,6 +47,11 @@ jobs:
       - run: npm ci
 
       - name: Interroger MusicBrainz
+        env:
+          # A push means the matching logic changed, and that deserves the whole
+          # deck. A manual run defaults to the cards that have no verified year
+          # yet, which is what adding cards needs and takes minutes, not an hour.
+          ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.only || '' }}
         run: npm run verify:years
 
       - name: Publier le rapport

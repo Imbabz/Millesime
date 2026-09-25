@@ -31,6 +31,7 @@
  */
 import { writeFileSync } from 'node:fs';
 import { CATALOGUE } from '../src/deck/catalogue.ts';
+import VERIFIED from '../src/deck/years.json' with { type: 'json' };
 
 const ENDPOINT = 'https://musicbrainz.org/ws/2/recording';
 const USER_AGENT =
@@ -136,7 +137,26 @@ const report = {
   failed: [],
 };
 
-for (const [index, card] of CATALOGUE.entries()) {
+/**
+ * Which cards to sweep.
+ *
+ * `ONLY=new` is the one that makes expanding the deck practical: a freshly
+ * added card has no entry in years.json yet, so verifying just those turns a
+ * forty-five minute sweep of 600 cards into two minutes on the twenty that
+ * changed. `ONLY=<id,id,…>` re-checks a specific argument. Unset sweeps
+ * everything, which is what a change to the matching logic deserves.
+ */
+const only = process.env.ONLY?.trim();
+const TARGETS =
+  !only
+    ? CATALOGUE
+    : only === 'new'
+      ? CATALOGUE.filter((card) => !(card.id in VERIFIED))
+      : CATALOGUE.filter((card) => only.split(',').includes(card.id));
+
+console.log(`${TARGETS.length} carte(s) à vérifier sur ${CATALOGUE.length}.`);
+
+for (const [index, card] of TARGETS.entries()) {
   try {
     const data = await query(card);
     const candidates = rank(card, data.recordings);
@@ -177,7 +197,7 @@ for (const [index, card] of CATALOGUE.entries()) {
 
   if ((index + 1) % 50 === 0) {
     console.log(
-      `${index + 1}/${CATALOGUE.length} — ${report.agree.length} ok, ` +
+      `${index + 1}/${TARGETS.length} — ${report.agree.length} ok, ` +
         `${report.disagree.length} écarts, ${report.missing.length} introuvables`,
     );
     // Written as we go: a run that dies at card 500 still leaves a usable file.
@@ -197,7 +217,13 @@ console.log(
 // The artifact store is not reachable from every environment that needs to read
 // this, so the verdicts also go to stdout, one line per card, where the job log
 // makes them available to anyone who can see the run.
-console.log('\n===== ÉCARTS =====');
+// Agreements are printed too, not just the problems: for a card being added
+// they *are* the result — the year to copy into years.json with MusicBrainz as
+// its source. Leaving them out meant a new batch could only be confirmed by
+// downloading the artifact, which is not reachable from everywhere.
+console.log('\n===== CONCORDANCES =====');
+for (const a of report.agree) console.log(`OK\t${a.id}\t${a.year}`);
+console.log('===== ÉCARTS =====');
 for (const d of report.disagree) {
   const alts = d.candidates
     .slice(1)
