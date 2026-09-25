@@ -3,6 +3,7 @@ import type { Action } from '@/game/engine';
 import { MAX_PLAYERS } from '@/game/engine';
 import { filterDeck, minimumDeckSize } from '@/game/deckFilter';
 import { CATALOGUE } from '@/deck/catalogue';
+import { staleIdsFor } from '@/deck/history';
 import {
   DIFFICULTY_LABELS,
   GENRE_LABELS,
@@ -341,7 +342,13 @@ export function LobbyScreen({
             className="btn btn--primary btn--big btn--block"
             disabled={!canStart}
             onClick={() =>
-              dispatch({ type: 'START_GAME', seed: Math.floor(Math.random() * 2 ** 31) })
+              dispatch({
+                type: 'START_GAME',
+                seed: Math.floor(Math.random() * 2 ** 31),
+                // What this table already heard, so a second game does not open
+                // on the first one's songs.
+                stale: staleIdsFor(filterDeck(CATALOGUE, settings), needed),
+              })
             }
           >
             Lancer la partie

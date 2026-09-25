@@ -34,7 +34,12 @@ export type Action =
   | { type: 'REMOVE_PLAYER'; playerId: PlayerId }
   | { type: 'SET_CONNECTED'; playerId: PlayerId; connected: boolean }
   | { type: 'SET_SETTINGS'; settings: Partial<GameSettings> }
-  | { type: 'START_GAME'; seed: number }
+  | {
+      type: 'START_GAME';
+      seed: number;
+      /** Cards this table already heard in earlier games; dealt last. */
+      stale?: readonly string[];
+    }
   | { type: 'DRAW_CARD'; playerId: PlayerId }
   | { type: 'SET_CLAIM'; playerId: PlayerId; value: boolean }
   | { type: 'COMMIT_PLACEMENT'; playerId: PlayerId; slot: number; at: number }
@@ -243,7 +248,12 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
       if (pool.length < state.players.length + 1) return state;
 
       const rng = mulberry32(action.seed);
-      const pile = buildDrawPile(pool, state.settings.difficultyMix, rng);
+      const pile = buildDrawPile(
+        pool,
+        state.settings.difficultyMix,
+        rng,
+        new Set(action.stale ?? []),
+      );
 
       const opening = clampTokens(state.settings.startingTokens);
       const players = state.players.map((p) => {

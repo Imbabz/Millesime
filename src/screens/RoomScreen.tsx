@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CATALOGUE_BY_ID } from '@/deck/catalogue';
+import { rememberPlayed } from '@/deck/history';
 import { DEFAULT_HOOK_MS, type Card, type GameState } from '@/game/types';
 import { LocalTransport } from '@/net/local';
 import { SupabaseTransport } from '@/net/supabase';
@@ -132,6 +133,14 @@ export function RoomScreen({
   useEffect(() => {
     if (isHost) setPlayback(music.snapshot);
   }, [isHost, music.snapshot, setPlayback]);
+
+  // Remember every card that comes into play, so later games can deal the ones
+  // this table has not heard first. Recorded on arrival rather than at the end
+  // of a game, so an evening that stops halfway still counts.
+  useEffect(() => {
+    if (!isHost || !state.turn?.cardId) return;
+    rememberPlayed(state.turn.cardId);
+  }, [isHost, state.turn?.cardId]);
 
   // Start the song when a new card comes into play. Guarded by card id so a
   // re-render, a reconnect or a paused track never restarts the music underneath

@@ -9,6 +9,7 @@ import {
 } from '@/config';
 import { beginLogin, isSignedIn, signOut } from '@/spotify/auth';
 import { CATALOGUE } from '@/deck/catalogue';
+import { forgetPlayed, playedCards } from '@/deck/history';
 import { checkDeck, forgetAllUris, resolvedCount, type DeckCheckProgress } from '@/spotify/resolve';
 import { Banner } from '@/ui/bits';
 
@@ -28,6 +29,7 @@ export function ConfigScreen({ onBack }: { onBack: () => void }) {
   const [checking, setChecking] = useState(false);
   const [copied, setCopied] = useState(false);
   const [listCopied, setListCopied] = useState(false);
+  const [played, setPlayed] = useState(() => playedCards().length);
   const abortRef = useRef<AbortController | null>(null);
 
   const signedIn = isSignedIn();
@@ -229,6 +231,31 @@ export function ConfigScreen({ onBack }: { onBack: () => void }) {
             }}
           >
             Vider le cache d’association
+          </button>
+        </section>
+
+        {/* ------------------------------------------------------- variety */}
+        <section className="panel stack">
+          <h2 style={{ fontSize: 18 }}>🔀 Morceaux déjà joués</h2>
+          <p className="subtitle" style={{ margin: 0 }}>
+            {played} morceau{played > 1 ? 'x' : ''} sur {CATALOGUE.length} déjà
+            entendu{played > 1 ? 's' : ''} sur ce téléphone. Les parties suivantes
+            piochent d’abord dans le reste, pour ne pas rejouer les mêmes.
+          </p>
+          <p className="subtitle" style={{ margin: 0 }}>
+            Quand une sélection est épuisée, un nouveau cycle démarre tout seul.
+            À vider seulement pour repartir de zéro — après une soirée avec
+            d’autres gens, par exemple.
+          </p>
+          <button
+            className="btn btn--ghost btn--block"
+            disabled={played === 0}
+            onClick={() => {
+              forgetPlayed();
+              setPlayed(0);
+            }}
+          >
+            Oublier l’historique
           </button>
         </section>
 
