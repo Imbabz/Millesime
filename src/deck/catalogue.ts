@@ -676,7 +676,7 @@ const ROWS: Row[] = [
   ['Wasted Years', 'Iron Maiden', 1986, 'metal', 'h'],
   ['Bamboléo', 'Gipsy Kings', 1987, 'latino', 'm'],
   ['Wind of Change', 'Scorpions', 1990, 'metal', 'e'],
-  ['Informer', 'Snow', 1992, 'reggae', 'h'],
+  ['Informer', 'Snow', 1993, 'reggae', 'h'],
   ['Circle of Life', 'Elton John', 1994, 'ost', 'm'],
   ['Zombie', 'The Cranberries', 1994, 'rock', 'e'],
   ['Bailando', 'Paradisio', 1996, 'latino', 'm'],
@@ -694,7 +694,7 @@ const ROWS: Row[] = [
   ['Vivir Mi Vida', 'Marc Anthony', 2013, 'latino', 'h'],
   ['Mi Gente', 'J Balvin', 2017, 'latino', 'm'],
   ['Tusa', 'Karol G', 2019, 'latino', 'm'],
-  ['Old Town Road', 'Lil Nas X', 2019, 'rap', 'e'],
+  ['Old Town Road', 'Lil Nas X', 2018, 'rap', 'e'],
   ['Unholy', 'Sam Smith', 2022, 'pop', 'm'],
   ['Texas Hold \'Em', 'Beyoncé', 2024, 'pop', 'e'],
 ];

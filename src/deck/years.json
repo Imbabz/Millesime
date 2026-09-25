@@ -199,6 +199,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "backstreet-boys--i-want-it-that-way": {
+    "year": 1999,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "bad-bunny--dakiti": {
     "year": 2020,
     "source": "manual",
@@ -274,6 +279,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "beyonce--texas-hold-em": {
+    "year": 2024,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "bigflo-oli--coup-de-vieux": {
     "year": 2020,
     "source": "manual",
@@ -344,6 +354,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "black-sabbath--iron-man": {
+    "year": 1970,
+    "source": "manual",
+    "ref": "MusicBrainz retient 1972 ; le titre paraît sur « Paranoid » en 1970."
+  },
   "black-sabbath--paranoid": {
     "year": 1970,
     "source": "manual",
@@ -369,6 +384,11 @@
     "source": "manual",
     "ref": "MusicBrainz apparie une réédition (1978) ; une réédition ne peut pas précéder la sortie d’origine."
   },
+  "bob-marley-the-wailers--buffalo-soldier": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "bob-marley-the-wailers--could-you-be-loved": {
     "year": 1980,
     "source": "manual",
@@ -389,6 +409,11 @@
     "source": "manual",
     "ref": "MusicBrainz apparie une réédition (1980) ; une réédition ne peut pas précéder la sortie d’origine."
   },
+  "bob-marley-the-wailers--redemption-song": {
+    "year": 1980,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "bob-marley-the-wailers--three-little-birds": {
     "year": 1977,
     "source": "musicbrainz",
@@ -403,6 +428,11 @@
     "year": 1959,
     "source": "manual",
     "ref": "MusicBrainz apparie une réédition (1988) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "bobby-hebb--sunny": {
+    "year": 1966,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition ou une compilation postérieure ; une réédition ne peut pas précéder la sortie d’origine."
   },
   "bon-jovi--it-s-my-life": {
     "year": 2000,
@@ -423,6 +453,11 @@
     "year": 1978,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "boney-m--rivers-of-babylon": {
+    "year": 1978,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "bonnie-tyler--total-eclipse-of-the-heart": {
     "year": 1983,
@@ -604,6 +639,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "claude-francois--magnolias-for-ever": {
+    "year": 1977,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "claude-nougaro--toulouse": {
     "year": 1967,
     "source": "manual",
@@ -704,6 +744,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "damian-marley--welcome-to-jamrock": {
+    "year": 2005,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition ou une compilation postérieure ; une réédition ne peut pas précéder la sortie d’origine."
+  },
   "daniel-balavoine--le-chanteur": {
     "year": 1978,
     "source": "musicbrainz",
@@ -728,6 +773,11 @@
     "year": 2007,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "david-guetta--sexy-bitch": {
+    "year": 2009,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "david-guetta--titanium": {
     "year": 2011,
@@ -823,6 +873,16 @@
     "year": 2019,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "dolly-parton--jolene": {
+    "year": 1973,
+    "source": "manual",
+    "ref": "MusicBrainz retient l’album (1974/1975) ; le single sort en octobre 1973."
+  },
+  "don-omar--danza-kuduro": {
+    "year": 2010,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "donna-summer--i-feel-love": {
     "year": 1977,
@@ -929,6 +989,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "elton-john--circle-of-life": {
+    "year": 1994,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "elton-john--rocket-man": {
     "year": 1972,
     "source": "manual",
@@ -943,6 +1008,11 @@
     "year": 2021,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "elvis-crespo--suavemente": {
+    "year": 1998,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "elvis-presley--can-t-help-falling-in-love": {
     "year": 1961,
@@ -991,6 +1061,11 @@
   },
   "eurythmics--sweet-dreams-are-made-of-this": {
     "year": 1983,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
+  "evanescence--bring-me-to-life": {
+    "year": 2003,
     "source": "manual",
     "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
   },
@@ -1089,6 +1164,11 @@
     "source": "manual",
     "ref": "MusicBrainz apparie une réédition (2024) ; une réédition ne peut pas précéder la sortie d’origine."
   },
+  "gipsy-kings--bamboleo": {
+    "year": 1987,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "glass-animals--heat-waves": {
     "year": 2020,
     "source": "musicbrainz",
@@ -1123,6 +1203,11 @@
     "year": 2011,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "green-day--american-idiot": {
+    "year": 2004,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "green-day--basket-case": {
     "year": 1994,
@@ -1183,6 +1268,11 @@
     "year": 2024,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "huey-lewis-and-the-news--the-power-of-love": {
+    "year": 1985,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition ou une compilation postérieure ; une réédition ne peut pas précéder la sortie d’origine."
   },
   "iam--je-danse-le-mia": {
     "year": 1993,
@@ -1249,6 +1339,16 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "iron-maiden--wasted-years": {
+    "year": 1986,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
+  "j-balvin--mi-gente": {
+    "year": 2017,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition ou une compilation postérieure ; une réédition ne peut pas précéder la sortie d’origine."
+  },
   "jack-johnson--better-together": {
     "year": 2005,
     "source": "musicbrainz",
@@ -1293,6 +1393,11 @@
     "year": 2003,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "jay-z--empire-state-of-mind": {
+    "year": 2009,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition ou une compilation postérieure ; une réédition ne peut pas précéder la sortie d’origine."
   },
   "jean-jacques-goldman--comme-toi": {
     "year": 1982,
@@ -1419,6 +1524,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "karol-g--tusa": {
+    "year": 2019,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "kate-bush--running-up-that-hill-a-deal-with-god": {
     "year": 1985,
     "source": "musicbrainz",
@@ -1514,6 +1624,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "las-ketchup--asereje": {
+    "year": 2002,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "lauryn-hill--doo-wop-that-thing": {
     "year": 1998,
     "source": "musicbrainz",
@@ -1553,6 +1668,11 @@
     "year": 2021,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "lil-nas-x--old-town-road": {
+    "year": 2018,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "limp-bizkit--rollin-air-raid-vehicle": {
     "year": 2000,
@@ -1689,6 +1809,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "marc-anthony--vivir-mi-vida": {
+    "year": 2013,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "mariah-carey--all-i-want-for-christmas-is-you": {
     "year": 1994,
     "source": "musicbrainz",
@@ -1793,6 +1918,11 @@
     "year": 1982,
     "source": "manual",
     "ref": "MusicBrainz apparie une réédition (1987) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "michael-sembello--maniac": {
+    "year": 1983,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "michel-delpech--wight-is-wight": {
     "year": 1969,
@@ -1929,6 +2059,11 @@
     "source": "manual",
     "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
   },
+  "o-zone--dragostea-din-tei": {
+    "year": 2003,
+    "source": "manual",
+    "ref": "MusicBrainz retient la sortie internationale (2004) ; la parution roumaine d’origine est de 2003."
+  },
   "oasis--don-t-look-back-in-anger": {
     "year": 1995,
     "source": "musicbrainz",
@@ -2004,6 +2139,11 @@
     "source": "manual",
     "ref": "MusicBrainz apparie une réédition (1982) ; une réédition ne peut pas précéder la sortie d’origine."
   },
+  "paradisio--bailando": {
+    "year": 1996,
+    "source": "manual",
+    "ref": "Écart d’un an : MusicBrainz retient une parution antérieure — promo, single avancé ou autre pressage. L’année de sortie commerciale de référence est conservée."
+  },
   "partenaire-particulier--partenaire-particulier": {
     "year": 1985,
     "source": "musicbrainz",
@@ -2038,6 +2178,11 @@
     "year": 2023,
     "source": "manual",
     "ref": "Absente du catalogue MusicBrainz ; année vérifiée à la main."
+  },
+  "peter-et-sloane--besoin-de-rien-envie-de-toi": {
+    "year": 1984,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "peter-tosh--legalize-it": {
     "year": 1976,
@@ -2234,6 +2379,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "roberta-flack--killing-me-softly-with-his-song": {
+    "year": 1973,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "robin-thicke--blurred-lines": {
     "year": 2013,
     "source": "musicbrainz",
@@ -2299,6 +2449,11 @@
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
   },
+  "sam-smith--unholy": {
+    "year": 2022,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "sam-smith-kim-petras--unholy": {
     "year": 2022,
     "source": "musicbrainz",
@@ -2313,6 +2468,11 @@
     "year": 1999,
     "source": "manual",
     "ref": "MusicBrainz apparie une réédition (2000) ; une réédition ne peut pas précéder la sortie d’origine."
+  },
+  "scorpions--wind-of-change": {
+    "year": 1990,
+    "source": "manual",
+    "ref": "MusicBrainz retient le single (1991) ; le titre paraît sur « Crazy World » en novembre 1990."
   },
   "scott-mckenzie--san-francisco-be-sure-to-wear-flowers-in-your-hair": {
     "year": 1967,
@@ -2348,6 +2508,11 @@
     "year": 1963,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "serge-gainsbourg--le-poinconneur-des-lilas": {
+    "year": 1958,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "serge-gainsbourg--requiem-pour-un-con": {
     "year": 1968,
@@ -2449,6 +2614,11 @@
     "source": "manual",
     "ref": "MusicBrainz apparie une réédition (1994) ; une réédition ne peut pas précéder la sortie d’origine."
   },
+  "snow--informer": {
+    "year": 1993,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
+  },
   "snow-patrol--chasing-cars": {
     "year": 2006,
     "source": "manual",
@@ -2478,6 +2648,11 @@
     "year": 1998,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "steppenwolf--born-to-be-wild": {
+    "year": 1968,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "steve-lacy--bad-habit": {
     "year": 2022,
@@ -2678,6 +2853,11 @@
     "year": 1997,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "the-cranberries--zombie": {
+    "year": 1994,
+    "source": "manual",
+    "ref": "MusicBrainz apparie une réédition ou une compilation postérieure ; une réédition ne peut pas précéder la sortie d’origine."
   },
   "the-cure--boys-don-t-cry": {
     "year": 1979,
@@ -2953,6 +3133,11 @@
     "year": 1994,
     "source": "musicbrainz",
     "ref": "https://github.com/Imbabz/Magellan/actions/runs/31777941160"
+  },
+  "wes--alane": {
+    "year": 1996,
+    "source": "musicbrainz",
+    "ref": "https://github.com/Imbabz/Millesime/actions/runs/36168607302"
   },
   "wham--last-christmas": {
     "year": 1984,
